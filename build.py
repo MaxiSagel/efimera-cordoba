@@ -220,7 +220,7 @@ FAQ = [(("¿Qué es EFÍMERA CÓRDOBA?", "What is EFÍMERA CÓRDOBA?"),
         ("Sí. Efímera Lab, con estudiantes de la AA School, del 20 al 31 de agosto, e instalaciones abiertas al público durante todo septiembre de 2027. Las convocatorias se anunciarán aquí, en el boletín y en @efimera_fest.",
          "Yes. Efímera Lab, with AA School students, from 20 to 31 August, and installations open to the public throughout September 2027. Open calls will be announced here, in the newsletter and on @efimera_fest.")),
        (("¿Cómo puedo participar o colaborar?", "How can I take part or partner with you?"),
-        ("Como participante, con las convocatorias de cada edición: becas, ayudas a la producción, el Efímera Lab y el concurso audiovisual. Como empresa, presentando candidatura a la convocatoria de empresas 2027.",
+        ("Como participante, con las convocatorias de cada edición: becas para estudiantes, ayudas económicas para producir obra, el Efímera Lab y el concurso audiovisual. Como empresa, presentando candidatura a la convocatoria de empresas 2027.",
          "As a participant, through each edition's open calls: grants, production support, the Efímera Lab and the film competition. As a company, by applying to the 2027 brand open call."))]
 
 
@@ -291,7 +291,7 @@ def partners():
     <a href="https://www.fundacionartdecor.org" target="_blank" rel="noopener"><img src="{img('img/logos/artdecor.ae34de74.png')}" alt="Fundación Artdecor"></a>
     <a href="https://www.muddarchitects.com/" target="_blank" rel="noopener"><img src="{img('img/logos/mudd.6f8b5b97.png')}" alt="MuDD Architects"></a>
     <a class="aa-logo" href="https://www.aaschool.ac.uk" target="_blank" rel="noopener"><img src="{local('assets/logos/aa.svg')}" alt=""><span>Architectural Association<br>School of Architecture</span></a></div></div>
-  <div><span class="label">{t("Socios 2027", "2027 partners")}</span><br><a class="aa" href="https://www.shimaseiki.com" target="_blank" rel="noopener"><img class="plogo shima" src="{local('assets/logos/shima-seiki.png')}" alt="Shima Seiki"><small>{t("Partner técnico · tejido 3D", "Technical partner · 3D knitting")}</small></a><br><a class="aa" href="https://www.dezeen.com" target="_blank" rel="noopener"><img class="plogo dezeen" src="{local('assets/logos/dezeen.svg')}" alt="Dezeen"><small>{t("Socio de prensa", "Media partner")}</small></a><br><a class="aa" href="https://www.akt-uk.com" target="_blank" rel="noopener">AKT II<small>{t("Empresa socia · ingeniería, Londres", "Partner company · engineering, London")}</small></a><br><a class="aa" href="https://www.juntadeandalucia.es/cultura/c3a/" target="_blank" rel="noopener">C3A<small>{t("Colaborador y espacio de intervención", "Partner and installation venue")}</small></a></div>
+  <div><span class="label">{t("Socios 2027", "2027 partners")}</span><br><a class="aa" href="https://www.shimaseiki.com" target="_blank" rel="noopener"><img class="plogo shima" src="{local('assets/logos/shima-seiki.png')}" alt="Shima Seiki"><small>{t("Partner técnico · tejido 3D", "Technical partner · 3D knitting")}</small></a><br><a class="aa" href="https://www.dezeen.com" target="_blank" rel="noopener"><img class="plogo dezeen" src="{local('assets/logos/dezeen.svg')}" alt="Dezeen"><small>{t("Socio de prensa", "Media partner")}</small></a><br><a class="aa" href="https://tyrensakt.com" target="_blank" rel="noopener"><img class="plogo akt" src="{local('assets/logos/tyrens-akt.png')}" alt="Tyréns AKT"><small>{t("Empresa socia · ingeniería, Londres (antes AKT II)", "Partner company · engineering, London (formerly AKT II)")}</small></a><br><a class="aa" href="https://www.juntadeandalucia.es/cultura/c3a/" target="_blank" rel="noopener">C3A<small>{t("Colaborador y espacio de intervención", "Partner and installation venue")}</small></a></div>
   <div><span class="label">{t("Colaboran", "Supported by")}</span><div class="names">{names}</div></div>
 </div></section>'''
 
@@ -393,6 +393,7 @@ def page(key, title, desc, navkey, body, bloque=None, bloque_txt="#fff", head=""
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{P}assets/styles.css?v={VER}">
+{('<script data-goatcounter="https://' + GOATCOUNTER + '.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>') if GOATCOUNTER else ""}
 {head}
 </head>
 <body{style}>
@@ -714,7 +715,7 @@ def lab():
   <div class="rv"><span class="label">{t("Cómo funciona", "How it works")}</span><h2 class="d d-l mt-s">{t('Prototipos de día, <span class="it">ideas</span> al atardecer.', 'Prototypes by day, <span class="it">ideas</span> at dusk.')}</h2></div>
   <div class="rv">
     <p class="lead">{t("Por la mañana y por la tarde: equipos, materiales, prototipos y revisiones. A mediodía y al caer el sol: charlas invitadas.", "Morning and afternoon: teams, materials, prototypes and reviews. At midday and at sunset: guest talks.")}</p>
-    <p>{t("Lo dirige Nina Chaltiel (MuDD Architects) y reúne a participantes locales, nacionales e internacionales con estudiantes de la AA School de Londres. Las becas y ayudas se convocaron del 1 al 15 de julio de 2026: tres becas completas para estudiantes locales y dos ayudas a la producción para artistas, profesionales y colectivos.", "Led by Nina Chaltiel (MuDD Architects), it brings together local, national and international participants with students from London's AA School. Grants were open from 1 to 15 July 2026: three full grants for local students and two production grants for artists, professionals and collectives.")}</p>
+    <p>{t("Lo dirige Nina Chaltiel (MuDD Architects) y reúne a participantes locales, nacionales e internacionales con estudiantes de la AA School de Londres. Las becas y ayudas se convocaron del 1 al 15 de julio de 2026: tres becas completas para estudiantes locales y dos ayudas económicas para que artistas, profesionales o colectivos produjeran su obra.", "Led by Nina Chaltiel (MuDD Architects), it brings together local, national and international participants with students from London's AA School. Grants were open from 1 to 15 July 2026: three full grants for local students and two production grants for artists, professionals and collectives.")}</p>
   </div>
 </div></section>
 
@@ -850,6 +851,7 @@ def cal2027():
 
 
 DEADLINE = ("28 de febrero de 2027", "28 February 2027")
+GOATCOUNTER = ""   # código de la cuenta de goatcounter.com (p. ej. "efimeracordoba"); vacío = sin contador
 PLAZAS, LIBRES = 15, 14          # LIBRES: actualizar cuando se confirme cada empresa
 
 CRITERIA = [  # BORRADOR: revisar con la dirección artística
@@ -868,8 +870,8 @@ FAQ = [  # BORRADOR: revisar antes de dar por buenas las respuestas
      ("Depende del espacio y de la escala de la instalación. Las condiciones están en el dosier, que enviamos a las empresas candidatas. No es un alquiler: es la oportunidad de crear una obra y presentar vuestra marca en ella.",
       "It depends on the venue and the scale of the installation. The terms are in the deck we send to applicants. It isn't a rental: it's the chance to create a work and present your brand through it.")),
     (("¿Qué incluye?", "What's included?"),
-     ("Un espacio patrimonial durante todo septiembre, un asistente de producción gratuito, el acompañamiento de la dirección artística, encuentros con la lista de invitados profesionales y presencia en la comunicación del festival.",
-      "A heritage venue for all of September, a free production assistant, support from the artistic direction, meetings with the professional guest list and presence in the festival's communication.")),
+     ("Un espacio patrimonial durante todo septiembre, un asistente de producción gratuito, el acompañamiento de la dirección artística y encuentros con la lista de invitados profesionales. Además, fotos y vídeo profesionales de vuestra instalación, mención en la nota de prensa, en Dezeen y en las redes del festival.",
+      "A heritage venue for all of September, a free production assistant, support from the artistic direction and meetings with the professional guest list. Plus professional photos and video of your installation, and mentions in the press release, in Dezeen and on the festival's social media.")),
     (("¿Podemos elegir el espacio?", "Can we choose the venue?"),
      ("Marcad en la candidatura los que más os interesan. La dirección artística asigna cada espacio según vuestra preferencia y la escala de la propuesta.",
       "Tick the ones you like best in your application. The artistic direction assigns each venue based on your preference and the scale of the proposal.")),
@@ -886,8 +888,8 @@ FAQ = [  # BORRADOR: revisar antes de dar por buenas las respuestas
      ("En marzo de 2027 comunicamos la resolución a todas las empresas candidatas.", "In March 2027 we notify every applicant of the decision.")),
 ]
 
-AKT = ("AKT II es el estudio de ingeniería estructural y civil con sede en Londres que acompaña a EFÍMERA como empresa socia. Su Associate Director, James Kingman, fue ponente del Efímera Lab 2026.",
-       "AKT II is the London-based structural and civil engineering practice that partners with EFÍMERA. Its Associate Director, James Kingman, spoke at the Efímera Lab 2026.")
+AKT = ("Tyréns AKT, antes AKT II, es el estudio de ingeniería estructural y civil con sede en Londres, parte del grupo Tyréns, que acompaña a EFÍMERA como empresa socia. Su Associate Director, James Kingman, fue ponente del Efímera Lab 2026.",
+       "Tyréns AKT, formerly AKT II, is the London-based structural and civil engineering practice, part of the Tyréns Group, that partners with EFÍMERA. Its Associate Director, James Kingman, spoke at the Efímera Lab 2026.")
 
 DEZEEN = ("Dezeen, la revista online de arquitectura, interiorismo y diseño con sede en Londres, es el socio de prensa de la segunda edición.",
           "Dezeen, the London-based online magazine of architecture, interiors and design, is the media partner of the second edition.")
@@ -908,6 +910,13 @@ GUESTS = [("Interioristas", "Interior designers"), ("Arquitectos", "Architects")
 AWARD = [(("Qué se valora", "What counts"), ("La idea, el diálogo con el espacio, el uso del material o la tecnología y la experiencia del visitante.", "The idea, the dialogue with the venue, the use of material or technology, and the visitor's experience.")),
          (("Quién decide", "Who decides"), ("Un jurado independiente de arquitectura, interiorismo y prensa especializada.", "An independent jury from architecture, interior design and the specialist press.")),
          (("Qué se gana", "The prize"), ("Plaza directa en la edición de 2028 y un lugar destacado en la comunicación del festival.", "A guaranteed place in the 2028 edition and a prominent spot in the festival's communications."))]
+
+GETS = [  # confirmado por la organización (noviembre 2026)
+    (("Fotos y vídeo profesionales", "Professional photos and video"), ("De vuestra instalación, con derecho a usarlos en vuestra propia comunicación.", "Of your installation, yours to use in your own communication.")),
+    (("Nota de prensa", "Press release"), ("Vuestra marca, citada en la nota de prensa del festival.", "Your brand, named in the festival's press release.")),
+    (("Dezeen", "Dezeen"), ("Artículo o mención en Dezeen, socio de prensa del festival.", "An article or mention in Dezeen, the festival's media partner.")),
+    (("Redes del festival", "Festival social media"), ("Publicaciones sobre vuestra instalación en las redes de EFÍMERA, que en 2026 sumaron 3,2 M de visualizaciones.", "Posts about your installation on EFÍMERA's channels, which reached 3.2M views in 2026.")),
+]
 
 INCLUDES = [("Un espacio patrimonial para tu instalación durante todo septiembre de 2027.", "A heritage venue for your installation throughout September 2027."),
             ("Un asistente de producción gratuito que te acompaña en la producción, los permisos y el montaje.", "A free production assistant to support you with production, permits and installation."),
@@ -1023,6 +1032,15 @@ def patrocinio():
   <div class="rv"><span class="label">{t("Qué incluye", "What's included")}</span><ul class="includes mt-s">{incl}</ul></div>
 </div></section>
 
+<section class="section bg-cal" id="que-te-llevas"><div class="wrap">
+  <div class="two-col" style="align-items:end">
+    <div class="rv"><span class="label" style="color:var(--almagra)">{t("Qué te llevas", "What you take away")}</span>
+      <h2 class="d d-l mt-s">{t('Tu marca, contada <span class="it">por otros</span>.', 'Your brand, told <span class="it">by others</span>.')}</h2></div>
+    <p class="lead rv">{t("La instalación dura un mes; lo que se cuenta de ella, mucho más. Además de la obra, os lleváis material y visibilidad para seguir contándola.", "The installation lasts a month; what is said about it lasts much longer. Beyond the work, you take away material and visibility to keep telling its story.")}</p>
+  </div>
+  <div class="cols mt-l">{"".join(f'<div class="rv"><span class="k">{i + 1:02d}</span><h3>{T(h)}</h3><p>{T(p_)}</p></div>' for i, (h, p_) in enumerate(GETS))}</div>
+</div></section>
+
 <section class="section"><div class="wrap two-col">
   <div class="rv"><span class="label" style="color:var(--almagra)">{t("Agenda profesional", "Professional programme")}</span>
     <h2 class="d d-l mt-s">{t('Tu instalación, ante quien <span class="it">decide</span>.', 'Your installation, in front of those who <span class="it">decide</span>.')}</h2>
@@ -1044,7 +1062,7 @@ def patrocinio():
     <p class="mt-s">{T(SHIMA)}</p></div></div>
   <div class="tech mt-m rv"><span class="label">{t("Socio de prensa", "Media partner")}</span><div><h3><img class="plogo-l dezeen" src="{local('assets/logos/dezeen.svg')}" alt="Dezeen"></h3>
     <p class="mt-s">{T(DEZEEN)}</p></div></div>
-  <div class="tech mt-m rv"><span class="label">{t("Empresa socia · ingeniería", "Partner company · engineering")}</span><div><h3 class="d d-m">AKT II</h3>
+  <div class="tech mt-m rv"><span class="label">{t("Empresa socia · ingeniería", "Partner company · engineering")}</span><div><h3><img class="plogo-l akt" src="{local('assets/logos/tyrens-akt.png')}" alt="Tyréns AKT"></h3>
     <p class="mt-s">{T(AKT)}</p></div></div>
 </div></section>
 </div>
@@ -1070,7 +1088,7 @@ def patrocinio():
     <div class="rv"><span class="k">a.</span><h3>{t("Patrimonio Mundial", "World Heritage")}</h3><p>{t("Patios, capillas y palacios del casco histórico de Córdoba, declarado por la UNESCO, como escenario.", "Patios, chapels and palaces in Córdoba's UNESCO-listed historic centre as the setting.")}</p></div>
     <div class="rv"><span class="k">b.</span><h3>{t("Arte con nombre propio", "Art with a name")}</h3><p>{t("Tu marca no patrocina un logo: firma una obra, con un artista o con su propio equipo.", "Your brand doesn't sponsor a logo: it signs a work, with an artist or its own team.")}</p></div>
     <div class="rv"><span class="k">c.</span><h3>{t("Público y negocio", "Public and business")}</h3><p>{t("Entrada libre para miles de visitantes y encuentros con interioristas, arquitectos y hoteleros.", "Free entry for thousands of visitors, and meetings with interior designers, architects and hoteliers.")}</p></div>
-    <div class="rv"><span class="k">d.</span><h3>{t("Red internacional", "International network")}</h3><p>{t("MuDD Architects, la AA School de Londres, AKT II, Shima Seiki y Dezeen.", "MuDD Architects, London's AA School, AKT II, Shima Seiki and Dezeen.")}</p></div>
+    <div class="rv"><span class="k">d.</span><h3>{t("Red internacional", "International network")}</h3><p>{t("MuDD Architects, la AA School de Londres, Tyréns AKT, Shima Seiki y Dezeen.", "MuDD Architects, London's AA School, Tyréns AKT, Shima Seiki and Dezeen.")}</p></div>
   </div>
 </div></section>
 
@@ -1150,7 +1168,7 @@ def archivo():
 <section class="section"><div class="wrap">
   <div class="head rv"><h2 class="d d-l">{t('2026, <span class="it">mes a mes</span>', '2026, <span class="it">month by month</span>')}</h2></div>
   <ol class="timeline">
-    <li class="rv"><span class="when">{t("1–15 julio", "1–15 July")}</span><div><h3>{t("Becas y ayudas", "Grants")}</h3><p>{t("Tres becas completas para estudiantes locales y dos ayudas a la producción.", "Three full grants for local students and two production grants.")}</p></div></li>
+    <li class="rv"><span class="when">{t("1–15 julio", "1–15 July")}</span><div><h3>{t("Becas y ayudas", "Grants")}</h3><p>{t("Tres becas completas para estudiantes locales y dos ayudas económicas para producir obra.", "Three full grants for local students and two production grants.")}</p></div></li>
     <li class="rv"><span class="when">{t("13 julio", "13 July")}</span><div><h3>{t("Abre Nuevas Miradas", "Nuevas Miradas opens")}</h3><p>{t("Inscripciones al concurso audiovisual, hasta el 20 de septiembre.", "Entries to the film competition, until 20 September.")}</p></div></li>
     <li class="rv"><span class="when">{t("20–30 agosto", "20–30 August")}</span><div><h3>Efímera Lab</h3><p>{t("Diez días de taller internacional en el C3A.", "Ten days of international workshop at the C3A.")} <a class="link" href="{u("lab")}">{t("Ver el Lab", "See the Lab")}</a></p></div></li>
     <li class="rv"><span class="when">{t("1–30 septiembre", "1–30 September")}</span><div><h3>{t("Las cinco obras", "The five works")}</h3><p>{t("Abiertas al público con entrada libre.", "Open to the public, free of charge.")} <a class="link" href="{u("obras")}">{t("Ver las obras", "See the works")}</a></p></div></li>
@@ -1193,7 +1211,7 @@ def archivo():
 # 2027
 # ---------------------------------------------------------------------------
 def y2027():
-    calls = "".join(f'<div class="rv"><h3>{c}</h3><span class="pill">{t("Próximamente", "Coming soon")}</span></div>' for c in [t("Becas para estudiantes", "Student grants"), t("Ayudas a la producción", "Production grants"), "Efímera Lab", t("Concurso audiovisual", "Film competition")])
+    calls = "".join(f'<div class="rv"><h3>{c}</h3><span class="pill">{t("Próximamente", "Coming soon")}</span></div>' for c in [t("Becas para estudiantes", "Student grants"), t("Ayudas para producir obra", "Production grants"), "Efímera Lab", t("Concurso audiovisual", "Film competition")])
     body = hero("2027", "2027", t("Segunda edición: Efímera Lab del 20 al 31 de agosto e instalaciones de marcas y artistas en siete espacios durante todo septiembre.", "Second edition: Efímera Lab from 20 to 31 August, and installations by brands and artists in seven venues throughout September."), "d-xxl") + f'''
 <div class="block">{marquee([(t("20–31 agosto", "20–31 August"), "Efímera Lab"), (t("1–30 septiembre", "1–30 September"), t("instalaciones", "installations"))])}</div>
 <section class="section"><div class="wrap two-col">

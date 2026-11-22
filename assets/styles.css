@@ -718,3 +718,5 @@ html[lang^="en"] .pending::before { content: "To come · "; }
 .tech .plogo-l.shima { height: clamp(18px, 2vw, 26px); }
 .tech .plogo-l.dezeen { height: clamp(24px, 2.6vw, 34px); }
 .confirmed .keyter-logo { display: block; height: clamp(34px, 4vw, 54px); width: auto; }
+.partners .plogo.akt { height: 22px; }
+.tech .plogo-l.akt { height: clamp(26px, 2.8vw, 36px); }

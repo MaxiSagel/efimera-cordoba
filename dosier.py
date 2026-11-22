@@ -9,7 +9,7 @@ import subprocess, sys
 from html import escape
 from pathlib import Path
 import build
-from build import (t, T, C, SPACES, STATS_2026, SHIMA, DEZEEN, AKT, DEADLINE, SHOWCASE, WAYS, GUESTS, AWARD, INCLUDES,
+from build import (t, T, C, SPACES, STATS_2026, SHIMA, DEZEEN, AKT, GETS, DEADLINE, SHOWCASE, WAYS, GUESTS, AWARD, INCLUDES,
                    COLABORAN, MAIL, MARK, MARK_LINE, OBRAS, DOSIER, img)
 
 D = Path(__file__).parent
@@ -286,6 +286,14 @@ def deck():
       {aw}</div>
   </div>{foot(L())}
 </section>''')
+    # qué te llevas
+    gt = "".join(f'<div><span class="k">{i + 1:02d}</span><h3>{T(h)}</h3><p>{T(p)}</p></div>' for i, (h, p) in enumerate(GETS))
+    sl.append(f'''<section class="slide arcilla">
+  <span class="label">{t("Qué te llevas", "What you take away")}</span>
+  <h1 class="d" style="font-size:36pt;margin-top:6mm;max-width:230mm">{t('Tu marca, contada <span class="it">por&nbsp;otros</span>.', 'Your brand, told <span class="it">by&nbsp;others</span>.')}</h1>
+  <p class="lead" style="margin-top:6mm;max-width:200mm">{t("La instalación dura un mes; lo que se cuenta de ella, mucho más. Además de la obra, os lleváis material y visibilidad para seguir contándola.", "The installation lasts a month; what is said about it lasts much longer. Beyond the work, you take away material and visibility to keep telling its story.")}</p>
+  <div class="grid4">{gt}</div>{foot(L())}
+</section>''')
     # participar y condiciones
     inc = "".join(f"<li>{T(x)}</li>" for x in INCLUDES)
     sl.append(f'''<section class="slide arena">
@@ -322,11 +330,11 @@ def deck():
     <div class="partners3" style="display:grid;gap:3.5mm">
       <div class="box"><span class="label" style="color:var(--arcilla-osc)">{t("Partner técnico", "Technical partner")}</span><h2 style="margin:2.5mm 0 3mm"><img src="{img('assets/logos/shima-seiki.png')}" alt="Shima Seiki" style="height:4.2mm;display:block"></h2><p style="font-size:9pt">{T(SHIMA)}</p></div>
       <div class="box"><span class="label" style="color:var(--arcilla-osc)">{t("Socio de prensa", "Media partner")}</span><h2 style="margin:2mm 0 2.5mm"><img src="{img('assets/logos/dezeen.svg')}" alt="Dezeen" style="height:5.5mm;display:block"></h2><p style="font-size:9pt">{T(DEZEEN)}</p></div>
-      <div class="box"><span class="label" style="color:var(--arcilla-osc)">{t("Empresa socia · ingeniería", "Partner company · engineering")}</span><h2 class="d" style="font-size:17pt;margin:2mm 0 2.5mm">AKT II</h2><p style="font-size:9pt">{T(AKT)}</p></div></div>
+      <div class="box"><span class="label" style="color:var(--arcilla-osc)">{t("Empresa socia · ingeniería", "Partner company · engineering")}</span><h2 style="margin:2mm 0 2.5mm"><img src="{img('assets/logos/tyrens-akt.png')}" alt="Tyréns AKT" style="height:6.5mm;display:block"></h2><p style="font-size:9pt">{T(AKT)}</p></div></div>
     <div><span class="label">{t("Organizan, con la AA School", "Organised by, with the AA School")}</span>
       <div class="logos"><img src="{img('img/logos/artdecor.ae34de74.png')}" alt="Fundación Artdecor"><img src="{img('img/logos/mudd.6f8b5b97.png')}" alt="MuDD Architects"><span class="aa-logo"><img src="assets/logos/aa.svg" alt="Architectural Association"><span>Architectural Association<br>School of Architecture</span></span></div>
       <p>{t("Con la Architectural Association School of Architecture de Londres. Comisariado de Nina Chaltiel y Fernando Vacas.", "With the Architectural Association School of Architecture, London. Curated by Nina Chaltiel and Fernando Vacas.")}</p>
-      <p class="label" style="margin-top:6mm">{t("Ya confirmados para 2027", "Already confirmed for 2027")}</p><div class="names"><span>Keyter Group</span><span>{t("AKT II · empresa socia", "AKT II · partner company")}</span><span>{t("C3A · colaborador y espacio de intervención", "C3A · partner and installation venue")}</span></div>
+      <p class="label" style="margin-top:6mm">{t("Ya confirmados para 2027", "Already confirmed for 2027")}</p><div class="names"><span>Keyter Group</span><span>{t("Tyréns AKT (antes AKT II) · empresa socia", "Tyréns AKT (formerly AKT II) · partner company")}</span><span>{t("C3A · colaborador y espacio de intervención", "C3A · partner and installation venue")}</span></div>
       <p class="label" style="margin-top:6mm">{t("Colaboraron en 2026", "2026 supporters")}</p><div class="names">{names}</div></div>
   </div>{foot(L())}
 </section>''')
