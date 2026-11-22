@@ -34,12 +34,13 @@ body { font-family: var(--b); color: var(--tinta); font-size: 10.5pt; line-heigh
 .d { font-family: var(--d); font-weight: 400; letter-spacing: -.03em; line-height: 1.04; }
 .it { font-family: var(--s); font-style: italic; letter-spacing: 0; }
 .foot { position: absolute; left: 18mm; right: 18mm; bottom: 9mm; display: flex; justify-content: space-between; align-items: baseline; font-size: 7pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
-.half ~ .foot, .stack ~ .foot { right: calc(50% + 10mm); }
+.half ~ .foot { right: calc(54% + 10mm); }
+.stack ~ .foot { right: calc(50% + 10mm); }
 .foot .mark { font-size: 8pt; }
 .lead { font-size: 13pt; line-height: 1.45; }
-.half { position: absolute; top: 0; bottom: 0; right: 0; width: 50%; }
+.half { position: absolute; top: 45mm; right: 0; width: 160.4mm; height: 120.3mm; }   /* foto casi entera: poco recorte */
 .half img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.textcol { width: 46%; height: 100%; display: flex; flex-direction: column; }
+.textcol { width: 40%; height: 100%; display: flex; flex-direction: column; }
 /* portada */
 .cover { display: flex; flex-direction: column; justify-content: space-between; }
 .cover .big { font-size: 62pt; }
@@ -206,7 +207,7 @@ def deck():
     L = lambda: len(sl) + 1
     dl = f'<p class="deadline"><span>{t("Candidaturas abiertas", "Applications open")}</span>{t("hasta el", "until")} {T(DEADLINE)} · {t("15 plazas", "15 places")}</p>'
     # portada
-    sl.append(f'''<section class="slide arcilla cover" style="padding-right:calc(50% + 14mm)">
+    sl.append(f'''<section class="slide arcilla cover" style="padding-right:calc(54% + 12mm)">
   <div class="row"><span class="label">{t("Segunda edición · septiembre 2027 · Córdoba", "Second edition · September 2027 · Córdoba")}<br>{t("Festival internacional de arquitectura efímera", "International festival of ephemeral architecture")}</span></div>
   <div><img class="emblem-cover" src="{img('assets/logos/emblema.svg')}" alt="">{MARK.replace('class="mark"', 'class="mark big"')}<p class="sub" style="margin-top:9mm">{t("Convocatoria de empresas&nbsp;2027", "2027 brand open&nbsp;call")}</p>
     <p class="promise"><span>{t("15 plazas para empresas", "15 places for companies")}</span><span>{t("6 espacios patrimoniales y el C3A", "6 heritage venues and the C3A")}</span></p></div>
