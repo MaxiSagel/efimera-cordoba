@@ -227,7 +227,7 @@ def deck():
     <p style="margin-top:5mm">{t("Durante todo septiembre de 2027, la obra se abre al público con entrada libre en el casco histórico de Córdoba, Patrimonio Mundial. Tu marca no solo pone un logo: forma parte de la obra.", "Throughout September 2027, the work is open to the public free of charge in Córdoba's World Heritage historic centre. Your brand doesn't just add a logo: it becomes part of the work.")}</p>
     <div class="confirmed"><span class="label" style="color:var(--arcilla-osc)">{t("Ya confirmada", "Already confirmed")}</span><img src="{img('assets/logos/keyter.png')}" alt="Keyter Group" style="height:5.5mm;display:block;margin-top:1.5mm"></div>
   </div>
-  <div class="half"><img src="{img('assets/dosier/fotos/pagina2-centro.jpg')}" alt=""></div>{foot(L())}
+  <div class="half"><img src="{img('assets/dosier/fotos/pagina2-vertical.jpg')}" alt=""></div>{foot(L())}
 </section>''')
     # cómo funciona
     steps = [(t("Presenta tu candidatura", "Apply"), t("Quiénes sois, qué espacio os interesa y qué queréis enseñar. Hasta el 28 de febrero de 2027.", "Who you are, which venue interests you and what you want to show. Until 28 February 2027.")),
