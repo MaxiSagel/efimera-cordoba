@@ -291,7 +291,7 @@ def partners():
     <a href="https://www.fundacionartdecor.org" target="_blank" rel="noopener"><img src="{img('img/logos/artdecor.ae34de74.png')}" alt="Fundación Artdecor"></a>
     <a href="https://www.muddarchitects.com/" target="_blank" rel="noopener"><img src="{img('img/logos/mudd.6f8b5b97.png')}" alt="MuDD Architects"></a>
     <a class="aa-logo" href="https://www.aaschool.ac.uk" target="_blank" rel="noopener"><img src="{local('assets/logos/aa.svg')}" alt=""><span>Architectural Association<br>School of Architecture</span></a></div></div>
-  <div><span class="label">{t("Socios 2027", "2027 partners")}</span><br><a class="aa" href="https://www.shimaseiki.com" target="_blank" rel="noopener">Shima Seiki<small>{t("Partner técnico · tejido 3D", "Technical partner · 3D knitting")}</small></a><br><a class="aa" href="https://www.dezeen.com" target="_blank" rel="noopener">Dezeen<small>{t("Socio de prensa", "Media partner")}</small></a><br><a class="aa" href="https://www.juntadeandalucia.es/cultura/c3a/" target="_blank" rel="noopener">C3A<small>{t("Colaborador y espacio de intervención", "Partner and installation venue")}</small></a></div>
+  <div><span class="label">{t("Socios 2027", "2027 partners")}</span><br><a class="aa" href="https://www.shimaseiki.com" target="_blank" rel="noopener">Shima Seiki<small>{t("Partner técnico · tejido 3D", "Technical partner · 3D knitting")}</small></a><br><a class="aa" href="https://www.dezeen.com" target="_blank" rel="noopener">Dezeen<small>{t("Socio de prensa", "Media partner")}</small></a><br><a class="aa" href="https://www.akt-uk.com" target="_blank" rel="noopener">AKT II<small>{t("Empresa socia · ingeniería, Londres", "Partner company · engineering, London")}</small></a><br><a class="aa" href="https://www.juntadeandalucia.es/cultura/c3a/" target="_blank" rel="noopener">C3A<small>{t("Colaborador y espacio de intervención", "Partner and installation venue")}</small></a></div>
   <div><span class="label">{t("Colaboran", "Supported by")}</span><div class="names">{names}</div></div>
 </div></section>'''
 
@@ -848,6 +848,9 @@ def cal2027():
 
 DEADLINE = ("28 de febrero de 2027", "28 February 2027")
 
+AKT = ("AKT II es el estudio de ingeniería estructural y civil con sede en Londres que acompaña a EFÍMERA como empresa socia. Su Associate Director, James Kingman, fue ponente del Efímera Lab 2026.",
+       "AKT II is the London-based structural and civil engineering practice that partners with EFÍMERA. Its Associate Director, James Kingman, spoke at the Efímera Lab 2026.")
+
 DEZEEN = ("Dezeen, la revista online de arquitectura, interiorismo y diseño con sede en Londres, es el socio de prensa de la segunda edición.",
           "Dezeen, the London-based online magazine of architecture, interiors and design, is the media partner of the second edition.")
 
@@ -992,6 +995,8 @@ def patrocinio():
     <p class="mt-s">{T(SHIMA)}</p></div></div>
   <div class="tech mt-m rv"><span class="label">{t("Socio de prensa", "Media partner")}</span><div><h3 class="d d-m">Dezeen</h3>
     <p class="mt-s">{T(DEZEEN)}</p></div></div>
+  <div class="tech mt-m rv"><span class="label">{t("Empresa socia · ingeniería", "Partner company · engineering")}</span><div><h3 class="d d-m">AKT II</h3>
+    <p class="mt-s">{T(AKT)}</p></div></div>
 </div></section>
 </div>
 <div class="panel" id="p-edicion-2026" role="tabpanel" data-panel>
@@ -1016,7 +1021,7 @@ def patrocinio():
     <div class="rv"><span class="k">a.</span><h3>{t("Patrimonio Mundial", "World Heritage")}</h3><p>{t("Patios, capillas y palacios del casco histórico de Córdoba, declarado por la UNESCO, como escenario.", "Patios, chapels and palaces in Córdoba's UNESCO-listed historic centre as the setting.")}</p></div>
     <div class="rv"><span class="k">b.</span><h3>{t("Arte con nombre propio", "Art with a name")}</h3><p>{t("Tu marca no patrocina un logo: firma una obra, con un artista o con su propio equipo.", "Your brand doesn't sponsor a logo: it signs a work, with an artist or its own team.")}</p></div>
     <div class="rv"><span class="k">c.</span><h3>{t("Público y negocio", "Public and business")}</h3><p>{t("Entrada libre para miles de visitantes y encuentros con interioristas, arquitectos y hoteleros.", "Free entry for thousands of visitors, and meetings with interior designers, architects and hoteliers.")}</p></div>
-    <div class="rv"><span class="k">d.</span><h3>{t("Red internacional", "International network")}</h3><p>{t("MuDD Architects, la AA School de Londres, Shima Seiki y Dezeen.", "MuDD Architects, London's AA School, Shima Seiki and Dezeen.")}</p></div>
+    <div class="rv"><span class="k">d.</span><h3>{t("Red internacional", "International network")}</h3><p>{t("MuDD Architects, la AA School de Londres, AKT II, Shima Seiki y Dezeen.", "MuDD Architects, London's AA School, AKT II, Shima Seiki and Dezeen.")}</p></div>
   </div>
 </div></section>
 

@@ -9,7 +9,7 @@ import subprocess, sys
 from html import escape
 from pathlib import Path
 import build
-from build import (t, T, C, SPACES, STATS_2026, SHIMA, DEZEEN, DEADLINE, SHOWCASE, WAYS, GUESTS, AWARD, INCLUDES,
+from build import (t, T, C, SPACES, STATS_2026, SHIMA, DEZEEN, AKT, DEADLINE, SHOWCASE, WAYS, GUESTS, AWARD, INCLUDES,
                    COLABORAN, MAIL, MARK, MARK_LINE, OBRAS, DOSIER, img)
 
 D = Path(__file__).parent
@@ -166,6 +166,8 @@ CSS += """
 
 CSS += """
 .lc { text-transform: none; }
+.partners3 .box { padding: 5mm 6mm; }
+.partners3 .box p { font-size: 8.5pt !important; line-height: 1.4; }
 /* sin bloques negros: paleta con texto negro */
 .arena-osc { background: var(--arena-osc); color: var(--tinta); }
 .stats, .stats > div { border-color: rgba(20,18,16,.3) !important; }
@@ -313,13 +315,14 @@ def deck():
   <span class="label" style="color:var(--arcilla-osc)">{t("Quién está detrás", "Who is behind it")}</span>
   <h1 class="d" style="font-size:28pt;margin:5mm 0 8mm">{t('Una red de <span class="it">oficio</span>, técnica y prensa.', 'A network of <span class="it">craft</span>, technique and press.')}</h1>
   <div class="two">
-    <div style="display:grid;gap:5mm">
+    <div class="partners3" style="display:grid;gap:3.5mm">
       <div class="box"><span class="label" style="color:var(--arcilla-osc)">{t("Partner técnico", "Technical partner")}</span><h2 class="d" style="font-size:17pt;margin:2mm 0 2.5mm">Shima Seiki</h2><p style="font-size:9pt">{T(SHIMA)}</p></div>
-      <div class="box"><span class="label" style="color:var(--arcilla-osc)">{t("Socio de prensa", "Media partner")}</span><h2 class="d" style="font-size:17pt;margin:2mm 0 2.5mm">Dezeen</h2><p style="font-size:9pt">{T(DEZEEN)}</p></div></div>
+      <div class="box"><span class="label" style="color:var(--arcilla-osc)">{t("Socio de prensa", "Media partner")}</span><h2 class="d" style="font-size:17pt;margin:2mm 0 2.5mm">Dezeen</h2><p style="font-size:9pt">{T(DEZEEN)}</p></div>
+      <div class="box"><span class="label" style="color:var(--arcilla-osc)">{t("Empresa socia · ingeniería", "Partner company · engineering")}</span><h2 class="d" style="font-size:17pt;margin:2mm 0 2.5mm">AKT II</h2><p style="font-size:9pt">{T(AKT)}</p></div></div>
     <div><span class="label">{t("Organizan, con la AA School", "Organised by, with the AA School")}</span>
       <div class="logos"><img src="{img('img/logos/artdecor.ae34de74.png')}" alt="Fundación Artdecor"><img src="{img('img/logos/mudd.6f8b5b97.png')}" alt="MuDD Architects"><span class="aa-logo"><img src="assets/logos/aa.svg" alt="Architectural Association"><span>Architectural Association<br>School of Architecture</span></span></div>
       <p>{t("Con la Architectural Association School of Architecture de Londres. Comisariado de Nina Chaltiel y Fernando Vacas.", "With the Architectural Association School of Architecture, London. Curated by Nina Chaltiel and Fernando Vacas.")}</p>
-      <p class="label" style="margin-top:6mm">{t("Ya confirmados para 2027", "Already confirmed for 2027")}</p><div class="names"><span>Keyter Group</span><span>{t("C3A · colaborador y espacio de intervención", "C3A · partner and installation venue")}</span></div>
+      <p class="label" style="margin-top:6mm">{t("Ya confirmados para 2027", "Already confirmed for 2027")}</p><div class="names"><span>Keyter Group</span><span>{t("AKT II · empresa socia", "AKT II · partner company")}</span><span>{t("C3A · colaborador y espacio de intervención", "C3A · partner and installation venue")}</span></div>
       <p class="label" style="margin-top:6mm">{t("Colaboraron en 2026", "2026 supporters")}</p><div class="names">{names}</div></div>
   </div>{foot(L())}
 </section>''')
