@@ -206,13 +206,13 @@ def deck():
     <h1 class="d" style="font-size:30pt;margin:6mm 0 7mm">{t('Tu marca, un artista, <span class="it">un patio</span>.', 'Your brand, an artist, <span class="it">a patio</span>.')}</h1>
     <p class="lead">{t("Para la segunda edición de EFÍMERA CÓRDOBA seleccionaremos 15 empresas. Cada una crea una instalación en un espacio del festival: con un artista de su elección, con uno que le proponemos o in-house, con su propio equipo.", "For the second edition of EFÍMERA CÓRDOBA we will select 15 companies. Each one creates an installation in a festival venue: with an artist of its choice, with one we suggest, or in-house with its own team.")}</p>
     <p style="margin-top:5mm">{t("Durante todo septiembre de 2027, la obra se abre al público con entrada libre en el casco histórico de Córdoba, Patrimonio Mundial. Tu marca no solo patrocina un logo: firma una obra.", "Throughout September 2027, the work is open to the public free of charge in Córdoba's World Heritage historic centre. Your brand doesn't just sponsor a logo: it signs a work.")}</p>
-    <div class="confirmed"><span class="label" style="color:var(--arcilla-osc)">{t("Ya confirmada", "Already confirmed")}</span><img src="{img('assets/logos/keyter.png')}" alt="Keyter Group" style="height:9mm;display:block;margin-top:2mm"></div>
+    <div class="confirmed"><span class="label" style="color:var(--arcilla-osc)">{t("Ya confirmada", "Already confirmed")}</span><img src="{img('assets/logos/keyter.png')}" alt="Keyter Group" style="height:5.5mm;display:block;margin-top:1.5mm"></div>
   </div>
   <div class="half"><img src="{img(OBRAS[1]["photos"][1][0])}" alt=""></div>{foot(L())}
 </section>''')
     # cómo funciona
     steps = [(t("Presenta tu candidatura", "Apply"), t("Quiénes sois, qué espacio os interesa y qué queréis enseñar. Hasta el 28 de febrero de 2027.", "Who you are, which venue interests you and what you want to show. Until 28 February 2027.")),
-             (t("Selección", "Selection"), t("La dirección artística estudia cada propuesta y elige a las empresas participantes: 15 instalaciones en siete espacios.", "The artistic direction reviews every proposal and chooses the participating companies: 15 installations across seven venues.")),
+             (t("Selección", "Selection"), t("La dirección artística estudia cada propuesta y elige a las empresas participantes.", "The artistic direction reviews every proposal and chooses the participating companies.")),
              (t("Creáis la instalación", "Create the installation"), t("Con un artista de vuestra elección, con uno que os proponemos o in-house. Un asistente de producción os acompaña, sin coste.", "With an artist of your choice, one we suggest, or in-house. A production assistant supports you, free of charge.")),
              (t("Septiembre, abierta a todos", "September, open to&nbsp;all"), t("Del 1 al 30 de septiembre de 2027, con entrada libre. Se desmonta el día 30.", "From 1 to 30 September 2027, free entry. It comes down on the 30th."))]
     st = "".join(f'<div><span class="k">{i + 1:02d}</span><h3>{h}</h3><p>{p}</p></div>' for i, (h, p) in enumerate(steps))

@@ -978,7 +978,7 @@ def patrocinio():
   <div class="head rv"><h2 class="d d-l">{t("Cómo funciona", "How it works")}</h2></div>
   <ol class="steps">
     <li class="rv"><span class="k">01</span><h3>{t("Presenta tu candidatura", "Apply")}</h3><p>{t("Cuéntanos quién sois, qué espacio os interesa y qué queréis enseñar. Hasta el 28 de febrero de 2027.", "Tell us who you are, which venue interests you and what you want to show. Until 28 February 2027.")}</p></li>
-    <li class="rv"><span class="k">02</span><h3>{t("Selección", "Selection")}</h3><p>{t("La dirección artística estudia cada propuesta y elige a las empresas participantes: 15 instalaciones en siete espacios.", "The artistic direction reviews every proposal and chooses the participating companies: 15 installations across seven venues.")}</p></li>
+    <li class="rv"><span class="k">02</span><h3>{t("Selección", "Selection")}</h3><p>{t("La dirección artística estudia cada propuesta y elige a las empresas participantes.", "The artistic direction reviews every proposal and chooses the participating companies.")}</p></li>
     <li class="rv"><span class="k">03</span><h3>{t("Creáis la instalación", "Create the installation")}</h3><p>{t("Con un artista de vuestra elección, con uno que os proponemos o in-house. Un asistente de producción os acompaña, sin coste.", "With an artist of your choice, one we suggest, or in-house. A production assistant supports you, free of charge.")}</p></li>
     <li class="rv"><span class="k">04</span><h3>{t("Septiembre, abierta a todos", "September, open to all")}</h3><p>{t("Del 1 al 30 de septiembre de 2027, con entrada libre. Se desmonta el día 30.", "From 1 to 30 September 2027, free entry. It comes down on the 30th.")}</p></li>
   </ol>
