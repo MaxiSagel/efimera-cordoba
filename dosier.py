@@ -41,7 +41,9 @@ body { font-family: var(--b); color: var(--tinta); font-size: 10.5pt; line-heigh
 .half img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .textcol { width: 46%; height: 100%; display: flex; flex-direction: column; }
 /* portada */
-.cover { display: flex; flex-direction: column; justify-content: space-between; }
+.cover { display: flex; flex-direction: column; justify-content: flex-start; }
+.cover > div:nth-child(2) { margin-top: 10mm; }
+.cover > div:nth-child(3) { margin-top: auto; }
 .cover .big { font-size: 62pt; }
 .cover .sub { font-family: var(--s); font-style: italic; font-size: 34pt; line-height: 1; }
 .cover .row { display: flex; justify-content: space-between; align-items: flex-end; gap: 10mm; }
@@ -104,6 +106,7 @@ body { font-family: var(--b); color: var(--tinta); font-size: 10.5pt; line-heigh
 CSS += """
 /* v6 */
 .cover .mark.big { font-size: 50pt; }
+.cover .sub { min-height: 2.05em; }   /* dos líneas en ES y EN */
 .emblem-cover { display: block; height: 30mm; width: auto; margin-bottom: 7mm; }
 .brandline { display: inline-flex; align-items: center; gap: 2.5mm; }
 .brandline img { height: 5.5mm; width: auto; }
@@ -114,20 +117,22 @@ CSS += """
 .deadline { display: flex; flex-wrap: wrap; gap: 2mm 3mm; align-items: center; font-weight: 700; font-size: 10pt; }
 .deadline span { white-space: nowrap; }
 .deadline span { background: var(--tinta); color: var(--crema); border-radius: 99px; padding: 1.2mm 3.5mm; font-size: 7pt; letter-spacing: .14em; text-transform: uppercase; }
+.confirmed .label { flex: 0 0 40mm; white-space: nowrap; }
 .confirmed { margin-top: auto; margin-bottom: 14mm; border-top: .6pt solid rgba(20,18,16,.3); padding-top: 4mm; display: flex; gap: 5mm; align-items: baseline; }
 .confirmed b { font-family: var(--d); font-weight: 400; font-size: 15pt; letter-spacing: -.02em; }
 .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1.5pt solid var(--tinta); margin-top: 12mm; }
 .grid4 > div { padding: 6mm 5mm 0 0; } .grid4 > div + div { padding-left: 5mm; border-left: .6pt solid rgba(20,18,16,.3); }
 .grid4 .k { font-family: var(--s); font-style: italic; font-size: 30pt; line-height: 1; display: block; margin-bottom: 4mm; }
-.prod { display: grid; grid-template-columns: 1fr 1.2fr; gap: 14mm; align-items: center; padding-bottom: 24mm; }
+.prod { display: grid; grid-template-columns: 1fr 1.2fr; gap: 14mm; align-items: start; padding-top: 34mm; padding-bottom: 24mm; }
 .prod .intro h1 { font-size: 30pt; line-height: 1.05; margin: 6mm 0 7mm; }
 .prod .intro .lead { font-size: 11pt; }
 .cards2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
-.cards2 > div { background: var(--crema); padding: 7mm 7mm 8mm; min-height: 58mm; }
+.cards2 { grid-auto-rows: 64mm; }
+.cards2 > div { background: var(--crema); padding: 7mm 7mm 8mm; }
 .cards2 .k { font-family: var(--s); font-style: italic; font-size: 34pt; line-height: 1; color: var(--arcilla-osc); display: block; margin-bottom: 5mm; }
 .cards2 h3 { font-family: var(--d); font-weight: 500; font-size: 14pt; letter-spacing: -.02em; margin-bottom: 2.5mm; }
 .cards2 p { font-size: 9.5pt; line-height: 1.45; }
-.grid7 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9mm 7mm; }
+.grid7 { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 64mm); gap: 9mm 7mm; }
 .grid7 .sp { border-top: 1.2pt solid var(--tinta); padding-top: 4mm; }
 .grid7 .sp p { font-size: 8.3pt; line-height: 1.45; margin: 0 0 2.5mm; }
 .grid7 .sp .thumb { aspect-ratio: 3 / 2; overflow: hidden; background: var(--cal); margin-bottom: 2.5mm; }
