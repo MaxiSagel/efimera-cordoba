@@ -127,11 +127,13 @@ CSS += """
 .cards2 .k { font-family: var(--s); font-style: italic; font-size: 34pt; line-height: 1; color: var(--arcilla-osc); display: block; margin-bottom: 5mm; }
 .cards2 h3 { font-family: var(--d); font-weight: 500; font-size: 14pt; letter-spacing: -.02em; margin-bottom: 2.5mm; }
 .cards2 p { font-size: 9.5pt; line-height: 1.45; }
-.grid7 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6mm 5mm; }
+.grid7 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9mm 7mm; }
+.grid7 .sp { border-top: 1.2pt solid var(--tinta); padding-top: 4mm; }
+.grid7 .sp p { font-size: 8.3pt; line-height: 1.45; margin: 0 0 2.5mm; }
 .grid7 .sp .thumb { aspect-ratio: 3 / 2; overflow: hidden; background: var(--cal); margin-bottom: 2.5mm; }
 .grid7 .sp .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.grid7 .n { font-family: var(--s); font-style: italic; font-size: 15pt; line-height: 1; color: var(--arcilla-osc); }
-.grid7 h3 { font-family: var(--d); font-weight: 500; font-size: 9pt; line-height: 1.2; letter-spacing: -.01em; margin: 1mm 0 1.2mm; }
+.grid7 .n { font-family: var(--s); font-style: italic; font-size: 24pt; line-height: 1; color: var(--arcilla-osc); }
+.grid7 h3 { font-family: var(--d); font-weight: 500; font-size: 10.5pt; line-height: 1.2; letter-spacing: -.01em; margin: 2.5mm 0 2.5mm; }
 .grid7 small { display: block; font-size: 7pt; line-height: 1.35; opacity: .75; }
 .grid7 .note { align-self: end; border-top: .6pt solid rgba(20,18,16,.3); padding-top: 3mm; }
 .grid7 .note p { font-size: 8.5pt; line-height: 1.45; }
@@ -294,14 +296,13 @@ def deck():
       <ol class="mlist">{ml}</ol></div></div>
 </section>''')
     # espacios: una sola página con los siete
-    cards = "".join(f'''<div class="sp"><div class="thumb"><img src="{espacio_foto(x)}" alt=""></div>
-      <span class="n">{x["n"]}</span><h3>{x["name"]}</h3><small>{x["addr"] or "Córdoba"}</small><small class="was">{T(x["was"])}</small></div>''' for x in SPACES)
+    cards = "".join(f'''<div class="sp"><span class="n">{x["n"]}</span><h3>{x["name"]}</h3><p>{T(x["desc"])}</p><small>{x["addr"] or "Córdoba"}</small><small class="was">{T(x["was"])}</small></div>''' for x in SPACES)
     credits = " · ".join(T(x["credit"]) for x in SPACES if x.get("credit"))
     sl.append(f'''<section class="slide spaces7">
   <span class="label" style="color:var(--arcilla-osc)">{t("Los espacios", "The venues")}</span>
   <h1 class="d" style="font-size:24pt;margin:4mm 0 6mm">{t('Siete espacios, <span class="it">una ciudad</span>.', 'Seven venues, <span class="it">one city</span>.')}</h1>
   <div class="grid7">{cards}
-    <div class="note"><p>{t("Del 1 al 30 de septiembre de 2027, con varias instalaciones por espacio. La dirección artística asigna cada espacio según la propuesta.", "From 1 to 30 September 2027, with several installations per venue. The artistic direction assigns each venue according to the proposal.")}</p>{('<small>' + credits + '</small>') if credits else ""}</div>
+    <div class="note"><p>{t("Del 1 al 30 de septiembre de 2027, con varias instalaciones por espacio. La dirección artística asigna cada espacio según la propuesta.", "From 1 to 30 September 2027, with several installations per venue. The artistic direction assigns each venue according to the proposal.")}</p></div>
   </div>{foot(L())}
 </section>''')
     sl.append(full("pausa-2"))
