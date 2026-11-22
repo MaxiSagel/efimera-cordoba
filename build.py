@@ -928,7 +928,7 @@ INCLUDES = [("Un espacio patrimonial para tu instalación durante todo septiembr
 
 
 def hero_figs():
-    figs = [(T(n), T(l)) for n, l in STATS_2026[:3]] + [("7", t("espacios patrimoniales", "heritage venues"))]
+    figs = [(T(n), T(l)) for n, l in STATS_2026[:3]] + [("7", t("espacios: seis patrimoniales y el C3A", "venues: six heritage sites and the C3A"))]
     return '<dl class="hero-figs rv">' + "".join(f"<div><dt>{n}</dt><dd>{l}</dd></div>" for n, l in figs) + "</dl>"
 
 

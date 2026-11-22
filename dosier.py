@@ -196,7 +196,7 @@ def deck():
     sl.append(f'''<section class="slide arcilla cover" style="padding-right:calc(50% + 14mm)">
   <div class="row"><span class="label">{t("Segunda edición · septiembre 2027 · Córdoba", "Second edition · September 2027 · Córdoba")}<br>{t("Festival internacional de arquitectura efímera", "International festival of ephemeral architecture")}</span></div>
   <div>{MARK.replace('class="mark"', 'class="mark big"')}<p class="sub" style="margin-top:9mm">{t("Convocatoria de empresas&nbsp;2027", "2027 brand open&nbsp;call")}</p>
-    <p class="promise"><span>{t("15 marcas", "15 brands")}</span><span>{t("7 espacios patrimoniales", "7 heritage venues")}</span><span>{T(STATS_2026[0][0])} {t("visitantes en 2026", "visitors in 2026")}</span></p></div>
+    <p class="promise"><span>{t("15 plazas para empresas", "15 places for companies")}</span><span>{t("6 espacios patrimoniales y el C3A", "6 heritage venues and the C3A")}</span></p></div>
   <div>{dl}<p class="label" style="margin-top:6mm">Fundación Artdecor · MuDD Architects · AA School London</p></div>
   <div class="half">{pic("portada")}</div>
 </section>''')
