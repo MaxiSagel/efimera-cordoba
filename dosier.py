@@ -104,6 +104,11 @@ body { font-family: var(--b); color: var(--tinta); font-size: 10.5pt; line-heigh
 CSS += """
 /* v6 */
 .cover .mark.big { font-size: 50pt; }
+.emblem-cover { display: block; height: 30mm; width: auto; margin-bottom: 7mm; }
+.brandline { display: inline-flex; align-items: center; gap: 2.5mm; }
+.brandline img { height: 5.5mm; width: auto; }
+.brandline.big { font-size: 16pt; gap: 5mm; }
+.brandline.big img { height: 16mm; }
 .cover .promise { margin-top: 7mm; font-family: var(--d); font-weight: 500; font-size: 13pt; letter-spacing: -.02em; }
 .cover .promise span { display: block; padding: 1.6mm 0; border-top: .6pt solid rgba(20,18,16,.35); }
 .deadline { display: flex; flex-wrap: wrap; gap: 2mm 3mm; align-items: center; font-weight: 700; font-size: 10pt; }
@@ -193,7 +198,7 @@ CSS += """
 
 
 def foot(n):
-    return f'<div class="foot">{MARK_LINE}<span>{t("Convocatoria de empresas · 2027", "Brand open call · 2027")}</span><span>{n:02d}</span></div>'
+    return f'<div class="foot"><span class="brandline"><img src="{img('assets/logos/emblema-mini.svg')}" alt="">{MARK_LINE}</span><span>{t("Convocatoria de empresas · 2027", "Brand open call · 2027")}</span><span>{n:02d}</span></div>'
 
 
 def deck():
@@ -203,7 +208,7 @@ def deck():
     # portada
     sl.append(f'''<section class="slide arcilla cover" style="padding-right:calc(50% + 14mm)">
   <div class="row"><span class="label">{t("Segunda edición · septiembre 2027 · Córdoba", "Second edition · September 2027 · Córdoba")}<br>{t("Festival internacional de arquitectura efímera", "International festival of ephemeral architecture")}</span></div>
-  <div>{MARK.replace('class="mark"', 'class="mark big"')}<p class="sub" style="margin-top:9mm">{t("Convocatoria de empresas&nbsp;2027", "2027 brand open&nbsp;call")}</p>
+  <div><img class="emblem-cover" src="{img('assets/logos/emblema.svg')}" alt="">{MARK.replace('class="mark"', 'class="mark big"')}<p class="sub" style="margin-top:9mm">{t("Convocatoria de empresas&nbsp;2027", "2027 brand open&nbsp;call")}</p>
     <p class="promise"><span>{t("15 plazas para empresas", "15 places for companies")}</span><span>{t("6 espacios patrimoniales y el C3A", "6 heritage venues and the C3A")}</span></p></div>
   <div>{dl}<p class="label" style="margin-top:6mm">Fundación Artdecor · MuDD Architects · AA School London</p></div>
   <div class="half">{pic("portada")}</div>
@@ -357,7 +362,7 @@ def deck():
   <div class="cols"><div><span class="label">{t("Candidatura online", "Apply online")}</span><a href="{web}">{t("Presenta la candidatura en la web →", "Apply on the website →")}</a></div>
     <div><span class="label">Email</span><a href="mailto:{MAIL}">{MAIL}</a></div><div><span class="label">Instagram</span><a href="{build.IG}">@efimera_fest</a></div>
     <div><span class="label">Fundación Artdecor</span>C/ Juramento, 1 · 14002 Córdoba</div></div>
-  <div style="font-size:16pt">{MARK_LINE}</div>
+  <div class="brandline big"><img src="{img('assets/logos/emblema.svg')}" alt="">{MARK_LINE}</div>
 </section>''')
     fonts = '<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,700&display=block" rel="stylesheet">'
     return f'<!DOCTYPE html><html lang="{build.LANG}"><head><meta charset="utf-8"><title>EFÍMERA CÓRDOBA · {t("Convocatoria de empresas 2027", "2027 brand open call")}</title>{fonts}<style>{CSS}</style></head><body>{"".join(sl)}</body></html>'
