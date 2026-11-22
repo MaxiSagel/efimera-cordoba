@@ -127,6 +127,15 @@ CSS += """
 .cards2 .k { font-family: var(--s); font-style: italic; font-size: 34pt; line-height: 1; color: var(--arcilla-osc); display: block; margin-bottom: 5mm; }
 .cards2 h3 { font-family: var(--d); font-weight: 500; font-size: 14pt; letter-spacing: -.02em; margin-bottom: 2.5mm; }
 .cards2 p { font-size: 9.5pt; line-height: 1.45; }
+.grid7 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6mm 5mm; }
+.grid7 .sp .thumb { aspect-ratio: 3 / 2; overflow: hidden; background: var(--cal); margin-bottom: 2.5mm; }
+.grid7 .sp .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.grid7 .n { font-family: var(--s); font-style: italic; font-size: 15pt; line-height: 1; color: var(--arcilla-osc); }
+.grid7 h3 { font-family: var(--d); font-weight: 500; font-size: 9pt; line-height: 1.2; letter-spacing: -.01em; margin: 1mm 0 1.2mm; }
+.grid7 small { display: block; font-size: 7pt; line-height: 1.35; opacity: .75; }
+.grid7 .note { align-self: end; border-top: .6pt solid rgba(20,18,16,.3); padding-top: 3mm; }
+.grid7 .note p { font-size: 8.5pt; line-height: 1.45; }
+.grid7 .note small { margin-top: 2mm; font-size: 6pt; opacity: .55; }
 .grid4 h3 { font-family: var(--d); font-weight: 400; font-size: 13pt; letter-spacing: -.02em; margin-bottom: 2.5mm; }
 .stack { position: absolute; top: 0; bottom: 0; right: 0; width: 50%; display: grid; grid-template-rows: 1.25fr 1fr; gap: 3mm; }
 .stack img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 0; }
@@ -279,16 +288,16 @@ def deck():
       <p style="margin-bottom:6mm">{t("Seis paradas a pie por el casco histórico, el C3A al otro lado del río y 15 instalaciones en total.", "Six stops on foot through the historic centre, the C3A across the river, and 15 installations in total.")}</p>
       <ol class="mlist">{ml}</ol></div></div>
 </section>''')
-    # espacios
-    for x in SPACES:
-        sl.append(f'''<section class="slide space">
-  <div class="textcol"><span class="label" style="color:var(--arcilla-osc)">{t("Espacio", "Venue")} {x["n"]} / {len(SPACES):02d}</span>
-    <span class="num" style="margin-top:6mm">{x["n"]}</span>
-    <h2 class="d">{x["name"]}</h2>
-    <p class="lead">{T(x["desc"])}</p>
-    <div class="meta"><span><b>{t("Dirección", "Address")}:</b> {x["addr"] or "Córdoba"}</span><span>{T(x["was"])}</span><span><b>{t("Disponible", "Available")}:</b> {t("1–30 septiembre 2027 · varias instalaciones por espacio", "1–30 September 2027 · several installations per venue")}</span>{('<span style="opacity:.6">' + T(x["credit"]) + '</span>') if x.get("credit") else ""}</div>
-  </div>
-  <div class="half"><img src="{espacio_foto(x)}" alt=""></div>{foot(L())}
+    # espacios: una sola página con los siete
+    cards = "".join(f'''<div class="sp"><div class="thumb"><img src="{espacio_foto(x)}" alt=""></div>
+      <span class="n">{x["n"]}</span><h3>{x["name"]}</h3><small>{x["addr"] or "Córdoba"}</small><small class="was">{T(x["was"])}</small></div>''' for x in SPACES)
+    credits = " · ".join(T(x["credit"]) for x in SPACES if x.get("credit"))
+    sl.append(f'''<section class="slide spaces7">
+  <span class="label" style="color:var(--arcilla-osc)">{t("Los espacios", "The venues")}</span>
+  <h1 class="d" style="font-size:24pt;margin:4mm 0 6mm">{t('Seis patios y palacios <span class="it">y el C3A</span>.', 'Six patios and palaces <span class="it">and the C3A</span>.')}</h1>
+  <div class="grid7">{cards}
+    <div class="note"><p>{t("Del 1 al 30 de septiembre de 2027, con varias instalaciones por espacio. La dirección artística asigna cada espacio según la propuesta.", "From 1 to 30 September 2027, with several installations per venue. The artistic direction assigns each venue according to the proposal.")}</p>{('<small>' + credits + '</small>') if credits else ""}</div>
+  </div>{foot(L())}
 </section>''')
     sl.append(full("pausa-2"))
     # agenda profesional + premio
