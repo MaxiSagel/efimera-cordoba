@@ -205,7 +205,7 @@ def deck():
   <div class="textcol"><span class="label" style="color:var(--arcilla-osc)">{t("La convocatoria", "The open call")}</span>
     <h1 class="d" style="font-size:30pt;margin:6mm 0 7mm">{t('Tu marca, un artista, <span class="it">un patio</span>.', 'Your brand, an artist, <span class="it">a patio</span>.')}</h1>
     <p class="lead">{t("Para la segunda edición de EFÍMERA CÓRDOBA seleccionaremos 15 empresas. Cada una crea una instalación en un espacio del festival: con un artista de su elección, con uno que le proponemos o in-house, con su propio equipo.", "For the second edition of EFÍMERA CÓRDOBA we will select 15 companies. Each one creates an installation in a festival venue: with an artist of its choice, with one we suggest, or in-house with its own team.")}</p>
-    <p style="margin-top:5mm">{t("Durante todo septiembre de 2027, la obra se abre al público con entrada libre en el casco histórico de Córdoba, Patrimonio Mundial. Tu marca no solo patrocina un logo: firma una obra.", "Throughout September 2027, the work is open to the public free of charge in Córdoba's World Heritage historic centre. Your brand doesn't just sponsor a logo: it signs a work.")}</p>
+    <p style="margin-top:5mm">{t("Durante todo septiembre de 2027, la obra se abre al público con entrada libre en el casco histórico de Córdoba, Patrimonio Mundial. Tu marca no solo pone un logo: forma parte de la obra.", "Throughout September 2027, the work is open to the public free of charge in Córdoba's World Heritage historic centre. Your brand doesn't just add a logo: it becomes part of the work.")}</p>
     <div class="confirmed"><span class="label" style="color:var(--arcilla-osc)">{t("Ya confirmada", "Already confirmed")}</span><img src="{img('assets/logos/keyter.png')}" alt="Keyter Group" style="height:5.5mm;display:block;margin-top:1.5mm"></div>
   </div>
   <div class="half"><img src="{img(OBRAS[1]["photos"][1][0])}" alt=""></div>{foot(L())}
@@ -279,7 +279,7 @@ def deck():
     <div><span class="label" style="color:var(--arcilla-osc)">{t("Agenda profesional", "Professional programme")}</span>
       <h1 class="d" style="font-size:24pt;margin:5mm 0 5mm">{t('Tu instalación, ante quien&nbsp;<span class="it">decide</span>.', 'Your installation, in front of those who&nbsp;<span class="it">decide</span>.')}</h1>
       <p>{t("Durante septiembre, EFÍMERA invita a Córdoba a una lista de interioristas, arquitectos, propietarios de hoteles e invitados de negocio. Las empresas seleccionadas pueden quedar con ellos y enseñarles su instalación en persona.", "During September, EFÍMERA invites a list of interior designers, architects, hotel owners and business guests to Córdoba. Selected companies can meet them and show them their installation in person.")}</p>
-      <ul class="glist">{gl}</ul></div>
+      </div>
     <div class="award"><span class="label" style="opacity:.6">{t("Premio EFÍMERA 2027", "EFÍMERA Award 2027")}</span>
       <h2 class="d" style="font-size:22pt">{t('Premio a la mejor <span class="it">instalación</span>.', 'Award for the best <span class="it">installation</span>.')}</h2>
       <p>{t("Un jurado elige la instalación que mejor ha unido marca, arte y lugar. La entrega de premios es en la clausura, a finales de septiembre.", "A jury chooses the installation that best brings together brand, art and place. The award ceremony takes place at the closing, at the end of September.")}</p>
@@ -301,7 +301,7 @@ def deck():
   <h1 class="d" style="font-size:28pt;margin:5mm 0 3mm">{t('No alquilas un espacio: <span class="it">firmas una obra</span>.', "You don't rent a venue: <span class='it'>you sign a work</span>.")}</h1>
   <p style="max-width:230mm;margin-bottom:7mm">{t("Lo que paga una empresa seleccionada no es un alquiler: es la oportunidad de crear, con un artista o con su equipo, una instalación en un espacio patrimonial y de presentar su marca ante miles de visitantes y una lista de invitados profesionales.", "What a selected company pays is not rent: it's the opportunity to create, with an artist or its own team, an installation in a heritage venue, and to present its brand to thousands of visitors and a list of professional guests.")}</p>
   <div class="two" style="gap:10mm">
-    <div class="fee"><span class="label" style="opacity:.7">{t("Cuota de participación", "Participation fee")}</span><b>{t("3.000 – 9.000 €", "€3,000–9,000")}</b>
+    <div class="fee"><span class="label" style="opacity:.7">{t("Cuota de participación", "Participation fee")}</span><b>{t("Desde 3.000 €", "From €3,000")}</b>
       <ul><li>{t("Según el espacio y la escala de la instalación. Para todo septiembre de 2027.", "Depending on the venue and the scale of the installation. For all of September 2027.")}</li>
         <li>{t("Aparte, la empresa asume los honorarios de su artista, si trabaja con uno.", "In addition, the company covers its artist's fee, if it works with one.")}</li>
         <li>{t("Y la producción, el montaje y el desmontaje de la instalación (30 de septiembre).", "And the production, installation and dismantling of the piece (30 September).")}</li></ul></div>
@@ -367,7 +367,7 @@ def main():
                         "--virtual-time-budget=20000", f"--print-to-pdf={out}", html.resolve().as_uri()], check=True, capture_output=True, timeout=180)
         import pymupdf, os
         doc = pymupdf.open(out)
-        doc.rewrite_images(dpi_threshold=170, dpi_target=150, quality=78)
+        doc.rewrite_images(dpi_threshold=400, dpi_target=300, quality=92)
         doc.save(str(out) + ".tmp", garbage=4, deflate=True); n = len(doc); doc.close(); os.replace(str(out) + ".tmp", out)
         html.unlink()
         print("✓", out.name, n, "páginas", round(out.stat().st_size / 1024), "KB")

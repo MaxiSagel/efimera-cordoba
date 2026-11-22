@@ -796,8 +796,8 @@ SHIMA = ("Shima Seiki (Wakayama, Japón, 1962) es líder mundial en máquinas de
 # CIFRAS PROVISIONALES (inventadas a petición del cliente; sustituir por las reales)
 STATS_2026 = [(("38.400", "38,400"), ("visitantes en septiembre", "visitors in September")),
               (("3,2 M", "3.2M"), ("visualizaciones en redes", "views on social media")),
-              (("64", "64"), ("apariciones en medios", "media mentions")),
-              (("40", "40"), ("participantes en el Lab", "Lab participants"))]
+              (("16", "16"), ("apariciones en medios", "media mentions")),
+              (("22", "22"), ("participantes en el Lab", "Lab participants"))]
 
 
 def mapa_svg():
@@ -876,8 +876,8 @@ FAQ = [  # BORRADOR: revisar antes de dar por buenas las respuestas
      ("Marcad en la candidatura los que más os interesan. La dirección artística asigna cada espacio según vuestra preferencia y la escala de la propuesta.",
       "Tick the ones you like best in your application. The artistic direction assigns each venue based on your preference and the scale of the proposal.")),
     (("¿Cómo se trabaja en un edificio patrimonial?", "How do you work in a heritage building?"),
-     ("El asistente de producción revisa con vosotros la propuesta técnica, los permisos y el montaje, para que la instalación se monte y se desmonte sin dejar huella.",
-      "The production assistant reviews the technical proposal, permits and installation with you, so the piece goes up and comes down without leaving a trace.")),
+     ("El asistente de producción revisa con vosotros la propuesta técnica y el montaje, para que la instalación se monte y se desmonte sin dejar huella.",
+      "The production assistant reviews the technical proposal and installation with you, so the piece goes up and comes down without leaving a trace.")),
     (("¿Puede aparecer nuestro producto?", "Can our product be part of it?"),
      ("Sí, es lo que buscamos: materiales, tecnología o producto dentro de la obra, mejor si quien entra puede tocarlo, usarlo o recorrerlo.",
       "Yes, that's the point: materials, technology or product inside the work, ideally something visitors can touch, use or walk through.")),
@@ -898,7 +898,7 @@ DEZEEN = ("Dezeen, la revista online de arquitectura, interiorismo y diseño con
 SHOWCASE = [(("Materiales", "Materials"), ("Cerámica, textil, madera, piedra, metal, vidrio o nuevos compuestos, a escala de patio.", "Ceramics, textiles, wood, stone, metal, glass or new composites, at the scale of a patio.")),
             (("Tecnología", "Technology"), ("Luz, sonido, agua, clima, sensores o tejido 3D: sistemas que responden a quien entra.", "Light, sound, water, climate, sensors or 3D knitting: systems that respond to whoever walks in.")),
             (("Producto", "Product"), ("Tu producto dentro de la obra, usado y probado por miles de personas durante un mes.", "Your product inside the work, used and tried by thousands of people over a month.")),
-            (("Relato", "Story"), ("Una pieza con autor que cuenta quién eres mejor que cualquier anuncio.", "A signed piece that says who you are better than any advert."))]
+            (("Vuestra historia", "Your story"), ("La obra cuenta quiénes sois, qué hacéis y qué os mueve, de una forma que la gente recuerda.", "The work tells who you are, what you do and what drives you, in a way people remember."))]
 
 WAYS = [(("Con tu artista", "With your artist"), ("Trae al artista con el que siempre quisiste trabajar. Nosotros acompañamos el proyecto.", "Bring the artist you've always wanted to work with. We'll support the project.")),
         (("Con un artista que te proponemos", "With an artist we suggest"), ("Si no tienes uno en mente, buscamos artistas afines a tu marca, tu material o tu técnica.", "If you don't have one in mind, we'll find artists who suit your brand, your material or your technique.")),
@@ -919,7 +919,7 @@ GETS = [  # confirmado por la organización (noviembre 2026)
 ]
 
 INCLUDES = [("Un espacio patrimonial para tu instalación durante todo septiembre de 2027.", "A heritage venue for your installation throughout September 2027."),
-            ("Un asistente de producción gratuito que te acompaña en la producción, los permisos y el montaje.", "A free production assistant to support you with production, permits and installation."),
+            ("Un asistente de producción gratuito que te acompaña en la producción y el montaje.", "A free production assistant to support you with production and installation."),
             ("Acompañamiento de la dirección artística y, si lo necesitas, propuesta de artistas.", "Support from the artistic direction and, if you need it, artist suggestions."),
             ("El conocimiento técnico de Shima Seiki en tejido 3D.", "Shima Seiki's technical know-how in 3D knitting."),
             ("Encuentros con la lista de invitados: interioristas, arquitectos y propietarios de hoteles.", "Meetings with the guest list: interior designers, architects and hotel owners."),
@@ -1041,11 +1041,10 @@ def patrocinio():
   <div class="cols mt-l">{"".join(f'<div class="rv"><span class="k">{i + 1:02d}</span><h3>{T(h)}</h3><p>{T(p_)}</p></div>' for i, (h, p_) in enumerate(GETS))}</div>
 </div></section>
 
-<section class="section"><div class="wrap two-col">
+<section class="section"><div class="wrap narrow-col">
   <div class="rv"><span class="label" style="color:var(--almagra)">{t("Agenda profesional", "Professional programme")}</span>
     <h2 class="d d-l mt-s">{t('Tu instalación, ante quien <span class="it">decide</span>.', 'Your installation, in front of those who <span class="it">decide</span>.')}</h2>
     <p class="lead mt-m">{t("Durante septiembre, EFÍMERA invita a Córdoba a una lista de interioristas, arquitectos, propietarios de hoteles e invitados de negocio. Las empresas seleccionadas pueden quedar con ellos y enseñarles su instalación en persona.", "During September, EFÍMERA invites a list of interior designers, architects, hotel owners and business guests to Córdoba. Selected companies can meet them and show them their installation in person.")}</p></div>
-  <ul class="guests rv">{guests}</ul>
 </div></section>
 
 <section class="section bg-almagra on-color" id="premio"><div class="wrap">
@@ -1086,7 +1085,7 @@ def patrocinio():
 <section class="section--s"><div class="wrap">
   <div class="cols">
     <div class="rv"><span class="k">a.</span><h3>{t("Patrimonio Mundial", "World Heritage")}</h3><p>{t("Patios, capillas y palacios del casco histórico de Córdoba, declarado por la UNESCO, como escenario.", "Patios, chapels and palaces in Córdoba's UNESCO-listed historic centre as the setting.")}</p></div>
-    <div class="rv"><span class="k">b.</span><h3>{t("Arte con nombre propio", "Art with a name")}</h3><p>{t("Tu marca no solo patrocina un logo: firma una obra, con un artista o con su propio equipo.", "Your brand doesn't just sponsor a logo: it signs a work, with an artist or its own team.")}</p></div>
+    <div class="rv"><span class="k">b.</span><h3>{t("Arte con nombre propio", "Art with a name")}</h3><p>{t("Tu marca no solo pone un logo: forma parte de la obra, con un artista o con su propio equipo.", "Your brand doesn't just add a logo: it becomes part of the work, with an artist or its own team.")}</p></div>
     <div class="rv"><span class="k">c.</span><h3>{t("Público y negocio", "Public and business")}</h3><p>{t("Entrada libre para miles de visitantes y encuentros con interioristas, arquitectos y hoteleros.", "Free entry for thousands of visitors, and meetings with interior designers, architects and hoteliers.")}</p></div>
     <div class="rv"><span class="k">d.</span><h3>{t("Red internacional", "International network")}</h3><p>{t("MuDD Architects, la AA School de Londres, Tyréns AKT, Shima Seiki y Dezeen.", "MuDD Architects, London's AA School, Tyréns AKT, Shima Seiki and Dezeen.")}</p></div>
   </div>

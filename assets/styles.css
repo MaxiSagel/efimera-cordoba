@@ -720,3 +720,4 @@ html[lang^="en"] .pending::before { content: "To come · "; }
 .confirmed .keyter-logo { display: block; height: clamp(26px, 2.6vw, 36px); width: auto; }
 .partners .plogo.akt { height: 22px; }
 .tech .plogo-l.akt { height: clamp(26px, 2.8vw, 36px); }
+.narrow-col > div { max-width: 760px; }
