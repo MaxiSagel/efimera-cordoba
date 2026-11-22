@@ -114,6 +114,9 @@ def main():
             cache[name] = "data:image/webp;base64," + base64.b64encode(buf.getvalue()).decode()
         return f'src="{cache[name]}"'
     html = re.sub(r'src="(?:\.\./)?assets/espacios/([a-z0-9-]+)\.webp"', embed, html)
+    def embed_svg(m):   # logos SVG -> dentro del archivo
+        return 'src="data:image/svg+xml;base64,' + base64.b64encode((D / "assets/logos" / (m.group(1) + ".svg")).read_bytes()).decode() + '"'
+    html = re.sub(r'src="(?:\.\./)?assets/logos/([a-z0-9-]+)\.svg"', embed_svg, html)
     OUT.write_text(html, encoding="utf-8")
     print("✓", OUT.name, round(len(html) / 1024), "KB")
 

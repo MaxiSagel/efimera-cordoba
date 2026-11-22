@@ -62,6 +62,8 @@ def fname(key, lang=None):
 
 
 def u(key, anchor=""):
+    if key == "equipo":                  # sección «El equipo» de la página Festival
+        return fname("festival") + "#equipo"
     return fname(key) + (f"#{anchor}" if anchor else "")
 
 
@@ -223,7 +225,7 @@ FAQ = [(("¿Qué es EFÍMERA CÓRDOBA?", "What is EFÍMERA CÓRDOBA?"),
 
 
 def NAV():
-    return [("festival", "Festival"), ("obras", t("Obras", "Works")), ("lab", "Lab"),
+    return [("festival", "Festival"), ("equipo", t("Equipo", "Team")), ("obras", t("Obras", "Works")), ("lab", "Lab"),
             ("archivo", t("Archivo", "Archive")), ("2027", "2027")]
 
 
@@ -239,6 +241,11 @@ def mark(cls=""):
 
 MARK = mark()
 MARK_LINE = mark("line")
+
+
+def brand():
+    """Emblema (arcos, cinta y río) + logotipo, para la cabecera."""
+    return f'<span class="brand"><img class="emblem" src="{local("assets/logos/emblema-mini.svg")}" alt="" width="62" height="47">{MARK}</span>'
 
 
 def btn(label, href, cls="", ext=False, arrow="→"):
@@ -389,11 +396,11 @@ def page(key, title, desc, navkey, body, bloque=None, bloque_txt="#fff", head=""
 <a class="skip" href="#contenido">{t("Ir al contenido", "Skip to content")}</a>
 <div class="topbar"><div class="wrap"><span class="hide-s">{t("2.ª edición · septiembre 2027 · Córdoba", "2nd edition · September 2027 · Córdoba")}</span><span style="display:flex;gap:22px;align-items:center"><a class="hide-s" href="{u("patrocinio")}">{t("Convocatoria de empresas: hasta el 28 feb →", "Brand open call: until 28 Feb →")}</a><a href="{u("contacto")}">{t("Contacto", "Contact")}</a>{lang_switch(key)}</span></div></div>
 <header class="header"><div class="wrap">
-  <a href="{u("index")}" aria-label="EFÍMERA CÓRDOBA · {t("inicio", "home")}">{MARK}</a>
+  <a href="{u("index")}" aria-label="EFÍMERA CÓRDOBA · {t("inicio", "home")}">{brand()}</a>
   <nav class="nav" aria-label="{t("Principal", "Main")}">{nav}{cta}</nav>
   <button class="menu-btn" data-menu-open aria-label="{t("Abrir menú", "Open menu")}">{t("Menú", "Menu")}</button>
 </div></header>
-<div class="mobile-nav" aria-label="{t("Menú", "Menu")}"><div class="top">{MARK}<button class="menu-btn" style="display:inline-flex" data-menu-close>{t("Cerrar", "Close")}</button></div>
+<div class="mobile-nav" aria-label="{t("Menú", "Menu")}"><div class="top">{brand()}<button class="menu-btn" style="display:inline-flex" data-menu-close>{t("Cerrar", "Close")}</button></div>
   <nav><a href="{u("index")}">{t("Inicio", "Home")}</a>{nav.replace(" aria-current=page", "")}{cta.replace(" aria-current=page", "")}<a href="{u("contacto")}">{t("Contacto", "Contact")}</a></nav>
   {lang_switch(key)}
   <div class="foot"><a href="mailto:{MAIL}">{MAIL}</a><a href="{IG}" target="_blank" rel="noopener">@efimera_fest</a></div></div>

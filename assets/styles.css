@@ -679,3 +679,9 @@ html[lang^="en"] .pending::before { content: "To come · "; }
 .stats.stats-3 { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 760px) { .stats.stats-3 { grid-template-columns: 1fr; } }
 .speakers > div .ini, .speakers > div:nth-child(3n+1) .ini { background: var(--arena); color: var(--tinta); }
+
+/* ===== v6: emblema junto al logotipo ===== */
+.brand { display: inline-flex; align-items: center; gap: 10px; }
+.brand .emblem { height: 46px; width: auto; flex: none; }
+@media (max-width: 1020px) { .brand .emblem { height: 38px; } }
+.mobile-nav .top .brand .emblem { height: 38px; }
