@@ -721,3 +721,12 @@ html[lang^="en"] .pending::before { content: "To come · "; }
 .partners .plogo.akt { height: 22px; }
 .tech .plogo-l.akt { height: clamp(26px, 2.8vw, 36px); }
 .narrow-col > div { max-width: 760px; }
+
+/* v9 fotos propias en alta calidad */
+.photo-band { margin: 0; overflow: hidden; background: var(--cal); }
+.photo-band img { display: block; width: 100%; height: auto; aspect-ratio: 2 / 1; object-fit: cover; object-position: 50% 30%; }
+@media (max-width: 700px) { .photo-band img { aspect-ratio: 4 / 3; } }
+.frame.tall { aspect-ratio: 4 / 5; background: var(--cal); }
+.frame.tall img { display: block; }
+.intro-foto { align-items: center; }
+.spaces-note { max-width: 62ch; }

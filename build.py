@@ -44,6 +44,21 @@ def img(p):
     return local("assets/web/" + p)   # copia local de las fotos de la web antigua (antes se cargaban de efimera.jevamedia.com)
 
 
+VERTICALES = ("circulos-vertical", "globos-vertical")
+
+
+def foto(name, alt="", sizes="100vw", lazy=True):
+    """Foto propia en alta calidad de assets/fotos/ (se generan con herramientas/web_fotos.py desde FRAMES)."""
+    v = name in VERTICALES
+    sm, lg = local(f"assets/fotos/{name}-s.webp"), local(f"assets/fotos/{name}-l.webp")
+    return f'<img src="{lg}" srcset="{sm} {600 if v else 1200}w, {lg} {1200 if v else 2400}w" sizes="{sizes}" alt="{escape(alt)}"{' loading="lazy"' if lazy else ''}>'
+
+
+def photo_band(name, alt):
+    """Foto a todo el ancho entre dos secciones (como las páginas de foto completa del dosier)."""
+    return f'<figure class="photo-band rv-blur">{foto(name, alt)}</figure>'
+
+
 def note():
     return t("Versión 6: el envío todavía no está conectado a ningún servidor.", "Version 6: this form is not connected to a server yet.")
 
@@ -102,7 +117,8 @@ OBRAS = [
                ("A lo largo del día, la luz desplaza las sombras y dibuja en los muros una constelación que nunca se repite. En un espacio ligado a lo funerario, la obra habla de lo que se va y de lo que, de algún modo, se queda.",
                 "Throughout the day, the light shifts the shadows and draws on the walls a constellation that never repeats. In a space linked to funerary rites, the work speaks of what leaves and of what, somehow, stays.")],
          card="fotos/2026/02/02-1-1024.9b380cac.webp",
-         photos=[("fotos/2026/02/02-1-1536.5b2990dc.webp", "Círculos de malla suspendidos entre las arquerías encaladas del patio, con una palmera al fondo", "Mesh circles suspended between the whitewashed arcades of the patio, with a palm tree behind"),
+         photos=[("assets/fotos/lo-que-permanece-circulos-l.webp", "Círculos de malla suspendidos entre las arquerías encaladas de la Capilla Mudéjar, vistos desde abajo contra el cielo", "Mesh circles suspended between the whitewashed arcades of the Mudéjar Chapel, seen from below against the sky"),
+                 ("fotos/2026/02/02-1-1536.5b2990dc.webp", "Círculos de malla suspendidos entre las arquerías encaladas del patio, con una palmera al fondo", "Mesh circles suspended between the whitewashed arcades of the patio, with a palm tree behind"),
                  ("fotos/2026/02/02-2-1536.175cd189.webp", "Estructuras circulares flotando sobre el patio mudéjar, vistas desde abajo contra el cielo", "Circular structures floating over the Mudéjar patio, seen from below against the sky"),
                  ("fotos/2026/02/02-3-1536.1c684dda.webp", "Detalle de un círculo de malla tensado, retorcido sobre sí mismo junto a la cornisa almenada", "Detail of a tensioned mesh circle twisted on itself next to the crenellated cornice"),
                  ("fotos/2026/02/02-4-1536.af639dec.webp", "Varias piezas circulares suspendidas proyectan su sombra sobre los muros blancos", "Several suspended circular pieces cast their shadows on the white walls"),
@@ -117,7 +133,8 @@ OBRAS = [
                ("El material parece frágil y resiste: florecer como forma de resiliencia. La pieza se completa con una experiencia interactiva sobre las matemáticas sagradas de la ciudad.",
                 "The material looks fragile, yet it endures: blossoming as a form of resilience. The piece is completed by an interactive experience on the city's sacred mathematics.")],
          card="fotos/2026/03/03-1-1024.86bcf93f.webp",
-         photos=[("fotos/2026/03/03-1-1536.0e4744e4.webp", "Pétalos dorados y plateados suspendidos sobre el patio del Museo de Bellas Artes", "Gold and silver petals suspended over the patio of the Museo de Bellas Artes"),
+         photos=[("assets/fotos/sagrado-florecer-dorado-l.webp", "Pétalos dorados y plateados atados a una red de cuerdas sobre el patio, vistos desde abajo entre los naranjos", "Gold and silver petals tied to a rope net over the patio, seen from below among the orange trees"),
+                 ("fotos/2026/03/03-1-1536.0e4744e4.webp", "Pétalos dorados y plateados suspendidos sobre el patio del Museo de Bellas Artes", "Gold and silver petals suspended over the patio of the Museo de Bellas Artes"),
                  ("fotos/2026/03/03-2-1536.0d440f08.webp", "Lluvia de pétalos metálicos sobre la fuente central del patio, con su suelo de empedrado", "A rain of metallic petals over the central fountain of the cobbled patio"),
                  ("fotos/2026/03/03-5-1536.b1cba9cb.webp", "Gran pétalo dorado en primer plano, recortado contra el cielo y las copas de los árboles", "A large golden petal in the foreground, against the sky and the treetops"),
                  ("fotos/2026/03/03-3-1536.3a3ea069.webp", "Pétalos dorados colgados de una red sobre el patio, con visitantes bajo los naranjos", "Golden petals hanging from a net over the patio, with visitors under the orange trees"),
@@ -497,6 +514,7 @@ def home():
     <div><h3>{t("Artista o in-house", "Artist or in-house")}</h3><p>{t("Tu artista, uno que te proponemos o tu propio equipo.", "Your artist, one we suggest, or your own team.")}</p></div>
     <div><h3>{t("30 días", "30 days")}</h3><p>{t("Abierta al público todo septiembre, con premio a la mejor instalación.", "Open to the public all September, with an award for the best installation.")}</p></div>
   </div>
+  <figure class="photo-band mt-l rv-blur">{foto("globos-capuchinos", t("Globos blancos con un velo frente a la iglesia de los Capuchinos", "White balloons carrying a veil in front of the Capuchinos church"), "(max-width: 1400px) 100vw, 1400px")}</figure>
 </div></section>
 
 <section class="section"><div class="wrap statement">
@@ -655,7 +673,7 @@ def obras():
                 a = escape(T((p[1], p[2])))
                 return f'<button type="button" data-full="{img(p[0])}" data-alt="{a}" aria-label="{t("Ampliar", "Enlarge")}: {a}"><img src="{img(p[0])}" alt="{a}" loading="lazy"></button>'
             if len(ph) >= 5:
-                pics = f'<div class="pics" data-gallery>{b(ph[0])}<div class="duo">{b(ph[1])}{b(ph[2])}</div>{b(ph[3])}{b(ph[4])}</div>'
+                pics = f'<div class="pics" data-gallery>{b(ph[0])}<div class="duo">{b(ph[1])}{b(ph[2])}</div>{b(ph[3])}{b(ph[4])}{"".join(b(x) for x in ph[5:])}</div>'
             else:   # obra sin fotos propias todavía: solo la imagen del espacio
                 pics = f'<div class="soon rv"><span class="label">{t("Fotografías", "Photographs")}</span><p class="d d-m mt-s">{t("Las imágenes de esta obra se publicarán muy pronto. Arriba, el patio donde se instaló.", "Images of this work will be published very soon. Above, the patio where it was installed.")}</p></div>'
             hero_media = f'<div class="hero-media rv"><img data-zoom src="{img(ph[0][0])}" alt="{escape(T((ph[0][1], ph[0][2])))}"></div>'
@@ -952,8 +970,11 @@ def patrocinio():
         ("inhouse", t("In-house, con nuestro equipo", "In-house, with our own team")),
         ("nose", t("Aún no lo sabemos", "We don't know yet"))]))
     # RENDERS PROVISIONALES: sustituir por los renders de instalaciones grandes cuando lleguen
-    rd = "".join(f'<figure class="rv-blur r{i}"><img src="{img(o["photos"][k][0])}" alt="{escape(T((o["photos"][k][1], o["photos"][k][2])))}" loading="lazy"><figcaption>{o["title"]}</figcaption></figure>'
-                 for i, (o, k) in enumerate([(OBRAS[1], 1), (OBRAS[0], 0), (OBRAS[2], 0)]))
+    rd = "".join(f'<figure class="rv-blur r{i}">{foto(n, a, "(max-width: 860px) 100vw, " + ("60vw" if i == 0 else "40vw"))}{f"<figcaption>{c}</figcaption>" if c else ""}</figure>'
+                 for i, (n, a, c) in enumerate([
+                     ("sagrado-florecer-dorado", t("Pétalos dorados y plateados de «Sagrado florecer» sobre el patio de Bellas Artes", "Gold and silver petals of “Sagrado florecer” over the Fine Arts patio"), "Sagrado florecer"),
+                     ("lo-que-permanece-circulos", t("Círculos de malla de «Lo que permanece» entre las arquerías de la Capilla Mudéjar", "Mesh circles of “Lo que permanece” between the arcades of the Mudéjar Chapel"), "Lo que permanece"),
+                     ("palmera-red", t("Pieza blanca suspendida bajo una red, con una palmera y las fachadas encaladas al fondo", "A white piece suspended under a net, with a palm tree and whitewashed façades behind"), "")]))
     ways = "".join(f'<div class="rv"><span class="k">{"abc"[i]}.</span><h3>{T(h)}</h3><p>{T(p_)}</p></div>' for i, (h, p_) in enumerate(WAYS))
     show = "".join(f'<div class="rv"><span class="k">{i + 1:02d}</span><h3>{T(h)}</h3><p>{T(p_)}</p></div>' for i, (h, p_) in enumerate(SHOWCASE))
     award = "".join(f'<div><h3>{T(h)}</h3><p>{T(p_)}</p></div>' for h, p_ in AWARD)
@@ -974,15 +995,25 @@ def patrocinio():
 <div class="tabbed" data-tabbed>
 <nav class="subnav" aria-label="{t("Secciones de la convocatoria", "Open call sections")}"><div class="wrap"><div class="tabs" role="tablist"><a href="#p-convocatoria" role="tab" data-tab="p-convocatoria">{t("La convocatoria", "The open call")}</a><a href="#p-espacios" role="tab" data-tab="p-espacios">{t("Espacios", "Venues")}</a><a href="#p-producto" role="tab" data-tab="p-producto">{t("Tu producto", "Your product")}</a><a href="#p-ventajas" role="tab" data-tab="p-ventajas">{t("Qué ganas", "What you get")}</a><a href="#p-edicion-2026" role="tab" data-tab="p-edicion-2026">{t("Edición 2026", "2026 edition")}</a><a href="#p-candidatura" role="tab" data-tab="p-candidatura">{t("Candidatura", "Apply")}</a></div></div></nav>
 <div class="panel" id="p-convocatoria" role="tabpanel" data-panel>
+<section class="section"><div class="wrap two-col intro-foto">
+  <div class="rv"><span class="label" style="color:var(--almagra)">{t("La convocatoria", "The open call")}</span>
+    <h2 class="d d-l mt-s">{t('15 empresas, <span class="it">15 obras</span>.', '15 companies, <span class="it">15 works</span>.')}</h2>
+    <p class="lead mt-m">{t("Para la segunda edición de EFÍMERA CÓRDOBA seleccionaremos 15 empresas. Cada una crea una instalación en un espacio del festival: con un artista de su elección, con uno que le proponemos o in-house, con su propio equipo.", "For the second edition of EFÍMERA CÓRDOBA we will select 15 companies. Each one creates an installation in a festival venue: with an artist of its choice, with one we suggest, or in-house with its own team.")}</p>
+    <p class="mt-m">{t("Durante todo septiembre de 2027, la obra se abre al público con entrada libre en el casco histórico de Córdoba, Patrimonio Mundial.", "Throughout September 2027, the work is open to the public free of charge in Córdoba's World Heritage historic centre.")}</p></div>
+  <figure class="frame tall rv-blur">{foto("circulos-vertical", t("Piezas circulares blancas suspendidas entre fachadas encaladas, junto a una palmera", "White circular pieces suspended between whitewashed façades, beside a palm tree"), "(max-width: 860px) 100vw, 45vw")}</figure>
+</div></section>
+
 <section class="section"><div class="wrap">
   <div class="head rv"><h2 class="d d-l">{t("Cómo funciona", "How it works")}</h2></div>
   <ol class="steps">
-    <li class="rv"><span class="k">01</span><h3>{t("Presenta tu candidatura", "Apply")}</h3><p>{t("Cuéntanos quién sois, qué espacio os interesa y qué queréis enseñar. Hasta el 28 de febrero de 2027.", "Tell us who you are, which venue interests you and what you want to show. Until 28 February 2027.")}</p></li>
+    <li class="rv"><span class="k">01</span><h3>{t("Presenta tu candidatura", "Apply")}</h3><p>{t("Cuéntanos quiénes sois, qué espacio os interesa y qué queréis enseñar. Hasta el 28 de febrero de 2027.", "Tell us who you are, which venue interests you and what you want to show. Until 28 February 2027.")}</p></li>
     <li class="rv"><span class="k">02</span><h3>{t("Selección", "Selection")}</h3><p>{t("La dirección artística estudia cada propuesta y elige a las empresas participantes.", "The artistic direction reviews every proposal and chooses the participating companies.")}</p></li>
     <li class="rv"><span class="k">03</span><h3>{t("Creáis la instalación", "Create the installation")}</h3><p>{t("Con un artista de vuestra elección, con uno que os proponemos o in-house. Un asistente de producción os acompaña, sin coste.", "With an artist of your choice, one we suggest, or in-house. A production assistant supports you, free of charge.")}</p></li>
     <li class="rv"><span class="k">04</span><h3>{t("Septiembre, abierta a todos", "September, open to all")}</h3><p>{t("Del 1 al 30 de septiembre de 2027, con entrada libre. Se desmonta el día 30.", "From 1 to 30 September 2027, free entry. It comes down on the 30th.")}</p></li>
   </ol>
 </div></section>
+
+{photo_band("globos-muro", t("Dos personas sueltan globos blancos con un velo frente a un muro blanco", "Two people release white balloons carrying a veil in front of a white wall"))}
 
 <section class="section--s"><div class="wrap">
   <div class="head rv"><h2 class="d d-l">{t('Con un artista o <span class="it">in-house</span>', 'With an artist or <span class="it">in-house</span>')}</h2></div>
@@ -1005,7 +1036,9 @@ def patrocinio():
   <div class="map-row rv"><figure class="map-art">{mapa_svg()}<figcaption>{t("Mapa esquemático, no a escala.", "Schematic map, not to scale.")}</figcaption></figure>
     <ol class="map-list">{"".join(f'<li><span class="n">{x["n"]}</span><div><strong>{x["name"]}</strong><small>{x["addr"] or "Córdoba"}</small></div></li>' for x in SPACES)}</ol></div>
   <div class="spaces mt-l">{sp}</div>
+  <p class="spaces-note mt-l rv">{t("Del 1 al 30 de septiembre de 2027, con varias instalaciones por espacio. La dirección artística asigna cada espacio según la propuesta.", "From 1 to 30 September 2027, with several installations per venue. The artistic direction assigns each venue according to the proposal.")}</p>
 </div></section>
+{photo_band("globos-capuchinos", t("Globos blancos con un velo frente a la iglesia de los Capuchinos", "White balloons carrying a veil in front of the Capuchinos church"))}
 </div>
 <div class="panel" id="p-producto" role="tabpanel" data-panel>
 <section class="section bg-ink"><div class="wrap">
@@ -1041,17 +1074,18 @@ def patrocinio():
   <div class="cols mt-l">{"".join(f'<div class="rv"><span class="k">{i + 1:02d}</span><h3>{T(h)}</h3><p>{T(p_)}</p></div>' for i, (h, p_) in enumerate(GETS))}</div>
 </div></section>
 
-<section class="section"><div class="wrap narrow-col">
+<section class="section"><div class="wrap two-col" style="align-items:center">
   <div class="rv"><span class="label" style="color:var(--almagra)">{t("Agenda profesional", "Professional programme")}</span>
     <h2 class="d d-l mt-s">{t('Tu instalación, ante quien <span class="it">decide</span>.', 'Your installation, in front of those who <span class="it">decide</span>.')}</h2>
     <p class="lead mt-m">{t("Durante septiembre, EFÍMERA invita a Córdoba a una lista de interioristas, arquitectos, propietarios de hoteles e invitados de negocio. Las empresas seleccionadas pueden quedar con ellos y enseñarles su instalación en persona.", "During September, EFÍMERA invites a list of interior designers, architects, hotel owners and business guests to Córdoba. Selected companies can meet them and show them their installation in person.")}</p></div>
+  <figure class="frame tall rv-blur">{foto("globos-vertical", t("Globos blancos con un velo suspendidos contra el cielo", "White balloons carrying a veil against the sky"), "(max-width: 860px) 100vw, 45vw")}</figure>
 </div></section>
 
 <section class="section bg-almagra on-color" id="premio"><div class="wrap">
   <div class="two-col" style="align-items:end">
     <div class="rv"><span class="label" style="opacity:.75">{t("Premio EFÍMERA 2027", "EFÍMERA Award 2027")}</span>
       <h2 class="d d-l mt-s">{t('Premio a la mejor <span class="it">instalación</span>.', 'Award for the best <span class="it">installation</span>.')}</h2></div>
-    <p class="lead rv">{t("Cada edición, un jurado elige la instalación que mejor ha unido marca, arte y lugar. La entrega de premios es en la clausura, a finales de septiembre.", "Each edition, a jury chooses the installation that best brings together brand, art and place. The award ceremony takes place at the closing, at the end of September.")}</p>
+    <p class="lead rv">{t("Un jurado elige la instalación que mejor ha unido marca, arte y lugar. La entrega de premios es en la clausura, a finales de septiembre.", "A jury chooses the installation that best brings together brand, art and place. The award ceremony takes place at the closing, at the end of September.")}</p>
   </div>
   <div class="reasons rv">{award}</div>
 </div></section>
@@ -1076,6 +1110,8 @@ def patrocinio():
     <div><b>{len(COLABORAN)}</b><span>{t("entidades colaboradoras", "supporting organisations")}</span></div>
   </div>
 </div></section>
+
+{photo_band("globos-sol", t("Globos blancos y un velo a contraluz bajo el sol de Córdoba", "White balloons and a veil backlit by the Córdoba sun"))}
 
 <section class="section"><div class="wrap statement">
   <span class="label rv">{t("Por qué EFÍMERA", "Why EFÍMERA")}</span>
@@ -1102,8 +1138,8 @@ def patrocinio():
   <div class="rv">
     <span class="label">{t("Candidaturas hasta el", "Applications until")} {T(DEADLINE)}</span>
     <h2 class="d d-l mt-s">{t('Presenta tu <span class="it">candidatura</span>.', 'Submit your <span class="it">application</span>.')}</h2>
-    <p class="lead mt-m">{t("15 plazas. Cuéntanos quién sois, qué queréis destacar y qué espacio os interesa. Revisamos cada propuesta y te enviamos el dosier con las condiciones.", "15 places. Tell us who you are, what you want to highlight and which venue interests you. We review every proposal and send you the deck with the terms.")}</p>
-    <p class="mt-m">{t("Directo:", "Direct:")} <a class="link" href="mailto:{MAIL}">{MAIL}</a></p>
+    <p class="lead mt-m">{t("15 plazas. Cuéntanos quiénes sois, qué queréis destacar y qué espacio os interesa. Revisamos cada propuesta y te enviamos el dosier con las condiciones.", "15 places. Tell us who you are, what you want to highlight and which venue interests you. We review every proposal and send you the deck with the terms.")}</p>
+    <p class="mt-m">{t("Directo:", "Direct:")} <a class="link" href="mailto:{MAIL}">{MAIL}</a> · Instagram <a class="link" href="{IG}" target="_blank" rel="noopener">@efimera_fest</a></p>
   </div>
   <form class="form rv" data-form data-ok="{t("Gracias. Hemos recibido tu candidatura: te enviamos el dosier y te escribimos muy pronto.", "Thank you. We've received your application: we'll send you the deck and be in touch very soon.")} ({note()})" novalidate>
     <div class="two"><div class="field"><label for="s1">{t("Nombre", "Name")}</label><input id="s1" required autocomplete="name"></div><div class="field"><label for="s2">{t("Empresa o marca", "Company or brand")}</label><input id="s2" required autocomplete="organization"></div></div>

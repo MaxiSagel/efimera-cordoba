@@ -118,7 +118,7 @@ def main():
         return 'src="data:image/svg+xml;base64,' + base64.b64encode((D / "assets/logos" / (m.group(1) + ".svg")).read_bytes()).decode() + '"'
     html = re.sub(r'src="(?:\.\./)?assets/logos/([a-z0-9-]+)\.svg"', embed_svg, html)
     # fotos y vídeo de la edición 2026 -> copia publicada en GitHub Pages (pesan demasiado para incrustarlas)
-    html = re.sub(r'(?:\.\./)?assets/(web/|logos/[a-z0-9-]+\.png)', r"https://maxisagel.github.io/efimera-cordoba/assets/\1", html)
+    html = re.sub(r'(?:\.\./)?assets/(web/|fotos/|logos/[a-z0-9-]+\.png)', r"https://maxisagel.github.io/efimera-cordoba/assets/\1", html)
     OUT.write_text(html, encoding="utf-8")
     print("✓", OUT.name, round(len(html) / 1024), "KB")
 
