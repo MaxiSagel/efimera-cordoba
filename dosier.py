@@ -114,6 +114,14 @@ CSS += """
 .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1.5pt solid var(--tinta); margin-top: 12mm; }
 .grid4 > div { padding: 6mm 5mm 0 0; } .grid4 > div + div { padding-left: 5mm; border-left: .6pt solid rgba(20,18,16,.3); }
 .grid4 .k { font-family: var(--s); font-style: italic; font-size: 30pt; line-height: 1; display: block; margin-bottom: 4mm; }
+.prod { display: grid; grid-template-columns: 1fr 1.2fr; gap: 14mm; align-items: center; padding-bottom: 24mm; }
+.prod .intro h1 { font-size: 30pt; line-height: 1.05; margin: 6mm 0 7mm; }
+.prod .intro .lead { font-size: 11pt; }
+.cards2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.cards2 > div { background: var(--crema); padding: 7mm 7mm 8mm; min-height: 58mm; }
+.cards2 .k { font-family: var(--s); font-style: italic; font-size: 34pt; line-height: 1; color: var(--arcilla-osc); display: block; margin-bottom: 5mm; }
+.cards2 h3 { font-family: var(--d); font-weight: 500; font-size: 14pt; letter-spacing: -.02em; margin-bottom: 2.5mm; }
+.cards2 p { font-size: 9.5pt; line-height: 1.45; }
 .grid4 h3 { font-family: var(--d); font-weight: 400; font-size: 13pt; letter-spacing: -.02em; margin-bottom: 2.5mm; }
 .stack { position: absolute; top: 0; bottom: 0; right: 0; width: 50%; display: grid; grid-template-rows: 1.25fr 1fr; gap: 3mm; }
 .stack img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 0; }
@@ -221,15 +229,16 @@ def deck():
   <h1 class="d" style="font-size:34pt;margin-top:6mm;max-width:220mm">{t('De la candidatura a <span class="it">un mes</span> de&nbsp;ciudad.', 'From application to <span class="it">a month</span> in the&nbsp;city.')}</h1>
   <div class="steps">{st}</div>{foot(L())}
 </section>''')
-    # producto dentro de la obra
-    sh = "".join(f'<div><span class="k">{i + 1:02d}</span><h3>{T(h)}</h3><p>{T(p)}</p></div>' for i, (h, p) in enumerate(SHOWCASE))
-    sl.append(f'''<section class="slide arcilla">
-  <span class="label">{t("Tu producto, dentro de la obra", "Your product, inside the work")}</span>
-  <h1 class="d" style="font-size:30pt;margin-top:6mm;white-space:nowrap">{t('Aquí tu producto no se mira: <span class="it">se&nbsp;vive</span>.', "Here your product isn't looked at: <span class='it'>it's experienced</span>.")}</h1>
-  <p class="lead" style="margin-top:6mm;max-width:200mm">{t("Las instalaciones pueden ser interactivas: quien entra toca el material, activa la tecnología, recorre la pieza por dentro. Es la mejor forma de enseñar de qué es capaz lo que fabricáis.", "Installations can be interactive: visitors touch the material, trigger the technology, walk through the piece. It's the best way to show what your products can do.")}</p>
-  <div class="grid4">{sh}</div>{foot(L())}
-</section>''')
+    # foto a página completa entre «Cómo funciona» y «Tu producto»
     sl.append(full("pausa-1"))
+    # producto dentro de la obra: titular a la izquierda, cuatro tarjetas a la derecha
+    sh = "".join(f'<div><span class="k">{i + 1:02d}</span><h3>{T(h)}</h3><p>{T(p)}</p></div>' for i, (h, p) in enumerate(SHOWCASE))
+    sl.append(f'''<section class="slide arcilla prod">
+  <div class="intro"><span class="label">{t("Tu producto, dentro de la obra", "Your product, inside the work")}</span>
+    <h1 class="d">{t('Aquí tu producto no se&nbsp;mira:&nbsp;<span class="it">se&nbsp;vive</span>.', "Here your product isn't looked&nbsp;at:&nbsp;<span class='it'>it's experienced</span>.")}</h1>
+    <p class="lead">{t("Las instalaciones pueden ser interactivas: quien entra toca el material, activa la tecnología, recorre la pieza por dentro. Es la mejor forma de enseñar de qué es capaz lo que fabricáis.", "Installations can be interactive: visitors touch the material, trigger the technology, walk through the piece. It's the best way to show what your products can do.")}</p></div>
+  <div class="cards2">{sh}</div>{foot(L())}
+</section>''')
     # piensa en grande (RENDERS PROVISIONALES: sustituir cuando lleguen)
     wy = "".join(f'<li><b>{T(h)}</b>{T(p)}</li>' for h, p in WAYS)
     sl.append(f'''<section class="slide">
