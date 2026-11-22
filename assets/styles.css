@@ -708,3 +708,13 @@ html[lang^="en"] .pending::before { content: "To come · "; }
 .faq summary::after { content: "+"; font-family: var(--f-display); font-size: 22px; line-height: 1; transition: transform .25s; flex: none; }
 .faq details[open] summary::after { transform: rotate(45deg); }
 .faq details p { margin: 0 0 20px; max-width: 60ch; }
+
+/* ===== v7: logos de los socios ===== */
+.partners .plogo { display: block; width: auto; margin-bottom: 6px; }
+.partners .plogo.shima { height: 15px; }
+.partners .plogo.dezeen { height: 20px; }
+.tech h3 { margin: 0; }
+.tech .plogo-l { display: block; width: auto; max-width: 100%; }
+.tech .plogo-l.shima { height: clamp(18px, 2vw, 26px); }
+.tech .plogo-l.dezeen { height: clamp(24px, 2.6vw, 34px); }
+.confirmed .keyter-logo { display: block; height: clamp(34px, 4vw, 54px); width: auto; }

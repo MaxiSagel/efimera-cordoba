@@ -206,7 +206,7 @@ def deck():
     <h1 class="d" style="font-size:30pt;margin:6mm 0 7mm">{t('Tu marca, un artista, <span class="it">un patio</span>.', 'Your brand, an artist, <span class="it">a patio</span>.')}</h1>
     <p class="lead">{t("Para la segunda edición de EFÍMERA CÓRDOBA seleccionamos 15 empresas. Cada una crea una instalación en uno de los siete espacios del festival: con un artista de su elección, con uno que le proponemos o in-house, con su propio equipo.", "For the second edition of EFÍMERA CÓRDOBA we are selecting 15 companies. Each one creates an installation in one of the festival's seven venues: with an artist of its choice, with one we suggest, or in-house with its own team.")}</p>
     <p style="margin-top:5mm">{t("Durante todo septiembre de 2027, la obra se abre al público con entrada libre en el casco histórico de Córdoba, Patrimonio Mundial. Tu marca no patrocina un logo: firma una obra.", "Throughout September 2027, the work is open to the public free of charge in Córdoba's World Heritage historic centre. Your brand doesn't sponsor a logo: it signs a work.")}</p>
-    <div class="confirmed"><span class="label" style="color:var(--arcilla-osc)">{t("Ya confirmada", "Already confirmed")}</span><b>Keyter Group</b></div>
+    <div class="confirmed"><span class="label" style="color:var(--arcilla-osc)">{t("Ya confirmada", "Already confirmed")}</span><img src="{img('assets/logos/keyter.png')}" alt="Keyter Group" style="height:9mm;display:block;margin-top:2mm"></div>
   </div>
   <div class="half"><img src="{img(OBRAS[1]["photos"][1][0])}" alt=""></div>{foot(L())}
 </section>''')
@@ -320,8 +320,8 @@ def deck():
   <h1 class="d" style="font-size:28pt;margin:5mm 0 8mm">{t('Una red de <span class="it">oficio</span>, técnica y prensa.', 'A network of <span class="it">craft</span>, technique and press.')}</h1>
   <div class="two">
     <div class="partners3" style="display:grid;gap:3.5mm">
-      <div class="box"><span class="label" style="color:var(--arcilla-osc)">{t("Partner técnico", "Technical partner")}</span><h2 class="d" style="font-size:17pt;margin:2mm 0 2.5mm">Shima Seiki</h2><p style="font-size:9pt">{T(SHIMA)}</p></div>
-      <div class="box"><span class="label" style="color:var(--arcilla-osc)">{t("Socio de prensa", "Media partner")}</span><h2 class="d" style="font-size:17pt;margin:2mm 0 2.5mm">Dezeen</h2><p style="font-size:9pt">{T(DEZEEN)}</p></div>
+      <div class="box"><span class="label" style="color:var(--arcilla-osc)">{t("Partner técnico", "Technical partner")}</span><h2 style="margin:2.5mm 0 3mm"><img src="{img('assets/logos/shima-seiki.png')}" alt="Shima Seiki" style="height:4.2mm;display:block"></h2><p style="font-size:9pt">{T(SHIMA)}</p></div>
+      <div class="box"><span class="label" style="color:var(--arcilla-osc)">{t("Socio de prensa", "Media partner")}</span><h2 style="margin:2mm 0 2.5mm"><img src="{img('assets/logos/dezeen.svg')}" alt="Dezeen" style="height:5.5mm;display:block"></h2><p style="font-size:9pt">{T(DEZEEN)}</p></div>
       <div class="box"><span class="label" style="color:var(--arcilla-osc)">{t("Empresa socia · ingeniería", "Partner company · engineering")}</span><h2 class="d" style="font-size:17pt;margin:2mm 0 2.5mm">AKT II</h2><p style="font-size:9pt">{T(AKT)}</p></div></div>
     <div><span class="label">{t("Organizan, con la AA School", "Organised by, with the AA School")}</span>
       <div class="logos"><img src="{img('img/logos/artdecor.ae34de74.png')}" alt="Fundación Artdecor"><img src="{img('img/logos/mudd.6f8b5b97.png')}" alt="MuDD Architects"><span class="aa-logo"><img src="assets/logos/aa.svg" alt="Architectural Association"><span>Architectural Association<br>School of Architecture</span></span></div>

@@ -291,7 +291,7 @@ def partners():
     <a href="https://www.fundacionartdecor.org" target="_blank" rel="noopener"><img src="{img('img/logos/artdecor.ae34de74.png')}" alt="Fundación Artdecor"></a>
     <a href="https://www.muddarchitects.com/" target="_blank" rel="noopener"><img src="{img('img/logos/mudd.6f8b5b97.png')}" alt="MuDD Architects"></a>
     <a class="aa-logo" href="https://www.aaschool.ac.uk" target="_blank" rel="noopener"><img src="{local('assets/logos/aa.svg')}" alt=""><span>Architectural Association<br>School of Architecture</span></a></div></div>
-  <div><span class="label">{t("Socios 2027", "2027 partners")}</span><br><a class="aa" href="https://www.shimaseiki.com" target="_blank" rel="noopener">Shima Seiki<small>{t("Partner técnico · tejido 3D", "Technical partner · 3D knitting")}</small></a><br><a class="aa" href="https://www.dezeen.com" target="_blank" rel="noopener">Dezeen<small>{t("Socio de prensa", "Media partner")}</small></a><br><a class="aa" href="https://www.akt-uk.com" target="_blank" rel="noopener">AKT II<small>{t("Empresa socia · ingeniería, Londres", "Partner company · engineering, London")}</small></a><br><a class="aa" href="https://www.juntadeandalucia.es/cultura/c3a/" target="_blank" rel="noopener">C3A<small>{t("Colaborador y espacio de intervención", "Partner and installation venue")}</small></a></div>
+  <div><span class="label">{t("Socios 2027", "2027 partners")}</span><br><a class="aa" href="https://www.shimaseiki.com" target="_blank" rel="noopener"><img class="plogo shima" src="{local('assets/logos/shima-seiki.png')}" alt="Shima Seiki"><small>{t("Partner técnico · tejido 3D", "Technical partner · 3D knitting")}</small></a><br><a class="aa" href="https://www.dezeen.com" target="_blank" rel="noopener"><img class="plogo dezeen" src="{local('assets/logos/dezeen.svg')}" alt="Dezeen"><small>{t("Socio de prensa", "Media partner")}</small></a><br><a class="aa" href="https://www.akt-uk.com" target="_blank" rel="noopener">AKT II<small>{t("Empresa socia · ingeniería, Londres", "Partner company · engineering, London")}</small></a><br><a class="aa" href="https://www.juntadeandalucia.es/cultura/c3a/" target="_blank" rel="noopener">C3A<small>{t("Colaborador y espacio de intervención", "Partner and installation venue")}</small></a></div>
   <div><span class="label">{t("Colaboran", "Supported by")}</span><div class="names">{names}</div></div>
 </div></section>'''
 
@@ -959,7 +959,7 @@ def patrocinio():
 <div class="block">{marquee([(t("Convocatoria abierta", "Open call"), "✦"), (t("15 plazas", "15 places"), t("hasta el 28.02.2027", "until 28.02.2027"))])}</div>
 
 <section class="section--s"><div class="wrap">
-  <div class="confirmed rv"><span class="label">{t("Ya confirmada para 2027", "Already confirmed for 2027")}</span><strong>Keyter Group</strong><p>{t(f"La primera empresa de la segunda edición. Las otras {LIBRES} plazas se deciden por selección, no por orden de llegada.", f"The first company of the second edition. The other {LIBRES} places are decided by selection, not first come, first served.")}</p></div>
+  <div class="confirmed rv"><span class="label">{t("Ya confirmada para 2027", "Already confirmed for 2027")}</span><strong><img class="keyter-logo" src="{local('assets/logos/keyter.png')}" alt="Keyter Group"></strong><p>{t(f"La primera empresa de la segunda edición. Las otras {LIBRES} plazas se deciden por selección, no por orden de llegada.", f"The first company of the second edition. The other {LIBRES} places are decided by selection, not first come, first served.")}</p></div>
 </div></section>
 
 <div class="tabbed" data-tabbed>
@@ -1040,9 +1040,9 @@ def patrocinio():
 </div></section>
 
 <section class="section--s"><div class="wrap">
-  <div class="tech rv"><span class="label">{t("Partner técnico", "Technical partner")}</span><div><h3 class="d d-m">Shima Seiki</h3>
+  <div class="tech rv"><span class="label">{t("Partner técnico", "Technical partner")}</span><div><h3><img class="plogo-l shima" src="{local('assets/logos/shima-seiki.png')}" alt="Shima Seiki"></h3>
     <p class="mt-s">{T(SHIMA)}</p></div></div>
-  <div class="tech mt-m rv"><span class="label">{t("Socio de prensa", "Media partner")}</span><div><h3 class="d d-m">Dezeen</h3>
+  <div class="tech mt-m rv"><span class="label">{t("Socio de prensa", "Media partner")}</span><div><h3><img class="plogo-l dezeen" src="{local('assets/logos/dezeen.svg')}" alt="Dezeen"></h3>
     <p class="mt-s">{T(DEZEEN)}</p></div></div>
   <div class="tech mt-m rv"><span class="label">{t("Empresa socia · ingeniería", "Partner company · engineering")}</span><div><h3 class="d d-m">AKT II</h3>
     <p class="mt-s">{T(AKT)}</p></div></div>
