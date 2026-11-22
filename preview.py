@@ -13,7 +13,7 @@ import build
 
 D = Path(__file__).parent
 OUT = D / "vista-previa-v6.html"
-KEYS = ["index", "festival", "obras"] + [o["slug"] for o in build.OBRAS] + ["lab", "patrocinio", "recorrido", "archivo", "2027", "contacto", "aviso-legal", "privacidad", "cookies"]
+KEYS = ["index", "festival", "obras"] + [o["slug"] for o in build.OBRAS] + ["lab", "patrocinio", "archivo", "2027", "contacto", "aviso-legal", "privacidad", "cookies"]
 NAVKEY = {o["slug"]: "obras" for o in build.OBRAS}
 
 

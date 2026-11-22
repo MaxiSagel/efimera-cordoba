@@ -39,6 +39,8 @@ def T(x):
 
 
 def img(p):
+    if p.startswith("assets/"):          # fotos propias de la web (no de la web antigua)
+        return local(p)
     return A + p
 
 
@@ -118,7 +120,7 @@ OBRAS = [
                  ("fotos/2026/03/03-5-1536.b1cba9cb.webp", "Gran pétalo dorado en primer plano, recortado contra el cielo y las copas de los árboles", "A large golden petal in the foreground, against the sky and the treetops"),
                  ("fotos/2026/03/03-3-1536.3a3ea069.webp", "Pétalos dorados colgados de una red sobre el patio, con visitantes bajo los naranjos", "Golden petals hanging from a net over the patio, with visitors under the orange trees"),
                  ("fotos/2026/03/03-4-1536.c689a763.webp", "Pétalos plateados y dorados atados a una estructura de cuerdas entre la vegetación", "Silver and gold petals tied to a rope structure among the greenery")]),
-    dict(n="04", slug="esperar-a-la-luz", title="Esperar a la luz", title_en="Waiting for the Light", color=C["tinta"],
+    dict(n="04", slug="esperar-a-la-luz", title="Esperar a la luz", title_en="Waiting for the Light", color=C["cal"],
          place="Patio de las Tazas", addr="Plaza de las Tazas, 11",
          coords=[37.88905, -4.7744], authors=("Zhenxiang Zhao (Axel) y Laura Sánchez Avilés", "Zhenxiang Zhao (Axel) and Laura Sánchez Avilés"), private=True,
          hours=[("Lunes a sábado", "Monday to Saturday"), ("10:00–13:30", "10:00–13:30")],
@@ -127,7 +129,8 @@ OBRAS = [
                 "Komorebi is the Japanese word for the light that filters through leaves. It cannot be manufactured: it can only be waited for."),
                ("Unos módulos de para-arquitectura se colocan en el patio-jardín para recibirla, y las plantas pasan de decorado a arquitectura blanda y viva. La obra nace de quienes cuidan el lugar —Juan, el jardinero; Cristina, la dueña; Baris, el guitarrista— y conversa con Tao Yuanming y Antonio Machado.",
                 "Para-architectural modules are placed in the garden patio to receive it, and the plants shift from backdrop to soft, living architecture. The work grows out of the people who look after the place —Juan, the gardener; Cristina, the owner; Baris, the guitarist— and converses with Tao Yuanming and Antonio Machado.")],
-         card=None, photos=[]),
+         card="assets/espacios/casa-de-las-tazas.webp",
+         photos=[("assets/espacios/casa-de-las-tazas.webp", "El Patio de las Tazas, donde se instaló «Esperar a la luz»", "The Patio de las Tazas, where “Esperar a la luz” was installed")]),
     dict(n="05", slug="leyendas", title="Leyendas", title_en="Legends", color=C["arcilla_osc"],
          place="Casa Palacio de los Angulo", addr="C/ San Pablo, 31",
          coords=[37.8857, -4.7756], authors=("Ángela Moyano, con la asistencia de Max Seguel", "Ángela Moyano, assisted by Max Seguel"), private=True,
@@ -220,7 +223,7 @@ FAQ = [(("¿Qué es EFÍMERA CÓRDOBA?", "What is EFÍMERA CÓRDOBA?"),
 
 
 def NAV():
-    return [("festival", "Festival"), ("obras", t("Obras", "Works")), ("lab", "Lab"), ("recorrido", t("Recorrido", "Route")),
+    return [("festival", "Festival"), ("obras", t("Obras", "Works")), ("lab", "Lab"),
             ("archivo", t("Archivo", "Archive")), ("2027", "2027")]
 
 
@@ -601,7 +604,7 @@ def festival():
     <article class="member member--accent rv"><h3>Fernando Vacas</h3><p>{t("Músico y productor (Eureka) y presidente de la Fundación Artdecor. Nominado a los Grammy Latinos; ha trabajado con Rosalía, Estrella Morente o Niño de Elche.", "Musician and producer (Eureka) and president of Fundación Artdecor. Latin Grammy nominee; he has worked with Rosalía, Estrella Morente and Niño de Elche.")}</p></article>
     <article class="member member--accent rv"><h3>Janelle Wynyard</h3></article>
     <article class="member member--accent rv"><h3>Máximo Sagel Sánchez</h3></article>
-    <article class="member rv"><span class="label role">{t("El escenario", "The setting")}</span><h3>{t("El casco histórico", "The historic centre")}</h3><p>{t("Patrimonio Mundial. Patios, capillas y palacios que abren sus puertas a la creación contemporánea.", "World Heritage. Patios, chapels and palaces that open their doors to contemporary creation.")}</p><div class="foot"><a href="{u("recorrido")}">{t("Ver el recorrido →", "See the route →")}</a></div></article>
+    <article class="member rv"><span class="label role">{t("El escenario", "The setting")}</span><h3>{t("El casco histórico", "The historic centre")}</h3><p>{t("Patrimonio Mundial. Patios, capillas y palacios que abren sus puertas a la creación contemporánea.", "World Heritage. Patios, chapels and palaces that open their doors to contemporary creation.")}</p></article>
   </div>
 </div></section>
 
@@ -623,7 +626,7 @@ def obras():
 <div class="block">{marquee([(t("Sombra, agua y verde", "Shade, water and greenery"), t("el cuidado frente al cambio climático", "care in the face of climate change"))])}</div>
 <section class="section"><div class="wrap">
   <div class="works">{rows}</div>
-  <div class="btn-row mt-m rv">{btn(t("Ver en el mapa", "See on the map"), u("recorrido"))}{btn(t("Cómo nacieron: el Lab", "How they were born: the Lab"), u("lab"))}{btn(t("Participa en 2027 como empresa", "Take part in 2027 as a company"), u("patrocinio"))}</div>
+  <div class="btn-row mt-m rv">{btn(t("Cómo nacieron: el Lab", "How they were born: the Lab"), u("lab"))}{btn(t("Participa en 2027 como empresa", "Take part in 2027 as a company"), u("patrocinio"))}</div>
 </div></section>'''
     page("obras", t("Obras 2026", "Works 2026"), t("Las cinco obras de EFÍMERA CÓRDOBA 2026.", "The five works of EFÍMERA CÓRDOBA 2026."), "obras", body)
 
@@ -640,7 +643,10 @@ def obras():
             def b(p):
                 a = escape(T((p[1], p[2])))
                 return f'<button type="button" data-full="{img(p[0])}" data-alt="{a}" aria-label="{t("Ampliar", "Enlarge")}: {a}"><img src="{img(p[0])}" alt="{a}" loading="lazy"></button>'
-            pics = f'<div class="pics" data-gallery>{b(ph[0])}<div class="duo">{b(ph[1])}{b(ph[2])}</div>{b(ph[3])}{b(ph[4])}</div>'
+            if len(ph) >= 5:
+                pics = f'<div class="pics" data-gallery>{b(ph[0])}<div class="duo">{b(ph[1])}{b(ph[2])}</div>{b(ph[3])}{b(ph[4])}</div>'
+            else:   # obra sin fotos propias todavía: solo la imagen del espacio
+                pics = f'<div class="soon rv"><span class="label">{t("Fotografías", "Photographs")}</span><p class="d d-m mt-s">{t("Las imágenes de esta obra se publicarán muy pronto. Arriba, el patio donde se instaló.", "Images of this work will be published very soon. Above, the patio where it was installed.")}</p></div>'
             hero_media = f'<div class="hero-media rv"><img data-zoom src="{img(ph[0][0])}" alt="{escape(T((ph[0][1], ph[0][2])))}"></div>'
         else:
             pics = f'<div class="soon rv"><span class="label">{t("Fotografías", "Photographs")}</span><p class="d d-m mt-s">{t("Las imágenes de esta obra se publicarán muy pronto.", "Images of this work will be published very soon.")}</p><div class="btn-row mt-m">{btn(t("Mientras, en Instagram", "Meanwhile, on Instagram"), IG, ext=True, arrow="↗")}</div></div>'
@@ -662,7 +668,7 @@ def obras():
       <div><dt>{t("Fechas", "Dates")}</dt><dd>{t("1–30 sept. 2026 · Entrada libre", "1–30 Sept 2026 · Free entry")}{priv}</dd></div>
       <div><dt>{t("Horario", "Opening hours")}</dt><dd>{hours}</dd></div>
     </dl>
-    <div class="btn-row mt-m">{btn(t("Abrir en Maps", "Open in Maps"), f"https://www.google.com/maps/search/?api=1&query={lat},{lng}", ext=True, arrow="↗")}{btn(t("Recorrido", "Route"), u("recorrido"))}</div>
+    <div class="btn-row mt-m">{btn(t("Abrir en Maps", "Open in Maps"), f"https://www.google.com/maps/search/?api=1&query={lat},{lng}", ext=True, arrow="↗")}</div>
   </aside>
   <div class="body rv"><p class="tag">{T(o["tag"])}</p>{text}{pics}</div>
 </div></section>
@@ -687,10 +693,9 @@ def lab():
                 t("El taller internacional donde nacen las obras. Diez días, íntegramente en inglés, en el C3A de Córdoba.", "The international workshop where the works are born. Ten days, entirely in English, at the C3A in Córdoba."), "d-xxl",
                 f'<p class="label mt-m rv">{t("Próxima edición · 20–31 agosto 2027 · con estudiantes de la AA School", "Next edition · 20–31 August 2027 · with AA School students")}</p><div class="btn-row mt-m rv">{btn(t("Ponentes", "Speakers"), "#ponentes", "btn--light")}{btn("Nuevas Miradas", "#nuevas-miradas", "btn--light")}{btn(t("Colaborar con el Lab", "Partner with the Lab"), "#colabora", "btn--light")}</div>') + f'''
 <section class="section"><div class="wrap">
-  <div class="stats rv">
+  <div class="stats stats-3 rv">
     <div><b>10</b><span>{t("días de taller · 20–30 ago.", "workshop days · 20–30 Aug")}</span></div>
     <div><b>3</b><span>{t("becas completas para estudiantes locales", "full grants for local students")}</span></div>
-    <div><b>2</b><span>{t("ayudas a la producción", "production grants")}</span></div>
     <div><b>15</b><span>{t("charlas invitadas", "guest talks")}</span></div>
   </div>
 </div></section>
@@ -829,7 +834,7 @@ def cal2027():
              (t("Marzo", "March"), t("Selección", "Selection"), t("Comunicamos la resolución a todas las empresas candidatas.", "We let every applicant company know the outcome.")),
              (t("20–31 agosto", "20–31 August"), "Efímera Lab", t("Taller con estudiantes de la AA School de Londres.", "Workshop with students from London's AA School.")),
              (t("1–30 septiembre", "1–30 September"), t("Instalaciones de marcas y artistas", "Brand and artist installations"), t("Abiertas al público en los siete espacios durante todo el mes.", "Open to the public in all seven venues throughout the month.")),
-             (t("Finales de septiembre", "Late September"), t("Premio EFÍMERA", "EFÍMERA Award"), t("Fallo del premio a la mejor instalación en la clausura.", "The award for the best installation is announced at the closing.")),
+             (t("Finales de septiembre", "Late September"), t("Premio EFÍMERA", "EFÍMERA Award"), t("Entrega de premios a la mejor instalación, en la clausura.", "Award ceremony for the best installation, at the closing.")),
              (t("30 septiembre", "30 September"), t("Desmontaje", "Dismantling"), t("Las instalaciones se retiran y cada patio vuelve a ser patio.", "The installations come down and each patio is a patio again."))]
     return '<ol class="cal-2027">' + "".join(f'<li class="rv"><span class="when">{w} 2027</span><div><h3>{h}</h3><p>{d}</p></div></li>' for w, h, d in items) + "</ol>"
 
@@ -970,7 +975,7 @@ def patrocinio():
   <div class="two-col" style="align-items:end">
     <div class="rv"><span class="label" style="opacity:.75">{t("Premio EFÍMERA 2027", "EFÍMERA Award 2027")}</span>
       <h2 class="d d-l mt-s">{t('Premio a la mejor <span class="it">instalación</span>.', 'Award for the best <span class="it">installation</span>.')}</h2></div>
-    <p class="lead rv">{t("Cada edición, un jurado elige la instalación que mejor ha unido marca, arte y lugar. El fallo se anuncia en la clausura, a finales de septiembre.", "Each edition, a jury chooses the installation that best brings together brand, art and place. The winner is announced at the closing, at the end of September.")}</p>
+    <p class="lead rv">{t("Cada edición, un jurado elige la instalación que mejor ha unido marca, arte y lugar. La entrega de premios es en la clausura, a finales de septiembre.", "Each edition, a jury chooses the installation that best brings together brand, art and place. The award ceremony takes place at the closing, at the end of September.")}</p>
   </div>
   <div class="reasons rv">{award}</div>
 </div></section>
@@ -1252,7 +1257,7 @@ def legales():
 def build_all():
     global LANG
     for LANG in ("es", "en"):
-        home(); festival(); obras(); lab(); patrocinio(); recorrido(); archivo(); y2027(); contacto(); legales()
+        home(); festival(); obras(); lab(); patrocinio(); archivo(); y2027(); contacto(); legales()
 
 
 if __name__ == "__main__":

@@ -55,7 +55,7 @@ body { font-family: var(--b); color: var(--tinta); font-size: 10.5pt; line-heigh
 .stats > div { padding: 6mm 5mm 6mm 0; border-bottom: .6pt solid rgba(255,255,255,.3); }
 .stats b { display: block; font-family: var(--d); font-weight: 400; font-size: 30pt; letter-spacing: -.05em; line-height: 1; color: var(--arena); }
 .stats span { display: block; margin-top: 2.5mm; font-weight: 700; font-size: 9pt; }
-.strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin-top: 8mm; }
+.strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4mm; margin-top: 8mm; }
 .strip img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
 .strip small { display: block; margin-top: 1.5mm; font-size: 7.5pt; opacity: .7; }
 /* mapa */
@@ -276,7 +276,7 @@ def deck():
       <ul class="glist">{gl}</ul></div>
     <div class="award"><span class="label" style="opacity:.6">{t("Premio EFÍMERA 2027", "EFÍMERA Award 2027")}</span>
       <h2 class="d" style="font-size:22pt">{t('Premio a la mejor <span class="it">instalación</span>.', 'Award for the best <span class="it">installation</span>.')}</h2>
-      <p>{t("Un jurado elige la instalación que mejor ha unido marca, arte y lugar. El fallo se anuncia en la clausura, a finales de septiembre.", "A jury chooses the installation that best brings together brand, art and place. The winner is announced at the closing, at the end of September.")}</p>
+      <p>{t("Un jurado elige la instalación que mejor ha unido marca, arte y lugar. La entrega de premios es en la clausura, a finales de septiembre.", "A jury chooses the installation that best brings together brand, art and place. The award ceremony takes place at the closing, at the end of September.")}</p>
       {aw}</div>
   </div>{foot(L())}
 </section>''')
@@ -300,7 +300,7 @@ def deck():
         (t("Marzo", "March"), t("Selección", "Selection"), t("Comunicamos la resolución a todas las empresas candidatas.", "We let every applicant company know the outcome.")),
         (t("20–31 agosto", "20–31 August"), "Efímera Lab", t("Taller con estudiantes de la AA School de Londres.", "Workshop with students from London's AA School.")),
         (t("1–30 septiembre", "1–30 September"), t("Instalaciones abiertas al público", "Installations open to the public"), t("En los siete espacios, con la agenda profesional en paralelo.", "In all seven venues, with the professional programme alongside.")),
-        (t("Finales de septiembre", "Late September"), t("Premio EFÍMERA", "EFÍMERA Award"), t("Fallo en la clausura.", "Announced at the closing.")),
+        (t("Finales de septiembre", "Late September"), t("Premio EFÍMERA", "EFÍMERA Award"), t("Entrega de premios en la clausura.", "Award ceremony at the closing.")),
         (t("30 septiembre", "30 September"), t("Desmontaje", "Dismantling"), t("Cada patio vuelve a ser patio.", "Each patio is a patio again."))])
     sl.append(f'''<section class="slide cal">
   <span class="label" style="color:var(--arcilla-osc)">{t("Calendario", "Calendar")}</span>
@@ -344,7 +344,7 @@ def main():
     for lang in ("es", "en"):
         build.LANG = lang
         html = D / f"_dosier-{lang}.html"
-        html.write_text(build.keep_mudd(deck()), encoding="utf-8")
+        html.write_text(build.keep_mudd(deck()).replace('src="../assets/', 'src="assets/'), encoding="utf-8")
         out = OUTDIR / DOSIER[lang]
         subprocess.run([chrome, "--headless=new", "--disable-gpu", "--no-pdf-header-footer", f"--user-data-dir={prof}",
                         "--virtual-time-budget=20000", f"--print-to-pdf={out}", html.resolve().as_uri()], check=True, capture_output=True, timeout=180)
