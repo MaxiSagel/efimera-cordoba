@@ -175,7 +175,7 @@ COLABORAN = [("Fundación Kutxabank", "fundacionkutxabank"), ("Keyter Group", "k
              ("Museo de Bellas Artes de Córdoba", "museo_bellasartes_co"), ("Palacio de Viana", "palaciodeviana"),
              ("Asociación Amigos de los Patios Cordobeses", "amigospatioscordobeses"), ("Teulo", "teulo_cpdplatform")]
 
-PONENTES = [("Nina Chaltiel", ("Cofundadora de MUDD Architects · comisaria", "Co-founder of MUDD Architects · curator")),
+PONENTES = [("Nina Chaltiel", ("Cofundadora de MuDD Architects · comisaria", "Co-founder of MuDD Architects · curator")),
             ("Fernando Vacas", ("Músico y productor (Eureka), presidente de la Fundación Artdecor · comisario", "Musician and producer (Eureka), president of Fundación Artdecor · curator")),
             ("James Kingman", ("Associate Director, AKT II", "Associate Director, AKT II")),
             ("Curro Crespo", ("Arquitecto, socio fundador de Amasce · Premio Félix Hernández 2022", "Architect, founding partner of Amasce · Félix Hernández Award 2022")),
@@ -209,8 +209,8 @@ FAQ = [(("¿Qué es EFÍMERA CÓRDOBA?", "What is EFÍMERA CÓRDOBA?"),
         ("No. Todas las obras eran de entrada libre, cada una con el horario de su espacio, y las actividades de cierre también, hasta completar aforo.",
          "No. Every work was free to enter, each with its venue's opening hours, and so were the closing activities, until full capacity.")),
        (("¿Quién está detrás?", "Who is behind it?"),
-        ("La Fundación Artdecor y MUDD Architects, con la Architectural Association School of Architecture de Londres. Comisariado de Nina Chaltiel y Fernando Vacas.",
-         "Fundación Artdecor and MUDD Architects, with the Architectural Association School of Architecture in London. Curated by Nina Chaltiel and Fernando Vacas.")),
+        ("La Fundación Artdecor y MuDD Architects, con la Architectural Association School of Architecture de Londres. Comisariado de Nina Chaltiel y Fernando Vacas.",
+         "Fundación Artdecor and MuDD Architects, with the Architectural Association School of Architecture in London. Curated by Nina Chaltiel and Fernando Vacas.")),
        (("¿Habrá 2027?", "Will there be a 2027 edition?"),
         ("Sí. Efímera Lab, con estudiantes de la AA School, del 20 al 31 de agosto, e instalaciones abiertas al público durante todo septiembre de 2027. Las convocatorias se anunciarán aquí, en el boletín y en @efimera_fest.",
          "Yes. Efímera Lab, with AA School students, from 20 to 31 August, and installations open to the public throughout September 2027. Open calls will be announced here, in the newsletter and on @efimera_fest.")),
@@ -279,7 +279,7 @@ def partners():
     return f'''<section class="partners" aria-label="{t("Quién lo hace posible", "Who makes it possible")}"><div class="wrap grid">
   <div><span class="label">{t("Organizan, con la AA School", "Organised by, with the AA School")}</span><div class="logos">
     <a href="https://www.fundacionartdecor.org" target="_blank" rel="noopener"><img src="{img('img/logos/artdecor.ae34de74.png')}" alt="Fundación Artdecor"></a>
-    <a href="https://www.muddarchitects.com/" target="_blank" rel="noopener"><img src="{img('img/logos/mudd.6f8b5b97.png')}" alt="MUDD Architects"></a>
+    <a href="https://www.muddarchitects.com/" target="_blank" rel="noopener"><img src="{img('img/logos/mudd.6f8b5b97.png')}" alt="MuDD Architects"></a>
     <a class="aa-logo" href="https://www.aaschool.ac.uk" target="_blank" rel="noopener"><img src="{local('assets/logos/aa.svg')}" alt=""><span>Architectural Association<br>School of Architecture</span></a></div></div>
   <div><span class="label">{t("Socios 2027", "2027 partners")}</span><br><a class="aa" href="https://www.shimaseiki.com" target="_blank" rel="noopener">Shima Seiki<small>{t("Partner técnico · tejido 3D", "Technical partner · 3D knitting")}</small></a><br><a class="aa" href="https://www.dezeen.com" target="_blank" rel="noopener">Dezeen<small>{t("Socio de prensa", "Media partner")}</small></a><br><a class="aa" href="https://www.juntadeandalucia.es/cultura/c3a/" target="_blank" rel="noopener">C3A<small>{t("Colaborador y espacio de intervención", "Partner and installation venue")}</small></a></div>
   <div><span class="label">{t("Colaboran", "Supported by")}</span><div class="names">{names}</div></div>
@@ -301,7 +301,7 @@ def footer(key):
     <div><h4>{t("Escríbenos", "Write to us")}</h4>
       <address><a href="mailto:{MAIL}">{MAIL}</a><br><a href="{IG}" target="_blank" rel="noopener">@efimera_fest</a></address>
       <address><strong>Fundación Artdecor</strong><br>C/ Juramento, 1 · 14002 Córdoba</address>
-      <address><strong>MUDD Architects</strong><br>Gallery Building, Carrer de l'Escar, 26 · 08039 Barcelona</address></div>
+      <address><strong>MuDD Architects</strong><br>Gallery Building, Carrer de l'Escar, 26 · 08039 Barcelona</address></div>
     <div class="news"><h3>{t("Avísame cuando llegue 2027", "Tell me when 2027 arrives")}</h3><p>{t("Un correo cuando haya fechas y convocatorias. Nada más.", "One email when dates and open calls are out. Nothing else.")}</p>{news_form(t("¡Hecho! Te escribiremos cuando haya noticias.", "Done! We'll write when there's news."), "f")}</div>
   </div>
   <div class="giant" aria-hidden="true">{MARK_LINE}</div>
@@ -325,6 +325,13 @@ def shell_end():
   </div>
   <div class="btn-row"><button class="btn btn--light" data-ck-all>{t("Aceptar", "Accept")}</button><button class="btn btn--light" data-ck-none>{t("Rechazar", "Reject")}</button><button class="btn btn--light" data-ck-cfg>{t("Configurar", "Settings")}</button></div>
 </div>'''
+
+
+def keep_mudd(html):
+    """MuDD siempre con la u minúscula, también dentro de rótulos en mayúsculas (text-transform)."""
+    import re
+    parts = re.split(r"(<script.*?</script>|<title>.*?</title>|<[^>]+>)", html, flags=re.S)
+    return "".join(p if i % 2 else p.replace("MuDD", 'M<span class="lc">u</span>DD') for i, p in enumerate(parts))
 
 
 def no_widows(html):
@@ -399,7 +406,7 @@ def page(key, title, desc, navkey, body, bloque=None, bloque_txt="#fff", head=""
 </html>'''
     d = OUT / ("en" if LANG == "en" else "")
     d.mkdir(exist_ok=True)
-    (d / fname(key)).write_text(no_widows(html), encoding="utf-8")
+    (d / fname(key)).write_text(keep_mudd(no_widows(html)), encoding="utf-8")
     print("✓", ("en/" if LANG == "en" else "") + fname(key))
 
 
@@ -584,13 +591,13 @@ def festival():
     <article class="member rv"><img src="{img('img/logos/artdecor.ae34de74.png')}" alt="Fundación Artdecor"><span class="label role">{t("Titular y organización", "Owner and organiser")}</span><h3>Fundación Artdecor</h3>
       <p>{t("Nacida en Córdoba a principios de 2020 para transformar la ciudad a través de sus artistas y su cultura, con tres brújulas: ciudadanía, cultura y sostenibilidad.", "Founded in Córdoba in early 2020 to transform the city through its artists and culture, guided by three compasses: citizenship, culture and sustainability.")}</p>
       <div class="foot"><a href="https://www.fundacionartdecor.org" target="_blank" rel="noopener">fundacionartdecor.org ↗</a><a href="https://www.instagram.com/fundacionartdecor/" target="_blank" rel="noopener">@fundacionartdecor ↗</a></div></article>
-    <article class="member rv"><img src="{img('img/logos/mudd.6f8b5b97.png')}" alt="MUDD Architects"><span class="label role">{t("Dirección artística · Efímera Lab", "Artistic direction · Efímera Lab")}</span><h3>MUDD Architects</h3>
+    <article class="member rv"><img src="{img('img/logos/mudd.6f8b5b97.png')}" alt="MuDD Architects"><span class="label role">{t("Dirección artística · Efímera Lab", "Artistic direction · Efímera Lab")}</span><h3>MuDD Architects</h3>
       <p>{t("Estudio que une tecnología de vanguardia y materiales naturales. Su investigación con drones y tejidos 3D se ha presentado en ACADIA y en los Dezeen Awards.", "A studio combining cutting-edge technology with natural materials. Its research on drones and 3D textiles has been presented at ACADIA and the Dezeen Awards.")}</p>
       <div class="foot"><a href="https://www.muddarchitects.com/" target="_blank" rel="noopener">muddarchitects.com ↗</a><a href="https://www.instagram.com/mudd_architects/" target="_blank" rel="noopener">@mudd_architects ↗</a></div></article>
     <article class="member rv"><img src="{local('assets/logos/aa.svg')}" alt="Architectural Association" style="height:56px;width:auto"><span class="label role">{t("Con", "With")}</span><h3>Architectural Association School of Architecture</h3>
       <p>{t("La AA School de Londres participa a través de su programa de verano: sus estudiantes trabajan en el Efímera Lab junto a participantes locales, nacionales e internacionales.", "London's AA School takes part through its summer programme: its students work at the Efímera Lab alongside local, national and international participants.")}</p>
       <div class="foot"><a href="https://www.aaschool.ac.uk" target="_blank" rel="noopener">aaschool.ac.uk ↗</a></div></article>
-    <article class="member member--accent rv"><span class="label role">{t("Comisaria", "Curator")}</span><h3>Nina Chaltiel</h3><p>{t("Cofundadora de MUDD Architects. Dirige el Efímera Lab.", "Co-founder of MUDD Architects. Leads the Efímera Lab.")}</p></article>
+    <article class="member member--accent rv"><span class="label role">{t("Comisaria", "Curator")}</span><h3>Nina Chaltiel</h3><p>{t("Cofundadora de MuDD Architects. Dirige el Efímera Lab.", "Co-founder of MuDD Architects. Leads the Efímera Lab.")}</p></article>
     <article class="member member--accent rv"><span class="label role">{t("Comisario", "Curator")}</span><h3>Fernando Vacas</h3><p>{t("Músico y productor (Eureka) y presidente de la Fundación Artdecor. Nominado a los Grammy Latinos; ha trabajado con Rosalía, Estrella Morente o Niño de Elche.", "Musician and producer (Eureka) and president of Fundación Artdecor. Latin Grammy nominee; he has worked with Rosalía, Estrella Morente and Niño de Elche.")}</p></article>
     <article class="member rv"><span class="label role">{t("El escenario", "The setting")}</span><h3>{t("El casco histórico", "The historic centre")}</h3><p>{t("Patrimonio Mundial. Patios, capillas y palacios que abren sus puertas a la creación contemporánea.", "World Heritage. Patios, chapels and palaces that open their doors to contemporary creation.")}</p><div class="foot"><a href="{u("recorrido")}">{t("Ver el recorrido →", "See the route →")}</a></div></article>
   </div>
@@ -690,7 +697,7 @@ def lab():
   <div class="rv"><span class="label">{t("Cómo funciona", "How it works")}</span><h2 class="d d-l mt-s">{t('Prototipos de día, <span class="it">ideas</span> al atardecer.', 'Prototypes by day, <span class="it">ideas</span> at dusk.')}</h2></div>
   <div class="rv">
     <p class="lead">{t("Por la mañana y por la tarde: equipos, materiales, prototipos y revisiones. A mediodía y al caer el sol: charlas invitadas.", "Morning and afternoon: teams, materials, prototypes and reviews. At midday and at sunset: guest talks.")}</p>
-    <p>{t("Lo dirige Nina Chaltiel (MUDD Architects) y reúne a participantes locales, nacionales e internacionales con estudiantes de la AA School de Londres. Las becas y ayudas se convocaron del 1 al 15 de julio de 2026: tres becas completas para estudiantes locales y dos ayudas a la producción para artistas, profesionales y colectivos.", "Led by Nina Chaltiel (MUDD Architects), it brings together local, national and international participants with students from London's AA School. Grants were open from 1 to 15 July 2026: three full grants for local students and two production grants for artists, professionals and collectives.")}</p>
+    <p>{t("Lo dirige Nina Chaltiel (MuDD Architects) y reúne a participantes locales, nacionales e internacionales con estudiantes de la AA School de Londres. Las becas y ayudas se convocaron del 1 al 15 de julio de 2026: tres becas completas para estudiantes locales y dos ayudas a la producción para artistas, profesionales y colectivos.", "Led by Nina Chaltiel (MuDD Architects), it brings together local, national and international participants with students from London's AA School. Grants were open from 1 to 15 July 2026: three full grants for local students and two production grants for artists, professionals and collectives.")}</p>
   </div>
 </div></section>
 
@@ -995,7 +1002,7 @@ def patrocinio():
     <div class="rv"><span class="k">a.</span><h3>{t("Patrimonio Mundial", "World Heritage")}</h3><p>{t("Patios, capillas y palacios del casco histórico de Córdoba, declarado por la UNESCO, como escenario.", "Patios, chapels and palaces in Córdoba's UNESCO-listed historic centre as the setting.")}</p></div>
     <div class="rv"><span class="k">b.</span><h3>{t("Arte con nombre propio", "Art with a name")}</h3><p>{t("Tu marca no patrocina un logo: firma una obra, con un artista o con su propio equipo.", "Your brand doesn't sponsor a logo: it signs a work, with an artist or its own team.")}</p></div>
     <div class="rv"><span class="k">c.</span><h3>{t("Público y negocio", "Public and business")}</h3><p>{t("Entrada libre para miles de visitantes y encuentros con interioristas, arquitectos y hoteleros.", "Free entry for thousands of visitors, and meetings with interior designers, architects and hoteliers.")}</p></div>
-    <div class="rv"><span class="k">d.</span><h3>{t("Red internacional", "International network")}</h3><p>{t("MUDD Architects, la AA School de Londres, Shima Seiki y Dezeen.", "MUDD Architects, London's AA School, Shima Seiki and Dezeen.")}</p></div>
+    <div class="rv"><span class="k">d.</span><h3>{t("Red internacional", "International network")}</h3><p>{t("MuDD Architects, la AA School de Londres, Shima Seiki y Dezeen.", "MuDD Architects, London's AA School, Shima Seiki and Dezeen.")}</p></div>
   </div>
 </div></section>
 
@@ -1151,7 +1158,7 @@ def contacto():
     <p><a class="link" href="{IG}" target="_blank" rel="noopener">@efimera_fest ↗</a></p>
     <div class="mt-l"><span class="label">{t("Dónde estamos", "Where we are")}</span>
       <p class="mt-s"><strong>Fundación Artdecor</strong><br>C/ Juramento, 1 · 14002 Córdoba</p>
-      <p><strong>MUDD Architects</strong><br>Gallery Building, Carrer de l'Escar, 26 · 08039 Barcelona</p></div>
+      <p><strong>MuDD Architects</strong><br>Gallery Building, Carrer de l'Escar, 26 · 08039 Barcelona</p></div>
     <p class="mt-m">{t("¿Eres una empresa?", "Are you a company?")} <a class="link" href="{u("patrocinio", "candidatura")}">{t("Presenta tu candidatura", "Submit your application")}</a></p>
     <p>{t("¿Eres periodista?", "Are you a journalist?")} <a class="link" href="{u("archivo", "prensa")}">{t("Solicitud de prensa", "Press request")}</a></p>
   </div>
@@ -1177,7 +1184,7 @@ def legales():
     prevail = "" if LANG == "es" else '<p class="note">This English version is provided for information only. In case of discrepancy, the Spanish version prevails.</p>'
     aviso = prevail + t(f'''<h2>Titular</h2><p>En cumplimiento del artículo 10 de la Ley 34/2002 (LSSI-CE), este sitio es titularidad de:</p>
 <ul><li><strong>Fundación Artdecor</strong> · CIF G16673691</li><li>C/ Juramento, 1 · 14002 Córdoba</li><li>{MAIL}</li><li>Registro de Fundaciones de Andalucía, n.º [POR CONFIRMAR]</li></ul>
-<p>EFÍMERA CÓRDOBA es un proyecto de la Fundación Artdecor, organizado junto a MUDD Architects y la Architectural Association School of Architecture (Londres).</p>
+<p>EFÍMERA CÓRDOBA es un proyecto de la Fundación Artdecor, organizado junto a MuDD Architects y la Architectural Association School of Architecture (Londres).</p>
 <h2>Objeto</h2><p>Informar sobre el festival, conservar el archivo de sus ediciones y permitir suscribirse a sus novedades y, cuando estén abiertas, participar en sus convocatorias.</p>
 <h2>Condiciones de uso</h2><p>Al navegar aceptas usar el sitio de forma lícita y sin dañar su funcionamiento ni derechos de terceros. La Fundación puede modificar contenidos y condiciones en cualquier momento.</p>
 <h2>Propiedad intelectual</h2><p>Textos, diseño, logotipos y código pertenecen a la Fundación Artdecor o a sus titulares. Las obras, sus imágenes y piezas audiovisuales pertenecen a sus autoras y autores y a sus fotógrafas y fotógrafos. Puedes compartir los contenidos citando fuente y autoría; cualquier otro uso, especialmente comercial, requiere autorización previa por escrito.</p>
@@ -1186,7 +1193,7 @@ def legales():
 <h2>Legislación</h2><p>Se rige por la legislación española; para cualquier controversia, juzgados y tribunales de Córdoba, salvo que la normativa de consumidores disponga otra cosa.</p>''',
                             f'''<h2>Owner</h2><p>In accordance with article 10 of Spanish Law 34/2002 (LSSI-CE), this site is owned by:</p>
 <ul><li><strong>Fundación Artdecor</strong> · Tax ID G16673691</li><li>C/ Juramento, 1 · 14002 Córdoba, Spain</li><li>{MAIL}</li><li>Andalusian Registry of Foundations, no. [TO BE CONFIRMED]</li></ul>
-<p>EFÍMERA CÓRDOBA is a project of Fundación Artdecor, organised with MUDD Architects and the Architectural Association School of Architecture (London).</p>
+<p>EFÍMERA CÓRDOBA is a project of Fundación Artdecor, organised with MuDD Architects and the Architectural Association School of Architecture (London).</p>
 <h2>Purpose</h2><p>To provide information about the festival, keep the archive of its editions and allow you to subscribe to its news and, when open, to apply to its calls.</p>
 <h2>Terms of use</h2><p>By browsing, you agree to use the site lawfully and without harming its operation or the rights of third parties. The Foundation may change content and terms at any time.</p>
 <h2>Intellectual property</h2><p>Texts, design, logos and code belong to Fundación Artdecor or their owners. The works, their images and films belong to their authors and photographers. You may share content citing source and authorship; any other use, especially commercial, requires prior written permission.</p>

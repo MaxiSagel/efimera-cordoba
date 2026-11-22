@@ -165,6 +165,7 @@ CSS += """
 
 
 CSS += """
+.lc { text-transform: none; }
 /* sin bloques negros: paleta con texto negro */
 .arena-osc { background: var(--arena-osc); color: var(--tinta); }
 .stats, .stats > div { border-color: rgba(20,18,16,.3) !important; }
@@ -190,7 +191,7 @@ def deck():
     sl.append(f'''<section class="slide arcilla cover" style="padding-right:calc(50% + 14mm)">
   <div class="row"><span class="label">{t("Segunda edición · septiembre 2027 · Córdoba", "Second edition · September 2027 · Córdoba")}<br>{t("Festival internacional de arquitectura efímera", "International festival of ephemeral architecture")}</span></div>
   <div>{MARK.replace('class="mark"', 'class="mark big"')}<p class="sub" style="margin-top:9mm">{t("Convocatoria de empresas&nbsp;2027", "2027 brand open&nbsp;call")}</p></div>
-  <div>{dl}<p class="label" style="margin-top:6mm">Fundación Artdecor · MUDD Architects · AA School London</p></div>
+  <div>{dl}<p class="label" style="margin-top:6mm">Fundación Artdecor · MuDD Architects · AA School London</p></div>
   <div class="half">{pic("portada")}</div>
 </section>''')
     # la propuesta
@@ -316,7 +317,7 @@ def deck():
       <div class="box"><span class="label" style="color:var(--arcilla-osc)">{t("Partner técnico", "Technical partner")}</span><h2 class="d" style="font-size:17pt;margin:2mm 0 2.5mm">Shima Seiki</h2><p style="font-size:9pt">{T(SHIMA)}</p></div>
       <div class="box"><span class="label" style="color:var(--arcilla-osc)">{t("Socio de prensa", "Media partner")}</span><h2 class="d" style="font-size:17pt;margin:2mm 0 2.5mm">Dezeen</h2><p style="font-size:9pt">{T(DEZEEN)}</p></div></div>
     <div><span class="label">{t("Organizan, con la AA School", "Organised by, with the AA School")}</span>
-      <div class="logos"><img src="{img('img/logos/artdecor.ae34de74.png')}" alt="Fundación Artdecor"><img src="{img('img/logos/mudd.6f8b5b97.png')}" alt="MUDD Architects"><span class="aa-logo"><img src="assets/logos/aa.svg" alt="Architectural Association"><span>Architectural Association<br>School of Architecture</span></span></div>
+      <div class="logos"><img src="{img('img/logos/artdecor.ae34de74.png')}" alt="Fundación Artdecor"><img src="{img('img/logos/mudd.6f8b5b97.png')}" alt="MuDD Architects"><span class="aa-logo"><img src="assets/logos/aa.svg" alt="Architectural Association"><span>Architectural Association<br>School of Architecture</span></span></div>
       <p>{t("Con la Architectural Association School of Architecture de Londres. Comisariado de Nina Chaltiel y Fernando Vacas.", "With the Architectural Association School of Architecture, London. Curated by Nina Chaltiel and Fernando Vacas.")}</p>
       <p class="label" style="margin-top:6mm">{t("Ya confirmados para 2027", "Already confirmed for 2027")}</p><div class="names"><span>Keyter Group</span><span>{t("C3A · colaborador y espacio de intervención", "C3A · partner and installation venue")}</span></div>
       <p class="label" style="margin-top:6mm">{t("Colaboraron en 2026", "2026 supporters")}</p><div class="names">{names}</div></div>
@@ -343,7 +344,7 @@ def main():
     for lang in ("es", "en"):
         build.LANG = lang
         html = D / f"_dosier-{lang}.html"
-        html.write_text(deck(), encoding="utf-8")
+        html.write_text(build.keep_mudd(deck()), encoding="utf-8")
         out = OUTDIR / DOSIER[lang]
         subprocess.run([chrome, "--headless=new", "--disable-gpu", "--no-pdf-header-footer", f"--user-data-dir={prof}",
                         "--virtual-time-budget=20000", f"--print-to-pdf={out}", html.resolve().as_uri()], check=True, capture_output=True, timeout=180)

@@ -669,3 +669,4 @@ html[lang^="en"] .pending::before { content: "To come · "; }
   .spaces > article:last-child { flex-direction: column; }
   .spaces > article figure { aspect-ratio: 4 / 3 !important; }
 }
+.lc { text-transform: none; }
