@@ -138,10 +138,10 @@ CSS += """
 IMAGENES = {
     "portada": ("assets/dosier/fotos/malla-plaza.jpg", ("Foto de portada", "Cover photo")),
     "pausa-1": ("assets/dosier/fotos/globos-muro.jpg", ("Foto a página completa", "Full-page photo")),
-    "render-1": (None, ("Render de una instalación grande", "Render of a large installation")),
-    "render-2": (None, ("Render de una instalación grande", "Render of a large installation")),
-    "pausa-2": (None, ("Foto o render a página completa", "Full-page photo or render")),
-    "pausa-3": (None, ("Foto o render a página completa", "Full-page photo or render")),
+    "render-1": ("assets/dosier/fotos/sagrado-florecer-dorado.jpg", ("Render de una instalación grande", "Render of a large installation")),
+    "render-2": ("assets/dosier/fotos/lo-que-permanece-circulos.jpg", ("Render de una instalación grande", "Render of a large installation")),
+    "pausa-2": ("assets/dosier/fotos/globos-capuchinos.jpg", ("Foto o render a página completa", "Full-page photo or render")),
+    "pausa-3": ("assets/dosier/fotos/globos-c3a.jpg", ("Foto o render a página completa", "Full-page photo or render")),
 }
 
 
