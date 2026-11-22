@@ -856,7 +856,7 @@ PLAZAS, LIBRES = 15, 14          # LIBRES: actualizar cuando se confirme cada em
 
 CRITERIA = [  # BORRADOR: revisar con la dirección artística
     (("La idea", "The idea"), ("Originalidad y fuerza de la propuesta.", "Originality and strength of the proposal.")),
-    (("El diálogo con el lugar", "Dialogue with the place"), ("Que la instalación entienda el espacio patrimonial y lo respete.", "An installation that understands and respects its heritage setting.")),
+    (("El diálogo con el lugar", "Dialogue with the place"), ("Que la instalación entienda el espacio y lo respete.", "An installation that understands and respects its setting.")),
     (("Lo que solo vosotros hacéis", "What only you can do"), ("El uso de vuestro material, producto o tecnología dentro de la obra.", "How your material, product or technology lives inside the work.")),
     (("La experiencia", "The experience"), ("Lo que vive quien entra: interacción, recorrido, sorpresa.", "What visitors live: interaction, journey, surprise.")),
     (("Viabilidad", "Feasibility"), ("Que se pueda producir, montar y desmontar sin dejar huella.", "That it can be produced, installed and removed without leaving a trace.")),
@@ -870,12 +870,12 @@ FAQ = [  # BORRADOR: revisar antes de dar por buenas las respuestas
      ("Depende del espacio y de la escala de la instalación. Las condiciones están en el dosier, que enviamos a las empresas candidatas. No es un alquiler: es la oportunidad de crear una obra y presentar vuestra marca en ella.",
       "It depends on the venue and the scale of the installation. The terms are in the deck we send to applicants. It isn't a rental: it's the chance to create a work and present your brand through it.")),
     (("¿Qué incluye?", "What's included?"),
-     ("Un espacio patrimonial durante todo septiembre, un asistente de producción gratuito, el acompañamiento de la dirección artística y encuentros con la lista de invitados profesionales. Además, fotos y vídeo profesionales de vuestra instalación, mención en la nota de prensa, en Dezeen y en las redes del festival.",
-      "A heritage venue for all of September, a free production assistant, support from the artistic direction and meetings with the professional guest list. Plus professional photos and video of your installation, and mentions in the press release, in Dezeen and on the festival's social media.")),
+     ("Un espacio del festival durante todo septiembre, un asistente de producción gratuito, el acompañamiento de la dirección artística y encuentros con la lista de invitados profesionales. Además, fotos y vídeo profesionales de vuestra instalación, mención en la nota de prensa, en Dezeen y en las redes del festival.",
+      "A festival venue for all of September, a free production assistant, support from the artistic direction and meetings with the professional guest list. Plus professional photos and video of your installation, and mentions in the press release, in Dezeen and on the festival's social media.")),
     (("¿Podemos elegir el espacio?", "Can we choose the venue?"),
      ("Marcad en la candidatura los que más os interesan. La dirección artística asigna cada espacio según vuestra preferencia y la escala de la propuesta.",
       "Tick the ones you like best in your application. The artistic direction assigns each venue based on your preference and the scale of the proposal.")),
-    (("¿Cómo se trabaja en un edificio patrimonial?", "How do you work in a heritage building?"),
+    (("¿Cómo se trabaja en los espacios del festival?", "How do you work in the festival venues?"),
      ("El asistente de producción revisa con vosotros la propuesta técnica y el montaje, para que la instalación se monte y se desmonte sin dejar huella.",
       "The production assistant reviews the technical proposal and installation with you, so the piece goes up and comes down without leaving a trace.")),
     (("¿Puede aparecer nuestro producto?", "Can our product be part of it?"),
@@ -918,7 +918,7 @@ GETS = [  # confirmado por la organización (noviembre 2026)
     (("Redes del festival", "Festival social media"), ("Publicaciones sobre vuestra instalación en las redes de EFÍMERA, que en 2026 sumaron 3,2 M de visualizaciones.", "Posts about your installation on EFÍMERA's channels, which reached 3.2M views in 2026.")),
 ]
 
-INCLUDES = [("Un espacio patrimonial para tu instalación durante todo septiembre de 2027.", "A heritage venue for your installation throughout September 2027."),
+INCLUDES = [("Un espacio del festival para tu instalación durante todo septiembre de 2027.", "A festival venue for your installation throughout September 2027."),
             ("Un asistente de producción gratuito que te acompaña en la producción y el montaje.", "A free production assistant to support you with production and installation."),
             ("Acompañamiento de la dirección artística y, si lo necesitas, propuesta de artistas.", "Support from the artistic direction and, if you need it, artist suggestions."),
             ("El conocimiento técnico de Shima Seiki en tejido 3D.", "Shima Seiki's technical know-how in 3D knitting."),
@@ -928,7 +928,7 @@ INCLUDES = [("Un espacio patrimonial para tu instalación durante todo septiembr
 
 
 def hero_figs():
-    figs = [(T(n), T(l)) for n, l in STATS_2026[:3]] + [("7", t("espacios: seis patrimoniales y el C3A", "venues: six heritage sites and the C3A"))]
+    figs = [(T(n), T(l)) for n, l in STATS_2026[:3]] + [("7", t("espacios en Córdoba", "venues in Córdoba"))]
     return '<dl class="hero-figs rv">' + "".join(f"<div><dt>{n}</dt><dd>{l}</dd></div>" for n, l in figs) + "</dl>"
 
 
@@ -1001,7 +1001,7 @@ def patrocinio():
 </div>
 <div class="panel" id="p-espacios" role="tabpanel" data-panel>
 <section class="section bg-cal" id="espacios"><div class="wrap">
-  <div class="head rv"><div><h2 class="d d-l">{t('Siete <span class="it">espacios</span>', 'Seven <span class="it">venues</span>')}</h2><p>{t("Patios, capillas y palacios del casco histórico, Patrimonio Mundial, y el C3A junto al Guadalquivir. 15 instalaciones repartidas en siete espacios.", "Patios, chapels and palaces in the World Heritage historic centre, plus the C3A by the Guadalquivir. 15 installations across seven venues.")}</p></div></div>
+  <div class="head rv"><div><h2 class="d d-l">{t('Siete <span class="it">espacios</span>', 'Seven <span class="it">venues</span>')}</h2><p>{t("Siete espacios de Córdoba, de los patios del casco histórico a la orilla del Guadalquivir. 15 instalaciones repartidas entre todos.", "Seven venues in Córdoba, from the patios of the historic centre to the banks of the Guadalquivir. 15 installations spread across them.")}</p></div></div>
   <div class="map-row rv"><figure class="map-art">{mapa_svg()}<figcaption>{t("Mapa esquemático, no a escala.", "Schematic map, not to scale.")}</figcaption></figure>
     <ol class="map-list">{"".join(f'<li><span class="n">{x["n"]}</span><div><strong>{x["name"]}</strong><small>{x["addr"] or "Córdoba"}</small></div></li>' for x in SPACES)}</ol></div>
   <div class="spaces mt-l">{sp}</div>
@@ -1026,7 +1026,7 @@ def patrocinio():
 <section class="section"><div class="wrap two-col">
   <div class="rv"><span class="label" style="color:var(--almagra)">{t("Participar", "Taking part")}</span>
     <h2 class="d d-l mt-s">{t('No alquilas un espacio: <span class="it">firmas una obra</span>.', "You don't rent a venue: <span class='it'>you sign a work</span>.")}</h2>
-    <p class="lead mt-m">{t("Las empresas seleccionadas no pagan un alquiler. Pagan la oportunidad de crear, con un artista o con su equipo, una instalación en un espacio patrimonial y de presentar su marca ante miles de visitantes y una lista de invitados profesionales.", "Selected companies don't pay rent. They pay for the opportunity to create, with an artist or their own team, an installation in a heritage venue, and to present their brand to thousands of visitors and a list of professional guests.")}</p>
+    <p class="lead mt-m">{t("Las empresas seleccionadas no pagan un alquiler. Pagan la oportunidad de crear, con un artista o con su equipo, una instalación en uno de los espacios del festival y de presentar su marca ante miles de visitantes y una lista de invitados profesionales.", "Selected companies don't pay rent. They pay for the opportunity to create, with an artist or their own team, an installation in one of the festival's venues, and to present their brand to thousands of visitors and a list of professional guests.")}</p>
     <p class="mt-m">{t("Las condiciones económicas están en el dosier, que enviamos a las empresas candidatas.", "The financial terms are in the deck, which we send to applicant companies.")}</p>
     <div class="btn-row mt-m">{btn(t("Solicitar dosier", "Request the deck"), "#candidatura", "btn--solid")}</div></div>
   <div class="rv"><span class="label">{t("Qué incluye", "What's included")}</span><ul class="includes mt-s">{incl}</ul></div>

@@ -229,7 +229,7 @@ def deck():
     sl.append(f'''<section class="slide arcilla cover" style="padding-right:calc(50% + 14mm)">
   <div class="row"><span class="label">{t("Segunda edición · septiembre 2027 · Córdoba", "Second edition · September 2027 · Córdoba")}<br>{t("Festival internacional de arquitectura efímera", "International festival of ephemeral architecture")}</span></div>
   <div><img class="emblem-cover" src="{img('assets/logos/emblema.svg')}" alt="">{MARK.replace('class="mark"', 'class="mark big"')}<p class="sub" style="margin-top:9mm">{t("Convocatoria de empresas&nbsp;2027", "2027 brand open&nbsp;call")}</p>
-    <p class="promise"><span>{t("15 plazas para empresas", "15 places for companies")}</span><span>{t("6 espacios patrimoniales y el C3A", "6 heritage venues and the C3A")}</span></p></div>
+    <p class="promise"><span>{t("15 plazas para empresas", "15 places for companies")}</span><span>{t("7 espacios en Córdoba", "7 venues in Córdoba")}</span></p></div>
   <div>{dl}<p class="label" style="margin-top:6mm">Fundación Artdecor · MuDD Architects · AA School London</p></div>
   <div class="half">{pic("portada")}</div>
 </section>''')
@@ -290,7 +290,7 @@ def deck():
   <div class="mapwrap"><div>{build.mapa_svg()}</div>
     <div><span class="label" style="color:var(--arcilla-osc)">{t("Los espacios", "The venues")}</span>
       <h1 class="d" style="font-size:28pt;margin:5mm 0 3mm">{t('La ciudad como <span class="it">museo</span>.', 'The city as a <span class="it">museum</span>.')}</h1>
-      <p style="margin-bottom:6mm">{t("Seis paradas a pie por el casco histórico, el C3A al otro lado del río y 15 instalaciones en total.", "Six stops on foot through the historic centre, the C3A across the river, and 15 installations in total.")}</p>
+      <p style="margin-bottom:6mm">{t("Siete espacios por la ciudad y 15 instalaciones en total.", "Seven venues across the city and 15 installations in total.")}</p>
       <ol class="mlist">{ml}</ol></div></div>
 </section>''')
     # espacios: una sola página con los siete
@@ -299,7 +299,7 @@ def deck():
     credits = " · ".join(T(x["credit"]) for x in SPACES if x.get("credit"))
     sl.append(f'''<section class="slide spaces7">
   <span class="label" style="color:var(--arcilla-osc)">{t("Los espacios", "The venues")}</span>
-  <h1 class="d" style="font-size:24pt;margin:4mm 0 6mm">{t('Seis patios y palacios <span class="it">y el C3A</span>.', 'Six patios and palaces <span class="it">and the C3A</span>.')}</h1>
+  <h1 class="d" style="font-size:24pt;margin:4mm 0 6mm">{t('Siete espacios, <span class="it">una ciudad</span>.', 'Seven venues, <span class="it">one city</span>.')}</h1>
   <div class="grid7">{cards}
     <div class="note"><p>{t("Del 1 al 30 de septiembre de 2027, con varias instalaciones por espacio. La dirección artística asigna cada espacio según la propuesta.", "From 1 to 30 September 2027, with several installations per venue. The artistic direction assigns each venue according to the proposal.")}</p>{('<small>' + credits + '</small>') if credits else ""}</div>
   </div>{foot(L())}
@@ -333,7 +333,7 @@ def deck():
     sl.append(f'''<section class="slide arena">
   <span class="label" style="color:var(--arcilla-osc)">{t("Participar", "Taking part")}</span>
   <h1 class="d" style="font-size:28pt;margin:5mm 0 3mm">{t('No alquilas un espacio: <span class="it">firmas una obra</span>.', "You don't rent a venue: <span class='it'>you sign a work</span>.")}</h1>
-  <p style="max-width:230mm;margin-bottom:7mm">{t("Lo que paga una empresa seleccionada no es un alquiler: es la oportunidad de crear, con un artista o con su equipo, una instalación en un espacio patrimonial y de presentar su marca ante miles de visitantes y una lista de invitados profesionales.", "What a selected company pays is not rent: it's the opportunity to create, with an artist or its own team, an installation in a heritage venue, and to present its brand to thousands of visitors and a list of professional guests.")}</p>
+  <p style="max-width:230mm;margin-bottom:7mm">{t("Lo que paga una empresa seleccionada no es un alquiler: es la oportunidad de crear, con un artista o con su equipo, una instalación en uno de los espacios del festival y de presentar su marca ante miles de visitantes y una lista de invitados profesionales.", "What a selected company pays is not rent: it's the opportunity to create, with an artist or its own team, an installation in one of the festival's venues, and to present its brand to thousands of visitors and a list of professional guests.")}</p>
   <div class="fee fee2">
     <div><span class="label" style="opacity:.7">{t("Cuota de participación", "Participation fee")}</span><b>{t("Desde 3.000 €", "From €3,000")}</b></div>
       <ul><li>{t("Según el espacio y la escala de la instalación. Para todo septiembre de 2027.", "Depending on the venue and the scale of the installation. For all of September 2027.")}</li>
@@ -371,7 +371,7 @@ def deck():
       <p class="label" style="margin-top:6mm">{t("Colaboraron en 2026", "2026 supporters")}</p><div class="names">{names}</div></div>
   </div>{foot(L())}
 </section>''')
-    sl.append(full("pausa-3"))
+    # (página completa del C3A con globos: quitada a petición del cliente)
     # contacto
     web = build.SITE + ("en/" + build.fname("patrocinio", "en") if build.LANG == "en" else build.fname("patrocinio", "es")) + "#candidatura"
     sl.append(f'''<section class="slide arcilla contact">
