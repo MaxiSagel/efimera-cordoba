@@ -158,7 +158,7 @@ CSS += """
 
 # IMÁGENES DEL DOSIER: pon la ruta de la foto en su hueco (None = hueco vacío reservado)
 IMAGENES = {
-    "portada": ("assets/dosier/fotos/portada-globos-sol.jpg", ("Foto de portada", "Cover photo")),
+    "portada": ("assets/dosier/fotos/portada-vertical.jpg", ("Foto de portada", "Cover photo")),
     "pausa-1": ("assets/dosier/fotos/globos-muro.jpg", ("Foto a página completa", "Full-page photo")),
     "render-1": ("assets/dosier/fotos/sagrado-florecer-dorado.jpg", ("Render de una instalación grande", "Render of a large installation")),
     "render-2": ("assets/dosier/fotos/lo-que-permanece-circulos.jpg", ("Render de una instalación grande", "Render of a large installation")),
