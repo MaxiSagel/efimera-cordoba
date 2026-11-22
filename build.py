@@ -803,7 +803,7 @@ def mapa_svg():
 <path d="M-30 880 C 200 850, 380 830, 520 765 S 680 640, 730 600" fill="none" stroke="{arena_o}" stroke-width="58" stroke-linecap="butt"/>
 <path d="M-30 880 C 200 850, 380 830, 520 765 S 680 640, 730 600" fill="none" stroke="{arena}" stroke-width="2" stroke-dasharray="2 14" opacity=".9"/>
 <text x="230" y="848" transform="rotate(-6 230 848)" font-family="{F_S}" font-style="italic" font-size="22" fill="{crema}">Río Guadalquivir</text>
-<line x1="497" y1="728" x2="552" y2="800" stroke="{ink}" stroke-width="9" stroke-linecap="round"/>
+<line x1="497" y1="728" x2="552" y2="800" stroke="{ink}" stroke-width="3" stroke-linecap="round" opacity=".55"/>
 <text x="470" y="862" text-anchor="end" font-family="{F_S}" font-style="italic" font-size="19" fill="{ink}">Puente Romano</text>
 <g transform="translate(296 650)"><rect width="46" height="34" fill="{arc}"/><path d="M8 34 V18 a6 6 0 0 1 12 0 V34 M26 34 V18 a6 6 0 0 1 12 0 V34" fill="none" stroke="{ink}" stroke-width="2.5"/></g>
 <text x="319" y="712" text-anchor="middle" font-family="{F_S}" font-style="italic" font-size="20" fill="{ink}">Mezquita-Catedral</text>
