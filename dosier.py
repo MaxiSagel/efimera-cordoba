@@ -166,6 +166,12 @@ def pic(key):
     return f'<div class="ph"><div><span class="label">{t("Espacio para imagen", "Image placeholder")} {n:02d}</span><p>{T(hint)}</p></div></div>'
 
 
+def espacio_foto(x):
+    """Foto propia a resolución completa si existe; si no, la de la web."""
+    hd = f"assets/dosier/fotos/espacio-{x['img']}.jpg"
+    return hd if (D / hd).exists() else f"assets/espacios/{x['img']}.webp"
+
+
 def full(key):
     return f'<section class="slide full">{pic(key)}</section>'
 
@@ -282,7 +288,7 @@ def deck():
     <p class="lead">{T(x["desc"])}</p>
     <div class="meta"><span><b>{t("Dirección", "Address")}:</b> {x["addr"] or "Córdoba"}</span><span>{T(x["was"])}</span><span><b>{t("Disponible", "Available")}:</b> {t("1–30 septiembre 2027 · varias instalaciones por espacio", "1–30 September 2027 · several installations per venue")}</span>{('<span style="opacity:.6">' + T(x["credit"]) + '</span>') if x.get("credit") else ""}</div>
   </div>
-  <div class="half"><img src="assets/espacios/{x["img"]}.webp" alt=""></div>{foot(L())}
+  <div class="half"><img src="{espacio_foto(x)}" alt=""></div>{foot(L())}
 </section>''')
     sl.append(full("pausa-2"))
     # agenda profesional + premio
