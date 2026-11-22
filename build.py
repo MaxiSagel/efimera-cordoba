@@ -489,7 +489,7 @@ def home():
   <div class="two-col" style="align-items:end">
     <div class="rv"><span class="label" style="opacity:.75">{t("Convocatoria de empresas 2027", "2027 brand open call")}</span>
       <h2 class="d d-l mt-s">{t('Tu marca, un artista, <span class="it">un patio</span>.', 'Your brand, an artist, <span class="it">a patio</span>.')}</h2></div>
-    <div class="rv"><p class="lead">{t("En septiembre de 2027, un grupo seleccionado de empresas crea, con un artista o con su propio equipo, una instalación en uno de los siete espacios del festival. 15 plazas: candidaturas hasta el 28 de febrero de 2027.", "In September 2027, a select group of companies will create, with an artist or their own team, an installation in one of the festival's seven venues. 15 places: applications until 28 February 2027.")}</p>
+    <div class="rv"><p class="lead">{t("En septiembre de 2027, un grupo seleccionado de empresas crea, con un artista o con su propio equipo, una instalación en un espacio del festival. 15 plazas: candidaturas hasta el 28 de febrero de 2027.", "In September 2027, a select group of companies will create, with an artist or their own team, an installation in a festival venue. 15 places: applications until 28 February 2027.")}</p>
       <div class="btn-row mt-m">{btn(t("Ver la convocatoria", "See the open call"), u("patrocinio"), "btn--light")}{btn(t("Presentar candidatura", "Apply now"), u("patrocinio", "candidatura"), "btn--solid")}</div></div>
   </div>
   <div class="reasons rv">
@@ -960,8 +960,8 @@ def patrocinio():
     guests = "".join(f'<li>{T(g)}</li>' for g in GUESTS)
     incl = "".join(f'<li>{T(x)}</li>' for x in INCLUDES)
     body = hero(t("Convocatoria de empresas 2027", "2027 brand open call"), t('Tu marca, un artista, <span class="it">un patio</span>.', 'Your brand, an artist, <span class="it">a patio</span>.'),
-                t("Segunda edición, septiembre de 2027. Buscamos empresas que quieran crear una instalación en uno de los siete espacios del festival, con un artista o con su propio equipo. Hay 15 plazas y se cubren por selección.",
-                  "Second edition, September 2027. We're looking for companies that want to create an installation in one of the festival's seven venues, with an artist or with their own team. There are 15 places, awarded by selection."), "d-xxl",
+                t("Segunda edición, septiembre de 2027. Buscamos empresas que quieran crear una instalación en un espacio del festival, con un artista o con su propio equipo. Hay 15 plazas y se cubren por selección.",
+                  "Second edition, September 2027. We're looking for companies that want to create an installation in a festival venue, with an artist or with their own team. There are 15 places, awarded by selection."), "d-xxl",
                 f'<p class="deadline mt-m rv"><span>{t("Candidaturas abiertas", "Applications open")}</span>{t("hasta el", "until")} {T(DEADLINE)} · <em class="left">{t(f"Quedan {LIBRES} de {PLAZAS} plazas", f"{LIBRES} of {PLAZAS} places left")}</em></p>'
                 f'<div class="btn-row mt-m rv">{btn(t("Presentar candidatura", "Apply now"), "#candidatura", "btn--solid")}{btn(t("Ver los espacios", "See the venues"), "#espacios", "btn--light")}</div>'
                 + hero_figs()) + f'''
@@ -1086,7 +1086,7 @@ def patrocinio():
 <section class="section--s"><div class="wrap">
   <div class="cols">
     <div class="rv"><span class="k">a.</span><h3>{t("Patrimonio Mundial", "World Heritage")}</h3><p>{t("Patios, capillas y palacios del casco histórico de Córdoba, declarado por la UNESCO, como escenario.", "Patios, chapels and palaces in Córdoba's UNESCO-listed historic centre as the setting.")}</p></div>
-    <div class="rv"><span class="k">b.</span><h3>{t("Arte con nombre propio", "Art with a name")}</h3><p>{t("Tu marca no patrocina un logo: firma una obra, con un artista o con su propio equipo.", "Your brand doesn't sponsor a logo: it signs a work, with an artist or its own team.")}</p></div>
+    <div class="rv"><span class="k">b.</span><h3>{t("Arte con nombre propio", "Art with a name")}</h3><p>{t("Tu marca no solo patrocina un logo: firma una obra, con un artista o con su propio equipo.", "Your brand doesn't just sponsor a logo: it signs a work, with an artist or its own team.")}</p></div>
     <div class="rv"><span class="k">c.</span><h3>{t("Público y negocio", "Public and business")}</h3><p>{t("Entrada libre para miles de visitantes y encuentros con interioristas, arquitectos y hoteleros.", "Free entry for thousands of visitors, and meetings with interior designers, architects and hoteliers.")}</p></div>
     <div class="rv"><span class="k">d.</span><h3>{t("Red internacional", "International network")}</h3><p>{t("MuDD Architects, la AA School de Londres, Tyréns AKT, Shima Seiki y Dezeen.", "MuDD Architects, London's AA School, Tyréns AKT, Shima Seiki and Dezeen.")}</p></div>
   </div>
