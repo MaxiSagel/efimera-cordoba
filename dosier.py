@@ -119,7 +119,7 @@ CSS += """
 .ways b { font-family: var(--d); font-weight: 400; font-size: 11.5pt; letter-spacing: -.02em; display: block; margin-bottom: 1mm; }
 .glist { list-style: none; border-top: .6pt solid rgba(20,18,16,.3); margin-top: 7mm; }
 .glist li { font-family: var(--d); font-size: 17pt; letter-spacing: -.03em; padding: 3mm 0; border-bottom: .6pt solid rgba(20,18,16,.3); }
-.glist li::before { content: "→ "; color: var(--arcilla-osc); }
+.glist li::before { content: ""; display: inline-block; width: 2mm; height: 2mm; border-radius: 50%; background: var(--arcilla-osc); margin-right: 2.5mm; vertical-align: .6mm; }
 .award { background: var(--tinta); color: #fff; padding: 9mm; display: flex; flex-direction: column; gap: 4mm; }
 .award h3 { font-family: var(--d); font-weight: 400; font-size: 11pt; color: var(--arena); margin-bottom: 1mm; }
 .incl { list-style: none; border-top: .6pt solid rgba(20,18,16,.3); }

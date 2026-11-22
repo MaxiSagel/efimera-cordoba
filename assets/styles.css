@@ -645,3 +645,27 @@ html[lang^="en"] .pending::before { content: "To come · "; }
 .cookies .btn--light:hover { background: var(--tinta); color: #fff; border-color: var(--tinta); }
 .deadline span { background: var(--crema); color: var(--tinta); }
 .spaces .credit { font-size: 11px; color: var(--gris); }
+
+/* ===== v6: lista de invitados sin aspecto de botón ===== */
+.guests li { font-size: clamp(19px, 2.2vw, 32px); padding: 14px 0; }
+.guests li::before { content: ""; display: inline-block; width: .32em; height: .32em; border-radius: 50%; background: var(--almagra); margin-right: .55em; vertical-align: .18em; }
+
+/* ===== v6: pestañas de la convocatoria ===== */
+.subnav { position: sticky; top: 84px; z-index: 40; background: var(--crema); border-bottom: 1px solid var(--linea); }
+.subnav .tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding: 12px 0; }
+.subnav .tabs::-webkit-scrollbar { display: none; }
+.subnav a { flex: none; padding: 9px 16px; border-radius: 99px; border: 1.5px solid var(--linea); font-weight: 700; font-size: 14px; white-space: nowrap; transition: background .25s, border-color .25s; }
+.subnav a:hover { border-color: var(--tinta); }
+.subnav a[aria-selected="true"] { background: var(--arcilla); border-color: var(--arcilla); color: var(--tinta); }
+@media (max-width: 1020px) { .subnav { top: 68px; } }
+.js .panel:not(.on) { display: none; }
+.panel, .panel [id] { scroll-margin-top: 140px; }
+
+/* ===== v6: espacios en carrusel en el móvil ===== */
+@media (max-width: 700px) {
+  .spaces { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; scrollbar-width: none; }
+  .spaces::-webkit-scrollbar { display: none; }
+  .spaces > article { flex: 0 0 84%; scroll-snap-align: start; }
+  .spaces > article:last-child { flex-direction: column; }
+  .spaces > article figure { aspect-ratio: 4 / 3 !important; }
+}

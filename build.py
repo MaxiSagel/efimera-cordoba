@@ -894,17 +894,9 @@ def patrocinio():
   <div class="confirmed rv"><span class="label">{t("Ya confirmada para 2027", "Already confirmed for 2027")}</span><strong>Keyter Group</strong><p>{t("La primera empresa de la segunda edición. Las otras 14 plazas se deciden por selección.", "The first company of the second edition. The other 14 places are decided by selection.")}</p></div>
 </div></section>
 
-<section class="section--s"><div class="wrap">
-  <div class="head rv"><h2 class="d d-l">{t('2026 en <span class="it">cifras</span>', '2026 in <span class="it">numbers</span>')}</h2></div>
-  <div class="stats big-stats rv"><!-- CIFRAS PROVISIONALES: editar en STATS_2026 -->{"".join(f'<div><b>{T(n)}</b><span>{T(l)}</span></div>' for n, l in STATS_2026)}</div>
-  <div class="stats mt-m rv">
-    <div><b>5</b><span>{t("obras en espacios patrimoniales", "works in heritage venues")}</span></div>
-    <div><b>30</b><span>{t("días de festival", "festival days")}</span></div>
-    <div><b>15</b><span>{t("ponentes en el Lab", "Lab speakers")}</span></div>
-    <div><b>{len(COLABORAN)}</b><span>{t("entidades colaboradoras", "supporting organisations")}</span></div>
-  </div>
-</div></section>
-
+<div class="tabbed" data-tabbed>
+<nav class="subnav" aria-label="{t("Secciones de la convocatoria", "Open call sections")}"><div class="wrap"><div class="tabs" role="tablist"><a href="#p-convocatoria" role="tab" data-tab="p-convocatoria">{t("La convocatoria", "The open call")}</a><a href="#p-espacios" role="tab" data-tab="p-espacios">{t("Espacios", "Venues")}</a><a href="#p-producto" role="tab" data-tab="p-producto">{t("Tu producto", "Your product")}</a><a href="#p-ventajas" role="tab" data-tab="p-ventajas">{t("Qué ganas", "What you get")}</a><a href="#p-edicion-2026" role="tab" data-tab="p-edicion-2026">{t("Edición 2026", "2026 edition")}</a><a href="#p-candidatura" role="tab" data-tab="p-candidatura">{t("Candidatura", "Apply")}</a></div></div></nav>
+<div class="panel" id="p-convocatoria" role="tabpanel" data-panel>
 <section class="section"><div class="wrap">
   <div class="head rv"><h2 class="d d-l">{t("Cómo funciona", "How it works")}</h2></div>
   <ol class="steps">
@@ -915,6 +907,25 @@ def patrocinio():
   </ol>
 </div></section>
 
+<section class="section--s"><div class="wrap">
+  <div class="head rv"><h2 class="d d-l">{t('Con un artista o <span class="it">in-house</span>', 'With an artist or <span class="it">in-house</span>')}</h2></div>
+  <div class="formats">{ways}</div>
+</div></section>
+
+<section class="section bg-ink"><div class="wrap">
+  <div class="head rv"><h2 class="d d-l">{t("Calendario 2027", "2027 calendar")}</h2></div>
+  {cal2027()}
+</div></section>
+</div>
+<div class="panel" id="p-espacios" role="tabpanel" data-panel>
+<section class="section bg-cal" id="espacios"><div class="wrap">
+  <div class="head rv"><div><h2 class="d d-l">{t('Siete <span class="it">espacios</span>', 'Seven <span class="it">venues</span>')}</h2><p>{t("Patios, capillas y palacios del casco histórico, Patrimonio Mundial, y el C3A junto al Guadalquivir. 15 instalaciones repartidas en siete espacios.", "Patios, chapels and palaces in the World Heritage historic centre, plus the C3A by the Guadalquivir. 15 installations across seven venues.")}</p></div></div>
+  <div class="map-row rv"><figure class="map-art">{mapa_svg()}<figcaption>{t("Mapa esquemático, no a escala.", "Schematic map, not to scale.")}</figcaption></figure>
+    <ol class="map-list">{"".join(f'<li><span class="n">{x["n"]}</span><div><strong>{x["name"]}</strong><small>{x["addr"] or "Córdoba"}</small></div></li>' for x in SPACES)}</ol></div>
+  <div class="spaces mt-l">{sp}</div>
+</div></section>
+</div>
+<div class="panel" id="p-producto" role="tabpanel" data-panel>
 <section class="section bg-ink"><div class="wrap">
   <div class="two-col" style="align-items:end">
     <div class="rv"><span class="label" style="opacity:.7">{t("Tu producto, dentro de la obra", "Your product, inside the work")}</span>
@@ -928,17 +939,15 @@ def patrocinio():
   <div class="head rv"><div><h2 class="d d-l">{t('Piensa en <span class="it">grande</span>.', 'Think <span class="it">big</span>.')}</h2><p>{t("Instalaciones que ocupan un patio entero, cubren una capilla o se recorren por dentro. Algunas ideas para empezar.", "Installations that fill an entire patio, cover a chapel or can be walked through. A few ideas to get you started.")}</p></div></div>
   <div class="renders">{rd}</div>
 </div></section>
-
-<section class="section--s"><div class="wrap">
-  <div class="head rv"><h2 class="d d-l">{t('Con un artista o <span class="it">in-house</span>', 'With an artist or <span class="it">in-house</span>')}</h2></div>
-  <div class="formats">{ways}</div>
-</div></section>
-
-<section class="section bg-cal" id="espacios"><div class="wrap">
-  <div class="head rv"><div><h2 class="d d-l">{t('Siete <span class="it">espacios</span>', 'Seven <span class="it">venues</span>')}</h2><p>{t("Patios, capillas y palacios del casco histórico, Patrimonio Mundial, y el C3A junto al Guadalquivir. 15 instalaciones repartidas en siete espacios.", "Patios, chapels and palaces in the World Heritage historic centre, plus the C3A by the Guadalquivir. 15 installations across seven venues.")}</p></div></div>
-  <div class="map-row rv"><figure class="map-art">{mapa_svg()}<figcaption>{t("Mapa esquemático, no a escala.", "Schematic map, not to scale.")}</figcaption></figure>
-    <ol class="map-list">{"".join(f'<li><span class="n">{x["n"]}</span><div><strong>{x["name"]}</strong><small>{x["addr"] or "Córdoba"}</small></div></li>' for x in SPACES)}</ol></div>
-  <div class="spaces mt-l">{sp}</div>
+</div>
+<div class="panel" id="p-ventajas" role="tabpanel" data-panel>
+<section class="section"><div class="wrap two-col">
+  <div class="rv"><span class="label" style="color:var(--almagra)">{t("Participar", "Taking part")}</span>
+    <h2 class="d d-l mt-s">{t('No alquilas un espacio: <span class="it">firmas una obra</span>.', "You don't rent a venue: <span class='it'>you sign a work</span>.")}</h2>
+    <p class="lead mt-m">{t("Las empresas seleccionadas no pagan un alquiler. Pagan la oportunidad de crear, con un artista o con su equipo, una instalación en un espacio patrimonial y de presentar su marca ante miles de visitantes y una lista de invitados profesionales.", "Selected companies don't pay rent. They pay for the opportunity to create, with an artist or their own team, an installation in a heritage venue, and to present their brand to thousands of visitors and a list of professional guests.")}</p>
+    <p class="mt-m">{t("Las condiciones económicas están en el dosier, que enviamos a las empresas candidatas.", "The financial terms are in the deck, which we send to applicant companies.")}</p>
+    <div class="btn-row mt-m">{btn(t("Solicitar dosier", "Request the deck"), "#candidatura", "btn--solid")}</div></div>
+  <div class="rv"><span class="label">{t("Qué incluye", "What's included")}</span><ul class="includes mt-s">{incl}</ul></div>
 </div></section>
 
 <section class="section"><div class="wrap two-col">
@@ -957,25 +966,23 @@ def patrocinio():
   <div class="reasons rv">{award}</div>
 </div></section>
 
-<section class="section"><div class="wrap two-col">
-  <div class="rv"><span class="label" style="color:var(--almagra)">{t("Participar", "Taking part")}</span>
-    <h2 class="d d-l mt-s">{t('No alquilas un espacio: <span class="it">firmas una obra</span>.', "You don't rent a venue: <span class='it'>you sign a work</span>.")}</h2>
-    <p class="lead mt-m">{t("Las empresas seleccionadas no pagan un alquiler. Pagan la oportunidad de crear, con un artista o con su equipo, una instalación en un espacio patrimonial y de presentar su marca ante miles de visitantes y una lista de invitados profesionales.", "Selected companies don't pay rent. They pay for the opportunity to create, with an artist or their own team, an installation in a heritage venue, and to present their brand to thousands of visitors and a list of professional guests.")}</p>
-    <p class="mt-m">{t("Las condiciones económicas están en el dosier, que enviamos a las empresas candidatas.", "The financial terms are in the deck, which we send to applicant companies.")}</p>
-    <div class="btn-row mt-m">{btn(t("Solicitar dosier", "Request the deck"), "#candidatura", "btn--solid")}</div></div>
-  <div class="rv"><span class="label">{t("Qué incluye", "What's included")}</span><ul class="includes mt-s">{incl}</ul></div>
-</div></section>
-
 <section class="section--s"><div class="wrap">
   <div class="tech rv"><span class="label">{t("Partner técnico", "Technical partner")}</span><div><h3 class="d d-m">Shima Seiki</h3>
     <p class="mt-s">{T(SHIMA)}</p></div></div>
   <div class="tech mt-m rv"><span class="label">{t("Socio de prensa", "Media partner")}</span><div><h3 class="d d-m">Dezeen</h3>
     <p class="mt-s">{T(DEZEEN)}</p></div></div>
 </div></section>
-
-<section class="section bg-ink"><div class="wrap">
-  <div class="head rv"><h2 class="d d-l">{t("Calendario 2027", "2027 calendar")}</h2></div>
-  {cal2027()}
+</div>
+<div class="panel" id="p-edicion-2026" role="tabpanel" data-panel>
+<section class="section--s"><div class="wrap">
+  <div class="head rv"><h2 class="d d-l">{t('2026 en <span class="it">cifras</span>', '2026 in <span class="it">numbers</span>')}</h2></div>
+  <div class="stats big-stats rv"><!-- CIFRAS PROVISIONALES: editar en STATS_2026 -->{"".join(f'<div><b>{T(n)}</b><span>{T(l)}</span></div>' for n, l in STATS_2026)}</div>
+  <div class="stats mt-m rv">
+    <div><b>5</b><span>{t("obras en espacios patrimoniales", "works in heritage venues")}</span></div>
+    <div><b>30</b><span>{t("días de festival", "festival days")}</span></div>
+    <div><b>15</b><span>{t("ponentes en el Lab", "Lab speakers")}</span></div>
+    <div><b>{len(COLABORAN)}</b><span>{t("entidades colaboradoras", "supporting organisations")}</span></div>
+  </div>
 </div></section>
 
 <section class="section"><div class="wrap statement">
@@ -997,7 +1004,8 @@ def patrocinio():
   <div class="cases">{cs}</div>
   <p class="mt-m rv">{venues}</p>
 </div></section>
-
+</div>
+<div class="panel" id="p-candidatura" role="tabpanel" data-panel>
 <section class="section" id="candidatura"><div class="wrap two-col">
   <div class="rv">
     <span class="label">{t("Candidaturas hasta el", "Applications until")} {T(DEADLINE)}</span>
@@ -1020,6 +1028,8 @@ def patrocinio():
     <p class="form-msg" role="status"></p>
   </form>
 </div></section>
+</div>
+</div>
 '''
     page("patrocinio", t("Convocatoria de empresas 2027", "2027 brand open call"), t("Convocatoria de empresas EFÍMERA CÓRDOBA 2027: crea, con un artista o con tu equipo, una instalación en uno de siete espacios de Córdoba en septiembre. 15 plazas; candidaturas hasta el 28 de febrero de 2027.",
                                                                                      "EFÍMERA CÓRDOBA 2027 brand open call: create, with an artist or your own team, an installation in one of seven venues in Córdoba in September. 15 places; applications until 28 February 2027."), "patrocinio", body, show_partners=True)

@@ -108,6 +108,28 @@
     stops.forEach(a => a.addEventListener('mouseenter', () => { stops.forEach(x => x.classList.remove('active')); a.classList.add('active'); mk[a.dataset.n].openPopup(); }));
   });
 
+  /* Pestañas (convocatoria de empresas): una sección a la vez para acortar la página */
+  $$('[data-tabbed]').forEach(box => {
+    const tabs = $$('[data-tab]', box), panels = $$('[data-panel]', box);
+    const headerH = () => (live($$('.header'))?.offsetHeight || 0);
+    const activate = (id, scroll) => {
+      panels.forEach(p => p.classList.toggle('on', p.id === id));
+      tabs.forEach(t => { const on = t.dataset.tab === id; t.setAttribute('aria-selected', String(on));
+        if (on) { const bar = t.parentElement; bar.scrollLeft = t.offsetLeft - (bar.clientWidth - t.offsetWidth) / 2; } });
+      if (scroll) window.scrollTo({ top: box.getBoundingClientRect().top + window.scrollY - headerH(), behavior: reduce ? 'auto' : 'smooth' });
+    };
+    tabs.forEach(t => t.addEventListener('click', e => { e.preventDefault(); activate(t.dataset.tab, true); }));
+    const fromHash = () => {
+      const id = decodeURIComponent(location.hash.slice(1)); if (!id) return false;
+      const el = document.getElementById(id); const p = el && el.closest('[data-panel]');
+      if (!p || !box.contains(p)) return false;
+      activate(p.id, false); requestAnimationFrame(() => el.scrollIntoView()); return true;
+    };
+    if (!fromHash()) activate(panels[0].id, false);
+    window.addEventListener('hashchange', fromHash);
+    $$('a[href^="#"]').forEach(a => { if (!a.dataset.tab) a.addEventListener('click', () => setTimeout(fromHash, 0)); });
+  });
+
   /* Formularios (v3: sin servidor conectado) */
   $$('form[data-form]').forEach(f => {
     const msg = $('.form-msg', f);
