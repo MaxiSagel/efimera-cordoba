@@ -207,6 +207,11 @@ CSS += """
 .award { background: var(--arena); color: var(--tinta); }
 .award h3 { color: var(--arcilla-osc); }
 .fee { background: var(--arcilla); color: var(--tinta); }
+.fee2 { display: grid; grid-template-columns: auto 1fr; gap: 12mm; align-items: center; padding: 7mm 9mm; }
+.fee2 b { margin: 2mm 0 0; }
+.fee2 ul { grid-template-columns: repeat(3, 1fr); gap: 6mm; padding-left: 4mm; }
+.incl2 { columns: 2; column-gap: 12mm; border-top: 0; }
+.incl2 li { break-inside: avoid; border-top: .6pt solid rgba(20,18,16,.3); border-bottom: 0; }
 .fee b { color: var(--tinta); }
 .deadline span { background: var(--crema); color: var(--tinta); }
 """
@@ -329,13 +334,12 @@ def deck():
   <span class="label" style="color:var(--arcilla-osc)">{t("Participar", "Taking part")}</span>
   <h1 class="d" style="font-size:28pt;margin:5mm 0 3mm">{t('No alquilas un espacio: <span class="it">firmas una obra</span>.', "You don't rent a venue: <span class='it'>you sign a work</span>.")}</h1>
   <p style="max-width:230mm;margin-bottom:7mm">{t("Lo que paga una empresa seleccionada no es un alquiler: es la oportunidad de crear, con un artista o con su equipo, una instalación en un espacio patrimonial y de presentar su marca ante miles de visitantes y una lista de invitados profesionales.", "What a selected company pays is not rent: it's the opportunity to create, with an artist or its own team, an installation in a heritage venue, and to present its brand to thousands of visitors and a list of professional guests.")}</p>
-  <div class="two" style="gap:10mm">
-    <div class="fee"><span class="label" style="opacity:.7">{t("Cuota de participación", "Participation fee")}</span><b>{t("Desde 3.000 €", "From €3,000")}</b>
+  <div class="fee fee2">
+    <div><span class="label" style="opacity:.7">{t("Cuota de participación", "Participation fee")}</span><b>{t("Desde 3.000 €", "From €3,000")}</b></div>
       <ul><li>{t("Según el espacio y la escala de la instalación. Para todo septiembre de 2027.", "Depending on the venue and the scale of the installation. For all of September 2027.")}</li>
         <li>{t("Aparte, la empresa asume los honorarios de su artista, si trabaja con uno.", "In addition, the company covers its artist's fee, if it works with one.")}</li>
         <li>{t("Y la producción, el montaje y el desmontaje de la instalación (30 de septiembre).", "And the production, installation and dismantling of the piece (30 September).")}</li></ul></div>
-    <div><span class="label">{t("Qué incluye", "What's included")}</span><ul class="incl" style="margin-top:3mm">{inc}</ul></div>
-  </div>{foot(L())}
+  <span class="label" style="display:block;margin-top:8mm">{t("Qué incluye", "What's included")}</span><ul class="incl incl2" style="margin-top:3mm">{inc}</ul>{foot(L())}
 </section>''')
     # calendario
     cl = "".join(f'<li><span class="when">{w} 2027</span><div><h3>{h}</h3><p>{d}</p></div></li>' for w, h, d in [
