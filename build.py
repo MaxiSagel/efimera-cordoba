@@ -12,7 +12,7 @@ from pathlib import Path
 
 OUT = Path(__file__).parent
 VER = str(int(time.time()))
-A = "https://efimera.jevamedia.com/assets/"
+SITE = "https://maxisagel.github.io/efimera-cordoba/"   # cambiar por https://efimeracordoba.com/ cuando haya dominio
 IG = "https://www.instagram.com/efimera_fest/"
 MAIL = "efimera@fundacionartdecor.org"
 C = {"arcilla": "#C98C6C", "arcilla_osc": "#8E5138", "arena": "#D8C4A2", "arena_osc": "#B49A74", "crema": "#F4EDE2", "cal": "#EADFCC", "tinta": "#141210"}
@@ -41,7 +41,7 @@ def T(x):
 def img(p):
     if p.startswith("assets/"):          # fotos propias de la web (no de la web antigua)
         return local(p)
-    return A + p
+    return local("assets/web/" + p)   # copia local de las fotos de la web antigua (antes se cargaban de efimera.jevamedia.com)
 
 
 def note():
@@ -384,8 +384,11 @@ def page(key, title, desc, navkey, body, bloque=None, bloque_txt="#fff", head=""
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{escape(full)}</title>
 <meta name="description" content="{escape(desc)}">
+<meta property="og:type" content="website"><meta property="og:site_name" content="EFÍMERA CÓRDOBA"><meta property="og:url" content="{SITE}{en_url if LANG == "en" else es_url}">
 <meta property="og:title" content="{escape(full)}"><meta property="og:description" content="{escape(desc)}"><meta property="og:locale" content="{t("es_ES", "en_GB")}">
-<link rel="alternate" hreflang="es" href="{P}{es_url}"><link rel="alternate" hreflang="en" href="{P}{en_url}"><link rel="alternate" hreflang="x-default" href="{P}{es_url}">
+<meta property="og:image" content="{SITE}assets/og/{("og-empresas-" + LANG) if key == "patrocinio" else "og-festival"}.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="{P}assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="{P}assets/favicon-32.png" sizes="32x32"><link rel="apple-touch-icon" href="{P}assets/apple-touch-icon.png">
+<link rel="alternate" hreflang="es" href="{SITE}{es_url}"><link rel="alternate" hreflang="en" href="{SITE}{en_url}"><link rel="alternate" hreflang="x-default" href="{SITE}{es_url}">
 <meta name="theme-color" content="{bloque or C['arcilla']}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
@@ -481,6 +484,20 @@ def home():
   {marquee([(t("Hasta 2027", "See you in 2027"), t("gracias, Córdoba", "thank you, Córdoba")), (t("Lo efímero deja huella", "The ephemeral leaves a mark"), "✦")])}
 </section>
 
+<section class="section bg-ink"><div class="wrap">
+  <div class="two-col" style="align-items:end">
+    <div class="rv"><span class="label" style="opacity:.75">{t("Convocatoria de empresas 2027", "2027 brand open call")}</span>
+      <h2 class="d d-l mt-s">{t('Tu marca, un artista, <span class="it">un patio</span>.', 'Your brand, an artist, <span class="it">a patio</span>.')}</h2></div>
+    <div class="rv"><p class="lead">{t("En septiembre de 2027, un grupo seleccionado de empresas crea, con un artista o con su propio equipo, una instalación en uno de los siete espacios del festival. 15 plazas: candidaturas hasta el 28 de febrero de 2027.", "In September 2027, a select group of companies will create, with an artist or their own team, an installation in one of the festival's seven venues. 15 places: applications until 28 February 2027.")}</p>
+      <div class="btn-row mt-m">{btn(t("Ver la convocatoria", "See the open call"), u("patrocinio"), "btn--light")}{btn(t("Presentar candidatura", "Apply now"), u("patrocinio", "candidatura"), "btn--solid")}</div></div>
+  </div>
+  <div class="reasons rv">
+    <div><h3>{t("7 espacios", "7 venues")}</h3><p>{t("San Basilio, Capilla Mudéjar, Bellas Artes, Casa de las Tazas, Palacio de los Angulo, Palacio de Viana y C3A.", "San Basilio, the Mudéjar Chapel, Fine Arts Museum, Casa de las Tazas, Palacio de los Angulo, Palacio de Viana and the C3A.")}</p></div>
+    <div><h3>{t("Artista o in-house", "Artist or in-house")}</h3><p>{t("Tu artista, uno que te proponemos o tu propio equipo.", "Your artist, one we suggest, or your own team.")}</p></div>
+    <div><h3>{t("30 días", "30 days")}</h3><p>{t("Abierta al público todo septiembre, con premio a la mejor instalación.", "Open to the public all September, with an award for the best installation.")}</p></div>
+  </div>
+</div></section>
+
 <section class="section"><div class="wrap statement">
   <span class="label rv">{t("El festival", "The festival")}</span>
   <p class="d" data-words>{t("Un mes. Cinco obras. Patios, una capilla y un palacio abiertos a quien quisiera entrar. Después, nada. Solo la ciudad, mirada de otra manera.", "One month. Five works. Patios, a chapel and a palace open to anyone who wanted to come in. Then, nothing. Only the city, seen in a different way.")}</p>
@@ -489,9 +506,9 @@ def home():
 
 <section class="section--s"><div class="wrap">
   <div class="stats rv">
+    <div><b>{T(STATS_2026[0][0])}</b><span>{t("visitantes en septiembre de 2026", "visitors in September 2026")}</span></div>
+    <div><b>{T(STATS_2026[1][0])}</b><span>{T(STATS_2026[1][1])}</span></div>
     <div><b>5</b><span>{t("obras en el casco histórico", "works in the historic centre")}</span></div>
-    <div><b>30</b><span>{t("días abiertas al público", "days open to the public")}</span></div>
-    <div><b>15</b><span>{t("ponentes en el Lab", "speakers at the Lab")}</span></div>
     <div><b>0 €</b><span>{t("la entrada, en todas", "entry fee, at every venue")}</span></div>
   </div>
 </div></section>
@@ -518,21 +535,7 @@ def home():
       <div><h3>15</h3><p>{t("ponentes invitados", "guest speakers")}</p></div>
       <div><h3>AA</h3><p>{t("School of Architecture, Londres", "School of Architecture, London")}</p></div>
     </div>
-    <div class="btn-row mt-m">{btn(t("Conocer el Lab", "Discover the Lab"), u("lab"), "btn--light")}{btn(t("Convocatorias 2027", "2027 open calls"), u("2027", "convocatorias"), "btn--light")}</div>
-  </div>
-</div></section>
-
-<section class="section bg-almagra on-color"><div class="wrap">
-  <div class="two-col" style="align-items:end">
-    <div class="rv"><span class="label" style="opacity:.75">{t("Convocatoria de empresas 2027", "2027 brand open call")}</span>
-      <h2 class="d d-l mt-s">{t('Tu marca, un artista, <span class="it">un patio</span>.', 'Your brand, an artist, <span class="it">a patio</span>.')}</h2></div>
-    <div class="rv"><p class="lead">{t("En septiembre de 2027, un grupo seleccionado de empresas crea, con un artista o con su propio equipo, una instalación en uno de los siete espacios del festival. 15 plazas: candidaturas hasta el 28 de febrero de 2027.", "In September 2027, a select group of companies will create, with an artist or their own team, an installation in one of the festival's seven venues. 15 places: applications until 28 February 2027.")}</p>
-      <div class="btn-row mt-m">{btn(t("Ver la convocatoria", "See the open call"), u("patrocinio"), "btn--light")}{btn(t("Presentar candidatura", "Apply now"), u("patrocinio", "candidatura"), "btn--solid")}</div></div>
-  </div>
-  <div class="reasons rv">
-    <div><h3>{t("7 espacios", "7 venues")}</h3><p>{t("San Basilio, Capilla Mudéjar, Bellas Artes, Casa de las Tazas, Palacio de los Angulo, Palacio de Viana y C3A.", "San Basilio, the Mudéjar Chapel, Fine Arts Museum, Casa de las Tazas, Palacio de los Angulo, Palacio de Viana and the C3A.")}</p></div>
-    <div><h3>{t("Artista o in-house", "Artist or in-house")}</h3><p>{t("Tu artista, uno que te proponemos o tu propio equipo.", "Your artist, one we suggest, or your own team.")}</p></div>
-    <div><h3>{t("30 días", "30 days")}</h3><p>{t("Abierta al público todo septiembre, con premio a la mejor instalación.", "Open to the public all September, with an award for the best installation.")}</p></div>
+    <div class="btn-row mt-m">{btn(t("Conocer el Lab", "Discover the Lab"), u("lab"), "btn--light")}{btn(t("Convocatorias para artistas", "Calls for artists"), u("2027", "convocatorias"), "btn--light")}</div>
   </div>
 </div></section>
 
@@ -847,6 +850,41 @@ def cal2027():
 
 
 DEADLINE = ("28 de febrero de 2027", "28 February 2027")
+PLAZAS, LIBRES = 15, 14          # LIBRES: actualizar cuando se confirme cada empresa
+
+CRITERIA = [  # BORRADOR: revisar con la dirección artística
+    (("La idea", "The idea"), ("Originalidad y fuerza de la propuesta.", "Originality and strength of the proposal.")),
+    (("El diálogo con el lugar", "Dialogue with the place"), ("Que la instalación entienda el espacio patrimonial y lo respete.", "An installation that understands and respects its heritage setting.")),
+    (("Lo que solo vosotros hacéis", "What only you can do"), ("El uso de vuestro material, producto o tecnología dentro de la obra.", "How your material, product or technology lives inside the work.")),
+    (("La experiencia", "The experience"), ("Lo que vive quien entra: interacción, recorrido, sorpresa.", "What visitors live: interaction, journey, surprise.")),
+    (("Viabilidad", "Feasibility"), ("Que se pueda producir, montar y desmontar sin dejar huella.", "That it can be produced, installed and removed without leaving a trace.")),
+]
+
+FAQ = [  # BORRADOR: revisar antes de dar por buenas las respuestas
+    (("¿Necesitamos tener un artista?", "Do we need to have an artist?"),
+     ("No. Podéis traer el vuestro, pedirnos que os propongamos uno afín a vuestra marca o hacerlo in-house, con vuestro equipo de diseño, I+D o producto.",
+      "No. You can bring your own, ask us to suggest one who suits your brand, or do it in-house with your design, R&D or product team.")),
+    (("¿Cuánto cuesta participar?", "How much does it cost to take part?"),
+     ("Depende del espacio y de la escala de la instalación. Las condiciones están en el dosier, que enviamos a las empresas candidatas. No es un alquiler: es la oportunidad de crear una obra y presentar vuestra marca en ella.",
+      "It depends on the venue and the scale of the installation. The terms are in the deck we send to applicants. It isn't a rental: it's the chance to create a work and present your brand through it.")),
+    (("¿Qué incluye?", "What's included?"),
+     ("Un espacio patrimonial durante todo septiembre, un asistente de producción gratuito, el acompañamiento de la dirección artística, encuentros con la lista de invitados profesionales y presencia en la comunicación del festival.",
+      "A heritage venue for all of September, a free production assistant, support from the artistic direction, meetings with the professional guest list and presence in the festival's communication.")),
+    (("¿Podemos elegir el espacio?", "Can we choose the venue?"),
+     ("Marcad en la candidatura los que más os interesan. La dirección artística asigna cada espacio según vuestra preferencia y la escala de la propuesta.",
+      "Tick the ones you like best in your application. The artistic direction assigns each venue based on your preference and the scale of the proposal.")),
+    (("¿Cómo se trabaja en un edificio patrimonial?", "How do you work in a heritage building?"),
+     ("El asistente de producción revisa con vosotros la propuesta técnica, los permisos y el montaje, para que la instalación se monte y se desmonte sin dejar huella.",
+      "The production assistant reviews the technical proposal, permits and installation with you, so the piece goes up and comes down without leaving a trace.")),
+    (("¿Puede aparecer nuestro producto?", "Can our product be part of it?"),
+     ("Sí, es lo que buscamos: materiales, tecnología o producto dentro de la obra, mejor si quien entra puede tocarlo, usarlo o recorrerlo.",
+      "Yes, that's the point: materials, technology or product inside the work, ideally something visitors can touch, use or walk through.")),
+    (("¿Hace falta un proyecto cerrado?", "Do we need a finished project?"),
+     ("No. Contadnos qué queréis destacar y una primera idea. Tras la selección, la desarrolláis con vuestro artista o equipo y con el acompañamiento del festival.",
+      "No. Tell us what you want to highlight and a first idea. After selection you develop it with your artist or team, supported by the festival.")),
+    (("¿Cuándo sabremos si estamos seleccionados?", "When will we know if we've been selected?"),
+     ("En marzo de 2027 comunicamos la resolución a todas las empresas candidatas.", "In March 2027 we notify every applicant of the decision.")),
+]
 
 AKT = ("AKT II es el estudio de ingeniería estructural y civil con sede en Londres que acompaña a EFÍMERA como empresa socia. Su Associate Director, James Kingman, fue ponente del Efímera Lab 2026.",
        "AKT II is the London-based structural and civil engineering practice that partners with EFÍMERA. Its Associate Director, James Kingman, spoke at the Efímera Lab 2026.")
@@ -880,6 +918,11 @@ INCLUDES = [("Un espacio patrimonial para tu instalación durante todo septiembr
             ("Opción al Premio EFÍMERA a la mejor instalación.", "Eligibility for the EFÍMERA Award for the best installation.")]
 
 
+def hero_figs():
+    figs = [(T(n), T(l)) for n, l in STATS_2026[:3]] + [("7", t("espacios patrimoniales", "heritage venues"))]
+    return '<dl class="hero-figs rv">' + "".join(f"<div><dt>{n}</dt><dd>{l}</dd></div>" for n, l in figs) + "</dl>"
+
+
 def patrocinio():
     sp = "".join(f'''<article class="rv"><figure><img src="{local('assets/espacios/' + x['img'] + '.webp')}" alt="{escape(x['name'])}" loading="lazy"></figure>
   <div class="txt"><span class="n">{x["n"]}</span><h3>{x["name"]}</h3><p>{T(x["desc"])}</p><span class="was">{T(x["was"])}{(" · " + x["addr"]) if x["addr"] else ""}</span>{('<small class="credit">' + T(x["credit"]) + '</small>') if x.get("credit") else ""}</div></article>''' for x in SPACES)
@@ -910,12 +953,13 @@ def patrocinio():
     body = hero(t("Convocatoria de empresas 2027", "2027 brand open call"), t('Tu marca, un artista, <span class="it">un patio</span>.', 'Your brand, an artist, <span class="it">a patio</span>.'),
                 t("Segunda edición, septiembre de 2027. Buscamos empresas que quieran crear una instalación en uno de los siete espacios del festival, con un artista o con su propio equipo. Hay 15 plazas y se cubren por selección.",
                   "Second edition, September 2027. We're looking for companies that want to create an installation in one of the festival's seven venues, with an artist or with their own team. There are 15 places, awarded by selection."), "d-xxl",
-                f'<p class="deadline mt-m rv"><span>{t("Candidaturas abiertas", "Applications open")}</span>{t("hasta el", "until")} {T(DEADLINE)} · {t("15 plazas", "15 places")}</p>'
-                f'<div class="btn-row mt-m rv">{btn(t("Presentar candidatura", "Apply now"), "#candidatura", "btn--light")}{btn(t("Ver los espacios", "See the venues"), "#espacios", "btn--light")}</div>') + f'''
+                f'<p class="deadline mt-m rv"><span>{t("Candidaturas abiertas", "Applications open")}</span>{t("hasta el", "until")} {T(DEADLINE)} · <em class="left">{t(f"Quedan {LIBRES} de {PLAZAS} plazas", f"{LIBRES} of {PLAZAS} places left")}</em></p>'
+                f'<div class="btn-row mt-m rv">{btn(t("Presentar candidatura", "Apply now"), "#candidatura", "btn--solid")}{btn(t("Ver los espacios", "See the venues"), "#espacios", "btn--light")}</div>'
+                + hero_figs()) + f'''
 <div class="block">{marquee([(t("Convocatoria abierta", "Open call"), "✦"), (t("15 plazas", "15 places"), t("hasta el 28.02.2027", "until 28.02.2027"))])}</div>
 
 <section class="section--s"><div class="wrap">
-  <div class="confirmed rv"><span class="label">{t("Ya confirmada para 2027", "Already confirmed for 2027")}</span><strong>Keyter Group</strong><p>{t("La primera empresa de la segunda edición. Las otras 14 plazas se deciden por selección.", "The first company of the second edition. The other 14 places are decided by selection.")}</p></div>
+  <div class="confirmed rv"><span class="label">{t("Ya confirmada para 2027", "Already confirmed for 2027")}</span><strong>Keyter Group</strong><p>{t(f"La primera empresa de la segunda edición. Las otras {LIBRES} plazas se deciden por selección, no por orden de llegada.", f"The first company of the second edition. The other {LIBRES} places are decided by selection, not first come, first served.")}</p></div>
 </div></section>
 
 <div class="tabbed" data-tabbed>
@@ -926,7 +970,7 @@ def patrocinio():
   <ol class="steps">
     <li class="rv"><span class="k">01</span><h3>{t("Presenta tu candidatura", "Apply")}</h3><p>{t("Cuéntanos quién sois, qué espacio os interesa y qué queréis enseñar. Hasta el 28 de febrero de 2027.", "Tell us who you are, which venue interests you and what you want to show. Until 28 February 2027.")}</p></li>
     <li class="rv"><span class="k">02</span><h3>{t("Selección", "Selection")}</h3><p>{t("La dirección artística estudia cada propuesta y elige a las empresas participantes: 15 instalaciones en siete espacios.", "The artistic direction reviews every proposal and chooses the participating companies: 15 installations across seven venues.")}</p></li>
-    <li class="rv"><span class="k">03</span><h3>{t("Creáis la instalación", "Create the installation")}</h3><p>{t("Con un artista de vuestra elección, con uno que os proponemos o in-house. Un asistente de producción os acompaña, sin coste. Un asistente de producción os acompaña, sin coste.", "With an artist of your choice, one we suggest, or in-house. A production assistant supports you, free of charge. A production assistant supports you, free of charge.")}</p></li>
+    <li class="rv"><span class="k">03</span><h3>{t("Creáis la instalación", "Create the installation")}</h3><p>{t("Con un artista de vuestra elección, con uno que os proponemos o in-house. Un asistente de producción os acompaña, sin coste.", "With an artist of your choice, one we suggest, or in-house. A production assistant supports you, free of charge.")}</p></li>
     <li class="rv"><span class="k">04</span><h3>{t("Septiembre, abierta a todos", "September, open to all")}</h3><p>{t("Del 1 al 30 de septiembre de 2027, con entrada libre. Se desmonta el día 30.", "From 1 to 30 September 2027, free entry. It comes down on the 30th.")}</p></li>
   </ol>
 </div></section>
@@ -934,6 +978,11 @@ def patrocinio():
 <section class="section--s"><div class="wrap">
   <div class="head rv"><h2 class="d d-l">{t('Con un artista o <span class="it">in-house</span>', 'With an artist or <span class="it">in-house</span>')}</h2></div>
   <div class="formats">{ways}</div>
+</div></section>
+
+<section class="section--s" id="criterios"><div class="wrap">
+  <div class="head rv"><div><h2 class="d d-l">{t('Cómo <span class="it">elegimos</span>', 'How we <span class="it">choose</span>')}</h2><p>{t(f"{PLAZAS} plazas, una selección. La dirección artística valora cada candidatura con estos cinco criterios.", f"{PLAZAS} places, one selection. The artistic direction weighs every application against these five criteria.")}</p></div></div>
+  <ol class="criteria">{"".join(f'<li class="rv"><span class="k">{i + 1}</span><h3>{T(h)}</h3><p>{T(p_)}</p></li>' for i, (h, p_) in enumerate(CRITERIA))}</ol>
 </div></section>
 
 <section class="section bg-ink"><div class="wrap">
@@ -1053,6 +1102,10 @@ def patrocinio():
     <div><button class="btn btn--solid" type="submit">{t("Enviar candidatura", "Submit application")} <span class="arr" aria-hidden="true">→</span></button></div>
     <p class="form-msg" role="status"></p>
   </form>
+</div></section>
+<section class="section--s bg-cal" id="preguntas"><div class="wrap two-col">
+  <div class="rv"><h2 class="d d-l">{t('Preguntas <span class="it">frecuentes</span>', 'Frequently asked <span class="it">questions</span>')}</h2><p class="mt-m">{t("¿Otra duda?", "Anything else?")} <a class="link" href="mailto:{MAIL}">{MAIL}</a></p></div>
+  <div class="faq rv">{"".join(f'<details><summary>{T(q)}</summary><p>{T(a)}</p></details>' for q, a in FAQ)}</div>
 </div></section>
 </div>
 </div>

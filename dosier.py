@@ -95,7 +95,8 @@ body { font-family: var(--b); color: var(--tinta); font-size: 10.5pt; line-heigh
 /* contacto */
 .contact { display: flex; flex-direction: column; justify-content: space-between; }
 .contact .big { font-size: 80pt; }
-.contact .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10mm; font-size: 10.5pt; border-top: .6pt solid rgba(255,255,255,.3); padding-top: 6mm; }
+.contact .cols a { color: inherit; text-decoration: underline; text-underline-offset: 1mm; }
+.contact .cols { display: grid; grid-template-columns: 1.5fr 1.2fr .8fr 1fr; gap: 10mm; font-size: 10.5pt; border-top: .6pt solid rgba(255,255,255,.3); padding-top: 6mm; }
 .contact .cols .label { opacity: .6; display: block; margin-bottom: 2mm; }
 """
 
@@ -103,6 +104,8 @@ body { font-family: var(--b); color: var(--tinta); font-size: 10.5pt; line-heigh
 CSS += """
 /* v6 */
 .cover .mark.big { font-size: 50pt; }
+.cover .promise { margin-top: 7mm; font-family: var(--d); font-weight: 500; font-size: 13pt; letter-spacing: -.02em; }
+.cover .promise span { display: block; padding: 1.6mm 0; border-top: .6pt solid rgba(20,18,16,.35); }
 .deadline { display: flex; flex-wrap: wrap; gap: 2mm 3mm; align-items: center; font-weight: 700; font-size: 10pt; }
 .deadline span { white-space: nowrap; }
 .deadline span { background: var(--tinta); color: var(--crema); border-radius: 99px; padding: 1.2mm 3.5mm; font-size: 7pt; letter-spacing: .14em; text-transform: uppercase; }
@@ -192,7 +195,8 @@ def deck():
     # portada
     sl.append(f'''<section class="slide arcilla cover" style="padding-right:calc(50% + 14mm)">
   <div class="row"><span class="label">{t("Segunda edición · septiembre 2027 · Córdoba", "Second edition · September 2027 · Córdoba")}<br>{t("Festival internacional de arquitectura efímera", "International festival of ephemeral architecture")}</span></div>
-  <div>{MARK.replace('class="mark"', 'class="mark big"')}<p class="sub" style="margin-top:9mm">{t("Convocatoria de empresas&nbsp;2027", "2027 brand open&nbsp;call")}</p></div>
+  <div>{MARK.replace('class="mark"', 'class="mark big"')}<p class="sub" style="margin-top:9mm">{t("Convocatoria de empresas&nbsp;2027", "2027 brand open&nbsp;call")}</p>
+    <p class="promise"><span>{t("15 marcas", "15 brands")}</span><span>{t("7 espacios patrimoniales", "7 heritage venues")}</span><span>{T(STATS_2026[0][0])} {t("visitantes en 2026", "visitors in 2026")}</span></p></div>
   <div>{dl}<p class="label" style="margin-top:6mm">Fundación Artdecor · MuDD Architects · AA School London</p></div>
   <div class="half">{pic("portada")}</div>
 </section>''')
@@ -328,11 +332,13 @@ def deck():
 </section>''')
     sl.append(full("pausa-3"))
     # contacto
+    web = build.SITE + ("en/" + build.fname("patrocinio", "en") if build.LANG == "en" else build.fname("patrocinio", "es")) + "#candidatura"
     sl.append(f'''<section class="slide arcilla contact">
   <span class="label" style="opacity:.6">{t("Candidaturas hasta el", "Applications until")} {T(DEADLINE)}</span>
   <div><p class="d big" style="font-size:66pt">{t('Presenta tu <span class="it">candidatura</span>.', 'Submit your <span class="it">application</span>.')}</p>
     <p class="lead" style="margin-top:6mm;max-width:190mm">{t("Cuéntanos quiénes sois, qué queréis destacar y qué espacio os interesa. 15 plazas: revisamos cada propuesta.", "Tell us who you are, what you want to highlight and which venue interests you. 15 places: we review every proposal.")}</p></div>
-  <div class="cols"><div><span class="label">Email</span>{MAIL}</div><div><span class="label">Instagram</span>@efimera_fest</div>
+  <div class="cols"><div><span class="label">{t("Candidatura online", "Apply online")}</span><a href="{web}">{t("Presenta la candidatura en la web →", "Apply on the website →")}</a></div>
+    <div><span class="label">Email</span><a href="mailto:{MAIL}">{MAIL}</a></div><div><span class="label">Instagram</span><a href="{build.IG}">@efimera_fest</a></div>
     <div><span class="label">Fundación Artdecor</span>C/ Juramento, 1 · 14002 Córdoba</div></div>
   <div style="font-size:16pt">{MARK_LINE}</div>
 </section>''')
