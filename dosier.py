@@ -225,7 +225,7 @@ def deck():
     sh = "".join(f'<div><span class="k">{i + 1:02d}</span><h3>{T(h)}</h3><p>{T(p)}</p></div>' for i, (h, p) in enumerate(SHOWCASE))
     sl.append(f'''<section class="slide arcilla">
   <span class="label">{t("Tu producto, dentro de la obra", "Your product, inside the work")}</span>
-  <h1 class="d" style="font-size:36pt;margin-top:6mm;max-width:230mm">{t('Aquí tu producto no se mira: <span class="it">se&nbsp;vive</span>.', "Here your product isn't looked&nbsp;at: <span class='it'>it's&nbsp;experienced</span>.")}</h1>
+  <h1 class="d" style="font-size:30pt;margin-top:6mm;white-space:nowrap">{t('Aquí tu producto no se mira: <span class="it">se&nbsp;vive</span>.', "Here your product isn't looked at: <span class='it'>it's experienced</span>.")}</h1>
   <p class="lead" style="margin-top:6mm;max-width:200mm">{t("Las instalaciones pueden ser interactivas: quien entra toca el material, activa la tecnología, recorre la pieza por dentro. Es la mejor forma de enseñar de qué es capaz lo que fabricáis.", "Installations can be interactive: visitors touch the material, trigger the technology, walk through the piece. It's the best way to show what your products can do.")}</p>
   <div class="grid4">{sh}</div>{foot(L())}
 </section>''')

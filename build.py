@@ -1011,7 +1011,7 @@ def patrocinio():
 <section class="section bg-ink"><div class="wrap">
   <div class="two-col" style="align-items:end">
     <div class="rv"><span class="label" style="opacity:.7">{t("Tu producto, dentro de la obra", "Your product, inside the work")}</span>
-      <h2 class="d d-l mt-s">{t('Aquí tu producto no se mira: <span class="it">se vive</span>.', "Here your product isn't looked at: <span class='it'>it's experienced</span>.")}</h2></div>
+      <h2 class="d d-l mt-s">{t('Aquí tu producto no se mira:&nbsp;<span class="it">se&nbsp;vive</span>.', "Here your product isn't looked at:&nbsp;<span class='it'>it's experienced</span>.")}</h2></div>
     <p class="lead rv">{t("Las instalaciones pueden ser interactivas: quien entra toca el material, activa la tecnología, recorre la pieza por dentro. Es la mejor forma de enseñar de qué es capaz lo que fabricáis.", "Installations can be interactive: visitors touch the material, trigger the technology, walk through the piece. It's the best way to show what your products can do.")}</p>
   </div>
   <div class="cols mt-l">{show}</div>
