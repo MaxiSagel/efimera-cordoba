@@ -15,6 +15,8 @@ VER = str(int(time.time()))
 SITE = "https://festivalefimera.com/"   # dominio propio (noviembre de 2026); antes https://maxisagel.github.io/efimera-cordoba/
 IG = "https://www.instagram.com/efimera_fest/"
 MAIL = "info@festivalefimera.com"   # correo de información y contacto (antes efimera@fundacionartdecor.org)
+WHATSAPP = "+33 6 13 01 43 03"   # WhatsApp de contacto
+WA = "https://wa.me/33613014303"
 C = {"arcilla": "#C98C6C", "arcilla_osc": "#8E5138", "arena": "#D8C4A2", "arena_osc": "#B49A74", "crema": "#F4EDE2", "cal": "#EADFCC", "tinta": "#141210"}
 
 
@@ -326,7 +328,7 @@ def footer(key):
     <div><a href="{u("index")}" aria-label="{t("Inicio", "Home")}">{MARK}</a><p class="when">{t("1.ª edición: septiembre de 2026.<br>2.ª edición: septiembre de 2027.", "1st edition: September 2026.<br>2nd edition: September 2027.")}</p><p>{lang_switch(key)}</p></div>
     <div><h4>{t("Explora", "Explore")}</h4><nav class="links" aria-label="{t("Pie", "Footer")}">{links}</nav></div>
     <div><h4>{t("Escríbenos", "Write to us")}</h4>
-      <address><a href="mailto:{MAIL}">{MAIL}</a><br><a href="{IG}" target="_blank" rel="noopener">@efimera_fest</a></address>
+      <address><a href="mailto:{MAIL}">{MAIL}</a><br><a href="{WA}" target="_blank" rel="noopener">WhatsApp {WHATSAPP}</a><br><a href="{IG}" target="_blank" rel="noopener">@efimera_fest</a></address>
       <address><strong>Fundación Artdecor</strong><br>C/ Juramento, 1 · 14002 Córdoba</address>
       <address><strong>MuDD Architects</strong><br>Gallery Building, Carrer de l'Escar, 26 · 08039 Barcelona</address></div>
     <div class="news"><h3>{t("Avísame cuando llegue 2027", "Tell me when 2027 arrives")}</h3><p>{t("Un correo cuando haya fechas y convocatorias. Nada más.", "One email when dates and open calls are out. Nothing else.")}</p>{news_form(t("¡Hecho! Te escribiremos cuando haya noticias.", "Done! We'll write when there's news."), "f")}</div>
@@ -424,7 +426,7 @@ def page(key, title, desc, navkey, body, bloque=None, bloque_txt="#fff", head=""
 <div class="mobile-nav" aria-label="{t("Menú", "Menu")}"><div class="top">{brand()}<button class="menu-btn" style="display:inline-flex" data-menu-close>{t("Cerrar", "Close")}</button></div>
   <nav><a href="{u("index")}">{t("Inicio", "Home")}</a>{nav.replace(" aria-current=page", "")}{cta.replace(" aria-current=page", "")}<a href="{u("contacto")}">{t("Contacto", "Contact")}</a></nav>
   {lang_switch(key)}
-  <div class="foot"><a href="mailto:{MAIL}">{MAIL}</a><a href="{IG}" target="_blank" rel="noopener">@efimera_fest</a></div></div>
+  <div class="foot"><a href="mailto:{MAIL}">{MAIL}</a><a href="{WA}" target="_blank" rel="noopener">WhatsApp {WHATSAPP}</a><a href="{IG}" target="_blank" rel="noopener">@efimera_fest</a></div></div>
 <main id="contenido">
 {body}
 </main>
@@ -1139,7 +1141,7 @@ def patrocinio():
     <span class="label">{t("Candidaturas hasta el", "Applications until")} {T(DEADLINE)}</span>
     <h2 class="d d-l mt-s">{t('Presenta tu <span class="it">candidatura</span>.', 'Submit your <span class="it">application</span>.')}</h2>
     <p class="lead mt-m">{t("15 plazas. Cuéntanos quiénes sois, qué queréis destacar y qué espacio os interesa. Revisamos cada propuesta y te enviamos el dosier con las condiciones.", "15 places. Tell us who you are, what you want to highlight and which venue interests you. We review every proposal and send you the deck with the terms.")}</p>
-    <p class="mt-m">{t("Directo:", "Direct:")} <a class="link" href="mailto:{MAIL}">{MAIL}</a> · Instagram <a class="link" href="{IG}" target="_blank" rel="noopener">@efimera_fest</a></p>
+    <p class="mt-m">{t("Directo:", "Direct:")} <a class="link" href="mailto:{MAIL}">{MAIL}</a> · <a class="link" href="{WA}" target="_blank" rel="noopener">WhatsApp {WHATSAPP}</a> · Instagram <a class="link" href="{IG}" target="_blank" rel="noopener">@efimera_fest</a></p>
   </div>
   <form class="form rv" data-form data-ok="{t("Gracias. Hemos recibido tu candidatura: te enviamos el dosier y te escribimos muy pronto.", "Thank you. We've received your application: we'll send you the deck and be in touch very soon.")} ({note()})" novalidate>
     <div class="two"><div class="field"><label for="s1">{t("Nombre", "Name")}</label><input id="s1" required autocomplete="name"></div><div class="field"><label for="s2">{t("Empresa o marca", "Company or brand")}</label><input id="s2" required autocomplete="organization"></div></div>
@@ -1280,6 +1282,7 @@ def contacto():
   <div class="rv">
     <span class="label">{t("Directo", "Direct")}</span>
     <p class="d d-m mt-s"><a class="link" href="mailto:{MAIL}" style="word-break:break-word">{MAIL}</a></p>
+    <p><a class="link" href="{WA}" target="_blank" rel="noopener">WhatsApp {WHATSAPP} ↗</a></p>
     <p><a class="link" href="{IG}" target="_blank" rel="noopener">@efimera_fest ↗</a></p>
     <div class="mt-l"><span class="label">{t("Dónde estamos", "Where we are")}</span>
       <p class="mt-s"><strong>Fundación Artdecor</strong><br>C/ Juramento, 1 · 14002 Córdoba</p>

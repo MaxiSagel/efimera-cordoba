@@ -98,7 +98,7 @@ body { font-family: var(--b); color: var(--tinta); font-size: 10.5pt; line-heigh
 .contact { display: flex; flex-direction: column; justify-content: space-between; }
 .contact .big { font-size: 80pt; }
 .contact .cols a { color: inherit; text-decoration: underline; text-underline-offset: 1mm; }
-.contact .cols { display: grid; grid-template-columns: 1.5fr 1.2fr .8fr 1fr; gap: 10mm; font-size: 10.5pt; border-top: .6pt solid rgba(255,255,255,.3); padding-top: 6mm; }
+.contact .cols { display: grid; grid-template-columns: 1.3fr 1.2fr 1fr .8fr 1.1fr; gap: 8mm; font-size: 10.5pt; border-top: .6pt solid rgba(255,255,255,.3); padding-top: 6mm; }
 .contact .cols .label { opacity: .6; display: block; margin-bottom: 2mm; }
 """
 
@@ -385,7 +385,8 @@ def deck():
   <div><p class="d big" style="font-size:66pt">{t('Presenta tu <span class="it">candidatura</span>.', 'Submit your <span class="it">application</span>.')}</p>
     <p class="lead" style="margin-top:6mm;max-width:190mm">{t("Cuéntanos quiénes sois, qué queréis destacar y qué espacio os interesa. 15 plazas: revisamos cada propuesta.", "Tell us who you are, what you want to highlight and which venue interests you. 15 places: we review every proposal.")}</p></div>
   <div class="cols"><div><span class="label">{t("Candidatura online", "Apply online")}</span><a href="{web}">festivalefimera.com →</a></div>
-    <div><span class="label">Email</span><a href="mailto:{MAIL}">{MAIL}</a></div><div><span class="label">Instagram</span><a href="{build.IG}">@efimera_fest</a></div>
+    <div><span class="label">Email</span><a href="mailto:{MAIL}">{MAIL}</a></div><div><span class="label">WhatsApp</span><a href="{build.WA}">{build.WHATSAPP}</a></div>
+    <div><span class="label">Instagram</span><a href="{build.IG}">@efimera_fest</a></div>
     <div><span class="label">Fundación Artdecor</span>C/ Juramento, 1 · 14002 Córdoba</div></div>
   <div class="brandline big"><img src="{img('assets/logos/emblema.svg')}" alt="">{MARK_LINE}</div>
 </section>''')
