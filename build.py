@@ -12,7 +12,7 @@ from pathlib import Path
 
 OUT = Path(__file__).parent
 VER = str(int(time.time()))
-SITE = "https://maxisagel.github.io/efimera-cordoba/"   # cambiar por https://efimeracordoba.com/ cuando haya dominio
+SITE = "https://festivalefimera.com/"   # dominio propio (noviembre de 2026); antes https://maxisagel.github.io/efimera-cordoba/
 IG = "https://www.instagram.com/efimera_fest/"
 MAIL = "efimera@fundacionartdecor.org"
 C = {"arcilla": "#C98C6C", "arcilla_osc": "#8E5138", "arena": "#D8C4A2", "arena_osc": "#B49A74", "crema": "#F4EDE2", "cal": "#EADFCC", "tinta": "#141210"}

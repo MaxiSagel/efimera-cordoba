@@ -384,7 +384,7 @@ def deck():
   <span class="label" style="opacity:.6">{t("Candidaturas hasta el", "Applications until")} {T(DEADLINE)}</span>
   <div><p class="d big" style="font-size:66pt">{t('Presenta tu <span class="it">candidatura</span>.', 'Submit your <span class="it">application</span>.')}</p>
     <p class="lead" style="margin-top:6mm;max-width:190mm">{t("Cuéntanos quiénes sois, qué queréis destacar y qué espacio os interesa. 15 plazas: revisamos cada propuesta.", "Tell us who you are, what you want to highlight and which venue interests you. 15 places: we review every proposal.")}</p></div>
-  <div class="cols"><div><span class="label">{t("Candidatura online", "Apply online")}</span><a href="{web}">{t("Presenta la candidatura en la web →", "Apply on the website →")}</a></div>
+  <div class="cols"><div><span class="label">{t("Candidatura online", "Apply online")}</span><a href="{web}">festivalefimera.com →</a></div>
     <div><span class="label">Email</span><a href="mailto:{MAIL}">{MAIL}</a></div><div><span class="label">Instagram</span><a href="{build.IG}">@efimera_fest</a></div>
     <div><span class="label">Fundación Artdecor</span>C/ Juramento, 1 · 14002 Córdoba</div></div>
   <div class="brandline big"><img src="{img('assets/logos/emblema.svg')}" alt="">{MARK_LINE}</div>
